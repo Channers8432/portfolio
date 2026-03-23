@@ -198,7 +198,7 @@ const Home: React.FC = () => {
                 <h3 className="text-text-default font-bold mb-4">Connect with me</h3>
                 <div className="flex gap-4">
                   <a href="mailto:business.billychan@gmail.com" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <Mail size={20} />
+                    <FaEnvelope size={20} />
                   </a>
                   <a href="https://github.com/Channers8432" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Github size={20} />
@@ -208,10 +208,10 @@ const Home: React.FC = () => {
                   </a>
 {/*
                   <a href="https://twitter.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <Twitter size={20} />
+                    <FaTwitter size={20} />
                   </a>
                   <a href="https://instagram.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <Instagram size={20} />
+                    <FaInstagram size={20} />
                   </a>
 */}
                 </div>
