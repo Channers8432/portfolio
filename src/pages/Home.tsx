@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { FaDiscord } from 'react-icons/fa';
 import { ArrowRight, Globe, Code, Box, Camera, Mail, Github, Twitter, Instagram } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCard } from '../components/ProjectCard';
@@ -51,7 +52,7 @@ const Home: React.FC = () => {
     {
       icon: <Globe size={24} />,
       title: 'Translation & Localisation',
-      desc: 'Chinese–English localisation for games, apps, and digital platforms, with a focus on natural tone and cultural accuracy.'
+      desc: 'Chinese-English localisation for games, apps, and digital platforms, with a focus on natural tone and cultural accuracy.'
     },
     {
       icon: <Code size={24} />,
@@ -203,7 +204,7 @@ const Home: React.FC = () => {
                     <Github size={20} />
                   </a>
                   <a href="https://discord.com/users/884839188313296919" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <Discord size={20} />
+                    <FADiscord size={20} />
                   </a>
 {/*
                   <a href="https://twitter.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
