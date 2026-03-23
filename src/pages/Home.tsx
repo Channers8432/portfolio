@@ -204,7 +204,7 @@ const Home: React.FC = () => {
                     <Github size={20} />
                   </a>
                   <a href="https://discord.com/users/884839188313296919" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <FADiscord size={20} />
+                    <FaDiscord size={20} />
                   </a>
 {/*
                   <a href="https://twitter.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
