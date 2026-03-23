@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { FaDiscord } from 'react-icons/fa';
+import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { ArrowRight, Globe, Code, Box, Camera, Mail, Github, Twitter, Instagram } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCard } from '../components/ProjectCard';
