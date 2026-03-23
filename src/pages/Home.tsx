@@ -9,19 +9,6 @@ import { Project } from '../types';
 const Home: React.FC = () => {
   const featuredIds = ['pls-donate', 'voicemaster', 'lc-dcg-project'];
 
-  const parseVisits = (visits?: string): number => {
-    if (!visits) return 0;
-    const cleanVisits = visits.replace(/,/g, '');
-    const match = cleanVisits.match(/([\d.]+)([BMk]?)/);
-    if (match) {
-      const val = parseFloat(match[1]);
-      const unit = match[2];
-      const mult = unit === 'B' ? 1000000000 : unit === 'M' ? 1000000 : unit === 'k' ? 1000 : 1;
-      return val * mult;
-    }
-    return 0;
-  };
-
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>(
     PROJECTS.filter(p => featuredIds.includes(p.id))
   );
@@ -58,18 +45,34 @@ const Home: React.FC = () => {
     };
 
     fetchLiveData();
-  }, []);
+  }, [featuredProjects]);
 
   const services = [
-    { icon: <Globe size={24} />, title: 'Translation', desc: 'Chinese-English localisation for games, apps, and digital platforms.' },
-    { icon: <Code size={24} />, title: 'Roblox', desc: 'Localisation, Luau scripting, UI design, and avatar clothing.' },
-    { icon: <Box size={24} />, title: 'Engineering', desc: 'Software development, CAD modelling, and technical systems.' },
-    { icon: <Camera size={24} />, title: 'Photography', desc: 'Street and urban photography across Ireland.' },
+    {
+      icon: <Globe size={24} />,
+      title: 'Translation & Localisation',
+      desc: 'Chinese–English localisation for games, apps, and digital platforms, with a focus on natural tone and cultural accuracy.'
+    },
+    {
+      icon: <Code size={24} />,
+      title: 'Software & Roblox Development',
+      desc: 'Luau scripting, UI systems, and general software development for projects ranging from prototypes to live platforms.'
+    },
+    {
+      icon: <Box size={24} />,
+      title: 'Engineering & CAD',
+      desc: 'Mechanical design, assemblies, and technical drawings using SolidWorks, alongside general technical system design.'
+    },
+    {
+      icon: <Camera size={24} />,
+      title: 'Photography',
+      desc: 'Street and urban photography focused on transport, emergency services, and everyday life across Ireland.'
+    },
   ];
 
   const stats = [
-    { value: '7B+', label: 'Combined visits across localised games' },
-    { value: '10+', label: 'Shipped projects' },
+    { value: '7B+', label: 'Users reached through localised platforms' },
+    { value: '10+', label: 'Completed and shipped projects' },
     { value: 'C1', label: 'Certified English proficiency' },
   ];
 
@@ -85,18 +88,20 @@ const Home: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
-              Building things that <span className="text-brand-default">work</span> and look good doing it.
+              I build and localise digital products that people actually use.
             </h1>
             <p className="text-xl text-text-secondary mb-10 leading-relaxed">
-              I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland with a focus on
-              localisation, Roblox development, and software engineering. I like solving real problems and building things people actually use.
+              I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
+              localisation, software development, and Roblox systems. My focus is on practical, well-designed solutions
+              that scale beyond small prototypes.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/roblox"
                 className="bg-brand-default hover:bg-brand-hover text-white px-8 py-4 rounded-2xl font-semibold transition-all flex items-center gap-2 group"
               >
-                Roblox <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                View Roblox Work
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>
@@ -120,12 +125,12 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Featured Projects 
+      {/* Featured Projects */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
         <div className="flex items-end justify-between mb-12">
           <div>
             <h2 className="text-3xl font-bold tracking-tight mb-2">Featured Work</h2>
-            <p className="text-text-secondary">A few projects I'm particularly proud of.</p>
+            <p className="text-text-secondary">A selection of projects demonstrating scale, usability, and technical detail.</p>
           </div>
           <Link to="/roblox" className="text-brand-default hover:text-brand-hover font-medium flex items-center gap-1 text-sm">
             View all <ArrowRight size={16} />
@@ -137,12 +142,12 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
-*/}
+
       {/* Services Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
         <div className="mb-12">
           <h2 className="text-3xl font-bold tracking-tight mb-2">What I Do</h2>
-          <p className="text-text-secondary">A range of services across digital platforms and creative disciplines.</p>
+          <p className="text-text-secondary">Work spanning software, localisation, engineering, and creative media.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
@@ -161,7 +166,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* About + Skills */}
+      {/* About Section */}
       <section id="about" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 pt-16 border-t border-border-default">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -174,33 +179,33 @@ const Home: React.FC = () => {
             <h2 className="text-4xl font-bold tracking-tight mb-8">About Me</h2>
             <div className="space-y-6 text-text-secondary text-lg leading-relaxed">
               <p>
-                I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland.
-                You might know me as <span className="text-text-default font-medium">Channers</span> on Discord
-                or <span className="text-text-default font-medium">VexorianDev</span> on Roblox.
+                I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland. Online, I am also known as
+                <span className="text-text-default font-medium"> Channers</span> on Discord and
+                <span className="text-text-default font-medium"> VexorianDev</span> on Roblox.
               </p>
               <p>
-                My work spans Chinese-English localisation, Roblox scripting and UI design, software development,
-                3D CAD modelling, and street photography. I tend to focus on the details, whether that's getting
-                a translation to feel natural or making sure a UI actually makes sense to use.
+                My work focuses on building practical, reliable systems and adapting them for different audiences through
+                localisation. I have contributed to projects ranging from small tools to platforms used by millions of
+                players worldwide.
               </p>
               <p>
-                I'm always working on something new, and I'm open to freelance work and collaborations
-                that are actually interesting.
+                I am currently open to freelance work, collaborations, and technical projects that involve real users
+                and long-term development rather than one-off prototypes.
               </p>
 
               <div className="pt-8 border-t border-border-default">
                 <h3 className="text-text-default font-bold mb-4">Connect with me</h3>
                 <div className="flex gap-4">
-                  <a href="#" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                  <a href="mailto:you@example.com" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Mail size={20} />
                   </a>
-                  <a href="#" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                  <a href="https://github.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Github size={20} />
                   </a>
-                  <a href="#" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                  <a href="https://twitter.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Twitter size={20} />
                   </a>
-                  <a href="#" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                  <a href="https://instagram.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Instagram size={20} />
                   </a>
                 </div>
@@ -216,99 +221,42 @@ const Home: React.FC = () => {
             className="space-y-8"
           >
             <div className="bg-cta-bg p-8 rounded-3xl border border-border-default">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-brand-default">🌐</span> Translation & Localisation
-              </h3>
+              <h3 className="text-xl font-bold mb-4">Translation & Localisation</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                Fluent in English and Mandarin Chinese, I localise games, apps, and UI content with a focus on tone and
-                cultural fit, not just word-for-word accuracy. Past work includes websites, Discord bots, and Roblox
-                games reaching hundreds of millions of players.
+                Fluent in English and Mandarin Chinese, I localise interfaces, game content, and technical text with
+                attention to tone, context, and readability rather than direct word-for-word translation.
               </p>
             </div>
 
             <div className="bg-cta-bg p-8 rounded-3xl border border-border-default">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-brand-default">🖥️</span> Development
-              </h3>
+              <h3 className="text-xl font-bold mb-4">Software & Game Development</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                I specialise in Roblox Studio scripting and UI design, building everything from phone GUI systems to
-                vehicle mechanics. I also have experience in web development and general software engineering.
+                I build user interfaces, gameplay systems, and supporting tools in Roblox Studio, alongside general web
+                and software development using modern frameworks and tooling.
               </p>
             </div>
 
             <div className="bg-cta-bg p-8 rounded-3xl border border-border-default">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-brand-default">🧊</span> 3D Modelling & CAD
-              </h3>
+              <h3 className="text-xl font-bold mb-4">3D Modelling & CAD</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                I use SolidWorks for mechanical parts, assemblies, and technical drawings.
-                I also dabble in Blender for low-poly game assets when needed.
+                Using SolidWorks and Blender, I create mechanical parts, assemblies, and low-poly assets for both
+                technical and game-related use cases.
               </p>
             </div>
 
             <div className="bg-cta-bg p-8 rounded-3xl border border-border-default">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-brand-default">📸</span> Photography
-              </h3>
+              <h3 className="text-xl font-bold mb-4">Photography</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                Amateur street photographer shooting mostly on a Sony CyberShot DSC-RX100 Mark I.
-                I focus on emergency services, transport, and everyday urban life in Ireland.
+                I photograph transport, emergency services, and urban life across Ireland, primarily using a Sony
+                CyberShot DSC-RX100.
               </p>
             </div>
           </motion.div>
         </div>
-
-{/*
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-32"
-        >
-          <div className="flex items-center justify-between mb-12">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-brand-default/10 text-brand-default rounded-2xl">
-                <Camera size={32} />
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight">Photography</h2>
-                <p className="text-text-secondary">Street and urban life across Ireland.</p>
-              </div>
-            </div>
-            <Link to="/photography" className="text-brand-default hover:text-brand-hover font-medium flex items-center gap-1 text-sm">
-              See more <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border-default group">
-              <img
-                src="https://picsum.photos/seed/street1/800/600"
-                alt="Street Photography 1"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border-default group">
-              <img
-                src="https://picsum.photos/seed/street2/800/600"
-                alt="Street Photography 2"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </div>
-          <p className="text-center text-text-secondary mt-6 text-sm italic">
-            Mainly using a Sony CyberShot DSC-RX100 Mark I.
-          </p>
-
-        </motion.div>
-*/}
       </section>
 
     </div>
   );
 };
-
 
 export default Home;
