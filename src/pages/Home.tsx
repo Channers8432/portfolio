@@ -201,7 +201,7 @@ const Home: React.FC = () => {
                     <FaEnvelope size={20} />
                   </a>
                   <a href="https://github.com/Channers8432" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <Github size={20} />
+                    <FaGithub size={20} />
                   </a>
                   <a href="https://discord.com/users/884839188313296919" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <FaDiscord size={20} />
