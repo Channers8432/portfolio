@@ -196,18 +196,23 @@ const Home: React.FC = () => {
               <div className="pt-8 border-t border-border-default">
                 <h3 className="text-text-default font-bold mb-4">Connect with me</h3>
                 <div className="flex gap-4">
-                  <a href="mailto:you@example.com" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                  <a href="mailto:business.billychan@gmail.com" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Mail size={20} />
                   </a>
-                  <a href="https://github.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                  <a href="https://github.com/Channers8432" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Github size={20} />
                   </a>
+                  <a href="https://discord.com/users/884839188313296919" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                    <Discord size={20} />
+                  </a>
+{/*
                   <a href="https://twitter.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Twitter size={20} />
                   </a>
                   <a href="https://instagram.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <Instagram size={20} />
                   </a>
+*/}
                 </div>
               </div>
             </div>
