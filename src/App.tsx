@@ -21,10 +21,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/roblox" element={<RobloxPage />} />
-            <Route path="/clothing" element={<Navigate to="/roblox?tab=Clothing" replace />} />
-            <Route path="/engineering" element={<Navigate to="/roblox?tab=Development" replace />} />
-            <Route path="/translation" element={<Navigate to="/roblox?tab=Localisation" replace />} />
-            <Route path="/leaving-cert" element={<LeavingCertPage />} />
           </Routes>
         </main>
         

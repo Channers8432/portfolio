@@ -89,7 +89,7 @@ const Home: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
-              I build and localise digital products that people actually use.
+              Developer, UI Designer, Translator 
             </h1>
             <p className="text-xl text-text-secondary mb-10 leading-relaxed">
               I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
