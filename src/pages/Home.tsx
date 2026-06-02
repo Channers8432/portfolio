@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { ArrowRight, Globe, Code, Box, Camera, Mail, Github, Twitter, Instagram } from 'lucide-react';
+import { ArrowRight, Globe, Code, Box, Camera } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCard } from '../components/ProjectCard';
 import { Project } from '../types';
@@ -88,9 +88,23 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
-              Developer, UI Designer, Translator 
-            </h1>
+            {/* Visual Header from image_9b5e37.png */}
+            <div className="flex items-center gap-6 mb-8">
+              <img 
+                src="/path-to-your-avatar.jpg" 
+                alt="Billy Chan" 
+                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover bg-neutral-800"
+              />
+              <div>
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-text-default uppercase">
+                  Billy Chan
+                </h1>
+                <p className="text-lg md:text-2xl text-text-secondary mt-1 font-medium">
+                  Software Developer · UI Designer · Translator
+                </p>
+              </div>
+            </div>
+
             <p className="text-xl text-text-secondary mb-10 leading-relaxed">
               I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
               localisation, software development, and Roblox systems. My focus is on practical, well-designed solutions
@@ -206,14 +220,6 @@ const Home: React.FC = () => {
                   <a href="https://discord.com/users/884839188313296919" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                     <FaDiscord size={20} />
                   </a>
-{/*
-                  <a href="https://twitter.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <FaTwitter size={20} />
-                  </a>
-                  <a href="https://instagram.com/yourusername" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <FaInstagram size={20} />
-                  </a>
-*/}
                 </div>
               </div>
             </div>

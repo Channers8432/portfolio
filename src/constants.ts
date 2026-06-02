@@ -140,6 +140,18 @@ export const PROJECTS: Project[] = [
     placeId: '14044143732'
   },
   {
+    id: 'bloxy-or-not',
+    title: 'Future Chicken Obby',
+    author: 'The Anomaly',
+    visits: '900M+',
+    description: 'A horror experience on Roblox featuring unique gameplay mechanics and immersive environments.',
+    category: 'Roblox',
+    tags: ['Localisation'],
+    imageUrl: 'https://tr.rbxcdn.com/180DAY-f780e08711932f2b53a4f62135d24b6c/256/256/Image/Webp/noFilter',
+    link: 'https://www.roblox.com/games/14044143732/Future-Chicken-Obby',
+    placeId: '14044143732'
+  },
+  {
     id: 'voicemaster',
     title: 'voicemaster.xyz Documentation',
     author: 'VoiceMaster',
