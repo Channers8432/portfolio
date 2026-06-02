@@ -97,7 +97,7 @@ const Home: React.FC = () => {
               />
               {/* Text block strictly matches image height, content anchors to top and bottom */}
               <div className="h-24 md:h-32 flex flex-col pt-1 pb-1">
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-text-default uppercase leading-none">
+                <h1 className="text-3xl md:text-5xl font-bold text-text-default uppercase leading-none">
                   Billy Chan
                 </h1>
                 <p className="text-base md:text-xl text-text-secondary font-medium leading-none mt-auto">
