@@ -88,19 +88,18 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Visual Header from image_9b5e37.png */}
+            {/* Visual Header matching image_9b5e37.png */}
             <div className="flex items-center gap-6 mb-8">
               <img 
                 src="/path-to-your-avatar.jpg" 
                 alt="Billy Chan" 
-                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover bg-neutral-800 flex-shrink-0"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover bg-neutral-800"
               />
-              {/* Text block strictly matches image height, content anchors to top and bottom */}
-              <div className="h-24 md:h-32 flex flex-col pt-1 pb-1">
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-text-default uppercase leading-none">
+              <div>
+                <h1 className="text-4xl md:text-6xl font-bold text-text-default uppercase tracking-normal mb-1">
                   Billy Chan
                 </h1>
-                <p className="text-base md:text-xl text-text-secondary font-medium leading-none mt-auto">
+                <p className="text-base md:text-xl text-text-secondary font-medium">
                   Developer · UI Designer · Translator
                 </p>
               </div>
