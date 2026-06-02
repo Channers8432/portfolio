@@ -95,9 +95,9 @@ const Home: React.FC = () => {
                 alt="Billy Chan" 
                 className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover bg-neutral-800 flex-shrink-0"
               />
-              {/* Flex container forced to match the height of the image */}
-              <div className="h-24 md:h-32 flex flex-col justify-between py-1">
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-text-default uppercase leading-none">
+              {/* Perfectly frames the content to match image height without creating an awkward gap */}
+              <div className="h-24 md:h-32 flex flex-col justify-center py-2">
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-text-default uppercase leading-none mb-3">
                   Billy Chan
                 </h1>
                 <p className="text-base md:text-xl text-text-secondary font-medium leading-none">
