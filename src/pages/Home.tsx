@@ -82,31 +82,30 @@ const Home: React.FC = () => {
 
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Visual Header matching image_9a13e0.png */}
-            <div className="flex items-center gap-6 mb-8">
+            {/* Visual Header */}
+            <div className="flex items-center gap-6 mb-12">
               <img 
                 src="/path-to-your-avatar.jpg" 
                 alt="Billy Chan" 
-                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover bg-neutral-800 flex-shrink-0"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-3xl object-cover bg-neutral-800 flex-shrink-0"
               />
-              {/* This container matches the image height and distributes top/bottom lines evenly */}
-              <div className="h-24 md:h-32 flex flex-col justify-between py-1">
-                <h1 className="text-4xl md:text-6xl font-bold text-text-default uppercase tracking-normal leading-[0.8]">
+              <div className="h-24 md:h-32 flex flex-col justify-between py-0">
+                <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.75] -ml-1">
                   Billy Chan
                 </h1>
-                <p className="text-base md:text-xl text-text-secondary font-medium leading-none">
+                <p className="text-lg md:text-2xl text-text-secondary font-semibold ml-0.5 leading-none">
                   Developer · UI Designer · Translator
                 </p>
               </div>
             </div>
 
-            <p className="text-xl text-text-secondary mb-10 leading-relaxed">
+            <p className="text-xl text-text-secondary mb-10 max-w-2xl leading-relaxed">
               I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
               localisation, software development, and Roblox systems. My focus is on practical, well-designed solutions
               that scale beyond small prototypes.
