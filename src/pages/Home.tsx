@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaEnvelope, FaGithub, FaReact } from 'react-icons/fa';
+import { 
+  SiTypescript, 
+  SiLuau, 
+  SiRoblox, 
+  SiSolidworks, 
+  SiBlender, 
+  SiPython, 
+  SiTailwindcss 
+} from 'react-icons/si';
 import { ArrowRight, Globe, Code, Box, Camera } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCard } from '../components/ProjectCard';
@@ -46,7 +55,7 @@ const Home: React.FC = () => {
     };
 
     fetchLiveData();
-  }, [featuredProjects]);
+  }, []);
 
   const services = [
     {
@@ -75,6 +84,17 @@ const Home: React.FC = () => {
     { value: '7B+', label: 'Users reached through localised platforms' },
     { value: '10+', label: 'Completed and shipped projects' },
     { value: 'C1', label: 'Certified English proficiency' },
+  ];
+
+  const SKILLS = [
+    { name: "TypeScript", icon: <SiTypescript size={16} /> },
+    { name: "React", icon: <FaReact size={16} /> },
+    { name: "Luau", icon: <SiLuau size={16} /> },
+    { name: "Roblox Studio", icon: <SiRoblox size={16} /> },
+    { name: "SolidWorks", icon: <SiSolidworks size={16} /> },
+    { name: "Blender", icon: <SiBlender size={16} /> },
+    { name: "Python", icon: <SiPython size={16} /> },
+    { name: "Tailwind", icon: <SiTailwindcss size={16} /> },
   ];
 
   return (
@@ -110,14 +130,7 @@ const Home: React.FC = () => {
               localisation, software development, and Roblox systems. My focus is on practical, well-designed solutions
               that scale beyond small prototypes.
             </p>
-            <p>
-              With over <span className="text-text-default font-medium">4</span> years of experience in the industry, 
-              I've had the privilege of working on a wide range of projects, where I helped turned ideas into reality through
-
-            </p>
-            <p>
-              My
-            </p>
+            
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/roblox"
@@ -211,31 +224,31 @@ const Home: React.FC = () => {
                 localisation. I have contributed to projects ranging from small tools to platforms used by millions of
                 players worldwide.
               </p>
-              <p>
-                I am currently open to freelance work, collaborations, and technical projects that involve real users
-                and long-term development rather than one-off prototypes.
-              </p>
-
+              
               <div className="pt-8 border-t border-border-default">
                 <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-12 items-start">
+                  
+                  {/* Connect with me */}
                   <div className="flex-shrink-0">
                     <h3 className="text-text-default font-bold mb-4 whitespace-nowrap">Connect with me</h3>
                     <div className="flex gap-3">
-                      <a href="mailto:business.billychan@gmail.com" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                      <a href="mailto:business.billychan@gmail.com" target="_blank" rel="noreferrer" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                         <FaEnvelope size={20} />
                       </a>
-                      <a href="https://github.com/Channers8432" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                      <a href="https://github.com/Channers8432" target="_blank" rel="noreferrer" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                         <FaGithub size={20} />
                       </a>
-                      <a href="https://discord.com/users/884839188313296919" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                      <a href="https://discord.com/users/884839188313296919" target="_blank" rel="noreferrer" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                         <FaDiscord size={20} />
                       </a>
                     </div>
                   </div>
 
+                  {/* Skills and Tools Marquee */}
                   <div className="overflow-hidden">
                     <h3 className="text-text-default font-bold mb-4">Skills and Tools</h3>
                     <div className="relative">
+                      {/* Gradient Masks */}
                       <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background-default to-transparent z-10"></div>
                       <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background-default to-transparent z-10"></div>
                       
@@ -249,61 +262,28 @@ const Home: React.FC = () => {
                             repeat: Infinity 
                           }}
                         >
-                          {/* Skills List */}
-                          {[
-                            { name: "TypeScript", icon: <SiTypescript size={14} /> },
-                            { name: "React", icon: <FaReact size={14} /> },
-                            { name: "Luau", icon: <SiLuau size={14} /> },
-                            { name: "Roblox Studio", icon: <SiRoblox size={14} /> },
-                            { name: "SolidWorks", icon: <SiSolidworks size={14} /> },
-                            { name: "Blender", icon: <SiBlender size={14} /> },
-                            //{ name: "Git", icon: <FaGit size={14} /> },
-                            //{ name: "Tailwind", icon: <SiTailwindcss size={14} /> },
-                            { name: "Python", icon: <SiPython size={14} /> },
-                            //{ name: "Vite", icon: <SiVite size={14} /> }
-                          ].map((skill, i) => (
-                            <div key={index} className="flex items-center gap-3 group">
-                              <div className="w-10 h-10 rounded-x1 bg-cta-bg border border-border-default flex utems-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
+                          {/* Map the SKILLS array twice for seamless loop */}
+                          {[...SKILLS, ...SKILLS].map((skill, i) => (
+                            <div key={i} className="flex items-center gap-3 group">
+                              <div className="w-10 h-10 rounded-xl bg-cta-bg border border-border-default flex items-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
                                 {skill.icon}
+                              </div>
+                              <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
+                                {skill.name}
+                              </span>
                             </div>
-
-                            <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
-                              {skill.name}
-                            </span>
-                          </div>
-                          ))}
-                          
-                          {[
-                            { name: "TypeScript", icon: <SiTypescript size={14} /> },
-                            { name: "React", icon: <FaReact size={14} /> },
-                            { name: "Luau", icon: <SiLuau size={14} /> },
-                            { name: "Roblox Studio", icon: <SiRoblox size={14} /> },
-                            { name: "SolidWorks", icon: <SiSolidworks size={14} /> },
-                            { name: "Blender", icon: <SiBlender size={14} /> },
-                            //{ name: "Git", icon: <FaGit size={14} /> },
-                            //{ name: "Tailwind", icon: <SiTailwindcss size={14} /> },
-                            { name: "Python", icon: <SiPython size={14} /> },
-                            //{ name: "Vite", icon: <SiVite size={14} /> }
-                          ].map((skill, i) => (
-                            <div key={index} className="flex items-center gap-3 group">
-                              <div className="w-10 h-10 rounded-x1 bg-cta-bg border border-border-default flex utems-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
-                                {skill.icon}
-                            </div>
-
-                            <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
-                              {skill.name}
-                            </span>
-                          </div>
                           ))}
                         </motion.div>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
           </motion.div>
 
+          {/* Right Column: Expertise Cards */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -315,7 +295,7 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-bold mb-4">Translation & Localisation</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
                 Fluent in English and Mandarin Chinese, I localise interfaces, game content, and technical text with
-                attention to tone, context, and readability rather than direct word-for-word translation.
+                attention to tone, context, and readability.
               </p>
             </div>
 
@@ -323,7 +303,7 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-bold mb-4">Software & Game Development</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
                 I build user interfaces, gameplay systems, and supporting tools in Roblox Studio, alongside general web
-                and software development using modern frameworks and tooling.
+                and software development using modern frameworks.
               </p>
             </div>
 
@@ -343,6 +323,7 @@ const Home: React.FC = () => {
               </p>
             </div>
           </motion.div>
+
         </div>
       </section>
 
