@@ -91,9 +91,9 @@ const Home: React.FC = () => {
             {/* Visual Header */}
             <div className="flex items-center gap-6 mb-12">
               <img 
-                src="/path-to-your-avatar.jpg" 
+                src="/avatar.jpg" 
                 alt="Billy Chan" 
-                className="w-24 h-24 md:w-32 md:h-32 rounded-3xl object-cover bg-neutral-800 flex-shrink-0"
+                className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0"
               />
               <div className="h-24 md:h-32 flex flex-col justify-between py-0">
                 <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.75] -ml-1">
@@ -106,9 +106,17 @@ const Home: React.FC = () => {
             </div>
 
             <p className="text-xl text-text-secondary mb-10 max-w-2xl leading-relaxed">
-              I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
+              Hi, I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
               localisation, software development, and Roblox systems. My focus is on practical, well-designed solutions
               that scale beyond small prototypes.
+            </p>
+            <p>
+              With over <span className="text-text-default font-medium">4</span> years of experience in the industry, 
+              I've had the privilege of working on a wide range of projects, where I helped turned ideas into reality through
+
+            </p>
+            <p>
+              My
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -209,17 +217,65 @@ const Home: React.FC = () => {
               </p>
 
               <div className="pt-8 border-t border-border-default">
-                <h3 className="text-text-default font-bold mb-4">Connect with me</h3>
-                <div className="flex gap-4">
-                  <a href="mailto:business.billychan@gmail.com" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <FaEnvelope size={20} />
-                  </a>
-                  <a href="https://github.com/Channers8432" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <FaGithub size={20} />
-                  </a>
-                  <a href="https://discord.com/users/884839188313296919" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
-                    <FaDiscord size={20} />
-                  </a>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Left Side: Connect */}
+                  <div>
+                    <h3 className="text-text-default font-bold mb-4">Connect with me</h3>
+                    <div className="flex gap-4">
+                      <a href="mailto:business.billychan@gmail.com" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                        <FaEnvelope size={20} />
+                      </a>
+                      <a href="https://github.com/Channers8432" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                        <FaGithub size={20} />
+                      </a>
+                      <a href="https://discord.com/users/884839188313296919" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
+                        <FaDiscord size={20} />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Right Side: Skills & Tools Marquee */}
+                  <div className="overflow-hidden">
+                    <h3 className="text-text-default font-bold mb-4">Skills and Tools</h3>
+                    <div className="relative group">
+                      {/* Gradient Masks for smooth fading edges */}
+                      <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-background-default to-transparent z-10"></div>
+                      <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-background-default to-transparent z-10"></div>
+                      
+                      <div className="flex overflow-hidden">
+                        <motion.div 
+                          className="flex gap-4 pr-4 whitespace-nowrap"
+                          animate={{ x: ["0%", "-50%"] }}
+                          transition={{ 
+                            duration: 20, 
+                            ease: "linear", 
+                            repeat: Infinity 
+                          }}
+                        >
+                          {/* First set of items */}
+                          {[
+                            "TypeScript", "React", "Luau", "Roblox Studio", 
+                            "SolidWorks", "Blender", "Git", "Tailwind", 
+                            "Python", "Vite"
+                          ].map((skill, i) => (
+                            <span key={i} className="px-4 py-2 bg-cta-bg border border-border-default rounded-xl text-sm font-medium text-text-secondary">
+                              {skill}
+                            </span>
+                          ))}
+                          {/* Duplicate set for seamless loop */}
+                          {[
+                            "TypeScript", "React", "Luau", "Roblox Studio", 
+                            "SolidWorks", "Blender", "Git", "Tailwind", 
+                            "Python", "Vite"
+                          ].map((skill, i) => (
+                            <span key={`dup-${i}`} className="px-4 py-2 bg-cta-bg border border-border-default rounded-xl text-sm font-medium text-text-secondary">
+                              {skill}
+                            </span>
+                          ))}
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
