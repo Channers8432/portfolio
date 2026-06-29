@@ -5,10 +5,9 @@ import { FaDiscord, FaEnvelope, FaGithub, FaReact } from 'react-icons/fa';
 import { 
   SiTypescript, 
   SiLuau, 
-  SiRoblox, 
-  SiSolidworks, 
-  SiBlender, 
-  SiPython, 
+  SiRoblox,
+  SiBlender,
+  SiPython,
   SiTailwindcss 
 } from 'react-icons/si';
 import { ArrowRight, Globe, Code, Box, Camera } from 'lucide-react';
@@ -91,7 +90,7 @@ const Home: React.FC = () => {
     { name: "React", icon: <FaReact size={16} /> },
     { name: "Luau", icon: <SiLuau size={16} /> },
     { name: "Roblox Studio", icon: <SiRoblox size={16} /> },
-    { name: "SolidWorks", icon: <SiSolidworks size={16} /> },
+    //{ name: "SolidWorks", icon: <SiSolidworks size={16} /> },
     { name: "Blender", icon: <SiBlender size={16} /> },
     { name: "Python", icon: <SiPython size={16} /> },
     { name: "Tailwind", icon: <SiTailwindcss size={16} /> },
