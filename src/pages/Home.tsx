@@ -217,11 +217,10 @@ const Home: React.FC = () => {
               </p>
 
               <div className="pt-8 border-t border-border-default">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Left Side: Connect */}
-                  <div>
-                    <h3 className="text-text-default font-bold mb-4">Connect with me</h3>
-                    <div className="flex gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-12 items-start">
+                  <div className="flex-shrink-0">
+                    <h3 className="text-text-default font-bold mb-4 whitespace-nowrap">Connect with me</h3>
+                    <div className="flex gap-3">
                       <a href="mailto:business.billychan@gmail.com" target="_blank" className="p-3 rounded-2xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover text-text-default transition-all">
                         <FaEnvelope size={20} />
                       </a>
@@ -234,43 +233,67 @@ const Home: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Right Side: Skills & Tools Marquee */}
                   <div className="overflow-hidden">
                     <h3 className="text-text-default font-bold mb-4">Skills and Tools</h3>
-                    <div className="relative group">
-                      {/* Gradient Masks for smooth fading edges */}
-                      <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-background-default to-transparent z-10"></div>
-                      <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-background-default to-transparent z-10"></div>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background-default to-transparent z-10"></div>
+                      <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background-default to-transparent z-10"></div>
                       
                       <div className="flex overflow-hidden">
                         <motion.div 
-                          className="flex gap-4 pr-4 whitespace-nowrap"
+                          className="flex gap-8 items-center whitespace-nowrap"
                           animate={{ x: ["0%", "-50%"] }}
                           transition={{ 
-                            duration: 20, 
+                            duration: 25, 
                             ease: "linear", 
                             repeat: Infinity 
                           }}
                         >
-                          {/* First set of items */}
+                          {/* Skills List */}
                           {[
-                            "TypeScript", "React", "Luau", "Roblox Studio", 
-                            "SolidWorks", "Blender", "Git", "Tailwind", 
-                            "Python", "Vite"
+                            { name: "TypeScript", icon: <SiTypescript size={14} /> },
+                            { name: "React", icon: <FaReact size={14} /> },
+                            { name: "Luau", icon: <SiLuau size={14} /> },
+                            { name: "Roblox Studio", icon: <SiRoblox size={14} /> },
+                            { name: "SolidWorks", icon: <SiSolidworks size={14} /> },
+                            { name: "Blender", icon: <SiBlender size={14} /> },
+                            //{ name: "Git", icon: <FaGit size={14} /> },
+                            //{ name: "Tailwind", icon: <SiTailwindcss size={14} /> },
+                            { name: "Python", icon: <SiPython size={14} /> },
+                            //{ name: "Vite", icon: <SiVite size={14} /> }
                           ].map((skill, i) => (
-                            <span key={i} className="px-4 py-2 bg-cta-bg border border-border-default rounded-xl text-sm font-medium text-text-secondary">
-                              {skill}
+                            <div key={index} className="flex items-center gap-3 group">
+                              <div className="w-10 h-10 rounded-x1 bg-cta-bg border border-border-default flex utems-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
+                                {skill.icon}
+                            </div>
+
+                            <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
+                              {skill.name}
                             </span>
+                          </div>
                           ))}
-                          {/* Duplicate set for seamless loop */}
+                          
                           {[
-                            "TypeScript", "React", "Luau", "Roblox Studio", 
-                            "SolidWorks", "Blender", "Git", "Tailwind", 
-                            "Python", "Vite"
+                            { name: "TypeScript", icon: <SiTypescript size={14} /> },
+                            { name: "React", icon: <FaReact size={14} /> },
+                            { name: "Luau", icon: <SiLuau size={14} /> },
+                            { name: "Roblox Studio", icon: <SiRoblox size={14} /> },
+                            { name: "SolidWorks", icon: <SiSolidworks size={14} /> },
+                            { name: "Blender", icon: <SiBlender size={14} /> },
+                            //{ name: "Git", icon: <FaGit size={14} /> },
+                            //{ name: "Tailwind", icon: <SiTailwindcss size={14} /> },
+                            { name: "Python", icon: <SiPython size={14} /> },
+                            //{ name: "Vite", icon: <SiVite size={14} /> }
                           ].map((skill, i) => (
-                            <span key={`dup-${i}`} className="px-4 py-2 bg-cta-bg border border-border-default rounded-xl text-sm font-medium text-text-secondary">
-                              {skill}
+                            <div key={index} className="flex items-center gap-3 group">
+                              <div className="w-10 h-10 rounded-x1 bg-cta-bg border border-border-default flex utems-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
+                                {skill.icon}
+                            </div>
+
+                            <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
+                              {skill.name}
                             </span>
+                          </div>
                           ))}
                         </motion.div>
                       </div>
