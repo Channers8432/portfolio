@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { FaDiscord, FaEnvelope, FaGithub } from 'react-icons/fa';
-import { ArrowRight, Globe, Code, Box, Camera, Mail } from 'lucide-react';
+import { ArrowRight, Globe, Code, Box, Mail } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCard } from '../components/ProjectCard';
 import { Project } from '../types';
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 items-start"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_450px] xl:grid-cols-[1fr_550px] gap-12 lg:gap-20 items-start"
         >
           {/* LEFT COLUMN: Name, Titles, Desc */}
           <div className="space-y-10">
@@ -80,10 +80,10 @@ const Home: React.FC = () => {
               <img 
                 src="/avatar.jpg" 
                 alt="Billy Chan" 
-                className="w-28 h-28 md:w-40 md:h-40 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-2xl"
+                className="w-28 h-28 md:w-36 md:h-36 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-2xl"
               />
               <div className="flex flex-col">
-                <h1 className="text-6xl md:text-[7rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1.5 mb-4">
+                <h1 className="text-6xl md:text-[6.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1.5 mb-4">
                   Billy Chan
                 </h1>
                 <p className="text-xl md:text-3xl text-text-secondary font-bold tracking-tight leading-none">
@@ -97,34 +97,34 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* RIGHT COLUMN: Buttons and Stats */}
-          <div className="flex flex-col lg:items-end gap-6 pt-4">
-            {/* Buttons Top-Right */}
-            <div className="flex flex-wrap gap-4 lg:justify-end">
+          {/* RIGHT COLUMN: Buttons (Same Size) and Stats (Horizontal) */}
+          <div className="flex flex-col gap-6 pt-4">
+            {/* Buttons Row - Equal widths */}
+            <div className="flex flex-row gap-4 w-full">
               <Link
                 to="/roblox"
-                className="bg-brand-default hover:bg-brand-hover text-white px-8 py-5 rounded-2xl font-bold text-lg transition-all flex items-center gap-3 group whitespace-nowrap shadow-lg shadow-brand-default/20"
+                className="flex-1 bg-brand-default hover:bg-brand-hover text-white px-4 py-5 rounded-2xl font-bold text-base md:text-lg transition-all flex items-center justify-center gap-3 group whitespace-nowrap shadow-lg shadow-brand-default/20"
               >
                 View Roblox Work
-                <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="mailto:business.billychan@gmail.com"
-                className="bg-cta-bg hover:bg-button-bg-transparent-hover border border-border-default text-text-default px-8 py-5 rounded-2xl font-bold text-lg transition-all flex items-center gap-3 whitespace-nowrap"
+                className="flex-1 bg-cta-bg hover:bg-button-bg-transparent-hover border border-border-default text-text-default px-4 py-5 rounded-2xl font-bold text-base md:text-lg transition-all flex items-center justify-center gap-3 whitespace-nowrap"
               >
-                <Mail size={22} />
+                <Mail size={20} />
                 Get in Touch
               </a>
             </div>
 
-            {/* Stats Bar Under Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 w-full lg:w-auto">
+            {/* Stats Row - Horizontal side-by-side */}
+            <div className="flex flex-row gap-4 w-full">
               {stats.map((stat) => (
-                <div key={stat.label} className="bg-cta-bg border border-border-default p-6 rounded-2xl lg:min-w-[300px] flex flex-col items-start lg:items-end">
-                  <span className="text-4xl font-black tracking-tighter text-brand-default leading-none mb-1">
+                <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-5 rounded-2xl flex flex-col items-center text-center">
+                  <span className="text-3xl md:text-4xl font-black tracking-tighter text-brand-default leading-none mb-1">
                     {stat.value}
                   </span>
-                  <span className="text-text-secondary text-xs font-bold uppercase tracking-widest leading-none">
+                  <span className="text-text-secondary text-[10px] md:text-xs font-bold uppercase tracking-widest leading-none">
                     {stat.label}
                   </span>
                 </div>
