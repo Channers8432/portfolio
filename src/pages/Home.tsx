@@ -291,7 +291,7 @@ const SKILLS = [
                                 <img
                                   src={skill.icon} 
                                   alt={skill.name} 
-                                  className="w-full h-full object-contain" 
+                                  className="w-6 h-6 object-contain" 
                                   onError={(e) => (e.currentTarget.style.display = "none")} 
                                 />
                               </div>
