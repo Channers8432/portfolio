@@ -146,10 +146,10 @@ const SKILLS = [
               />
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold text-text-default mb-6 tracking-tighter">
+            <h1 className="text-6xl md:text-8xl font-bold text-text-default mb-6">
               Developer · UI Designer · Translator
             </h1>
-
+{/*
             <div className="flex items-center gap-4 mb-10">
                <span className="text-7xl md:text-9xl font-bold text-text-default/5 select-none leading-none">BI|</span>
                <div className="flex flex-col gap-1.5 opacity-20">
@@ -158,7 +158,7 @@ const SKILLS = [
                   <div className="w-10 h-1.5 bg-brand-default"></div>
                </div>
             </div>
-
+*/}
             <p className="text-xl text-text-secondary mb-10 max-w-2xl leading-relaxed">
               Hi, I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland. I build 
               practical, well-designed systems and adapt them for global audiences through technical localisation 
