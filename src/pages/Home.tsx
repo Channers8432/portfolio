@@ -68,63 +68,61 @@ const Home: React.FC = () => {
   return (
     <div className="pt-24 pb-16">
       {/* Hero Section */}
-      <section className="max-w-[96%] mx-auto px-4 mb-24">
+      <section className="max-w-[96%] mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_450px] xl:grid-cols-[1fr_550px] gap-12 lg:gap-20 items-start"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start"
         >
           {/* LEFT COLUMN: Name, Titles, Desc */}
-          <div className="space-y-10">
-            <div className="flex items-center gap-8">
+          <div className="space-y-8">
+            <div className="flex items-center gap-6">
               <img 
                 src="/avatar.jpg" 
                 alt="Billy Chan" 
-                className="w-28 h-28 md:w-36 md:h-36 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-2xl"
+                className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-xl"
               />
               <div className="flex flex-col">
-                <h1 className="text-6xl md:text-[6.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1.5 mb-4">
+                <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1 mb-3">
                   Billy Chan
                 </h1>
-                <p className="text-xl md:text-3xl text-text-secondary font-bold tracking-tight leading-none">
+                <p className="text-lg md:text-2xl text-text-secondary font-bold tracking-tight leading-none">
                   Developer · UI Designer · Translator
                 </p>
               </div>
             </div>
             
-            <p className="text-2xl md:text-3xl text-text-secondary max-w-4xl leading-relaxed font-light">
-              Hi, I'm <span className="text-text-default font-semibold underline decoration-brand-default underline-offset-8">Billy</span>, a student based in Ireland. I build practical, high-scale software solutions and adapt platforms for global audiences through expert Chinese localisation.
+            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
+              Hi, I'm <span className="text-text-default font-semibold underline decoration-brand-default underline-offset-4">Billy</span>, a student based in Ireland. I build practical software solutions and adapt platforms for global audiences through expert Chinese localisation.
             </p>
           </div>
 
-          {/* RIGHT COLUMN: Buttons (Same Size) and Stats (Horizontal) */}
-          <div className="flex flex-col gap-6 pt-4">
-            {/* Buttons Row - Equal widths */}
+          {/* RIGHT COLUMN: Buttons and Stats Row */}
+          <div className="flex flex-col gap-5 pt-2">
             <div className="flex flex-row gap-4 w-full">
               <Link
                 to="/roblox"
-                className="flex-1 bg-brand-default hover:bg-brand-hover text-white px-4 py-5 rounded-2xl font-bold text-base md:text-lg transition-all flex items-center justify-center gap-3 group whitespace-nowrap shadow-lg shadow-brand-default/20"
+                className="flex-1 bg-brand-default hover:bg-brand-hover text-white px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 group whitespace-nowrap shadow-lg shadow-brand-default/10"
               >
                 View Roblox Work
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="mailto:business.billychan@gmail.com"
-                className="flex-1 bg-cta-bg hover:bg-button-bg-transparent-hover border border-border-default text-text-default px-4 py-5 rounded-2xl font-bold text-base md:text-lg transition-all flex items-center justify-center gap-3 whitespace-nowrap"
+                className="flex-1 bg-cta-bg hover:bg-button-bg-transparent-hover border border-border-default text-text-default px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
               >
-                <Mail size={20} />
+                <Mail size={18} />
                 Get in Touch
               </a>
             </div>
 
-            {/* Stats Row - Horizontal side-by-side */}
-            <div className="flex flex-row gap-4 w-full">
+            <div className="flex flex-row gap-3 w-full">
               {stats.map((stat) => (
-                <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-5 rounded-2xl flex flex-col items-center text-center">
-                  <span className="text-3xl md:text-4xl font-black tracking-tighter text-brand-default leading-none mb-1">
+                <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
+                  <span className="text-2xl md:text-3xl font-black tracking-tighter text-brand-default leading-none mb-1">
                     {stat.value}
                   </span>
-                  <span className="text-text-secondary text-[10px] md:text-xs font-bold uppercase tracking-widest leading-none">
+                  <span className="text-text-secondary text-[9px] md:text-[10px] font-bold uppercase tracking-widest leading-none">
                     {stat.label}
                   </span>
                 </div>
@@ -135,17 +133,17 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Projects */}
-      <section className="max-w-[96%] mx-auto px-4 mb-32">
-        <div className="flex items-end justify-between mb-12 border-b border-border-default pb-8">
+      <section className="max-w-[96%] mx-auto px-4 mb-24">
+        <div className="flex items-end justify-between mb-10 border-b border-border-default pb-6">
           <div>
-            <h2 className="text-4xl font-bold tracking-tight mb-2">Featured Work</h2>
-            <p className="text-text-secondary text-xl font-light">Direct contributions to high-impact platforms.</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-1">Featured Work</h2>
+            <p className="text-text-secondary text-lg font-light">Contributions to high-impact platforms.</p>
           </div>
-          <Link to="/roblox" className="text-brand-default hover:text-brand-hover font-bold text-lg flex items-center gap-2">
-            Browse all projects <ArrowRight size={20} />
+          <Link to="/roblox" className="text-brand-default hover:text-brand-hover font-bold flex items-center gap-2">
+            Browse all <ArrowRight size={18} />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -153,15 +151,15 @@ const Home: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="max-w-[96%] mx-auto px-4 mb-16 pt-24 border-t border-border-default">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+      <section id="about" className="max-w-[96%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-bold tracking-tight mb-10">About Me</h2>
-            <div className="space-y-8 text-text-secondary text-2xl leading-relaxed font-light">
+            <h2 className="text-4xl font-bold tracking-tight mb-8">About Me</h2>
+            <div className="space-y-6 text-text-secondary text-xl leading-relaxed font-light">
               <p>
                 I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland. Online, I am also known as
                 <span className="text-text-default font-medium"> Channers</span> or
@@ -169,42 +167,39 @@ const Home: React.FC = () => {
               </p>
               <p>
                 My work focuses on building practical, reliable systems and adapting them for different audiences through
-                localisation. I have contributed to projects ranging from small tools to platforms used by millions of
-                players worldwide.
+                localisation. I have contributed to projects used by millions of players worldwide.
               </p>
               
-              <div className="pt-12 mt-12 border-t border-border-default">
-                <div className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-16">
+              <div className="pt-10 mt-10 border-t border-border-default">
+                <div className="grid grid-cols-1 xl:grid-cols-[200px_1fr] gap-12">
                   <div>
-                    <h3 className="text-text-default font-bold text-sm uppercase tracking-widest mb-6">Connect</h3>
-                    <div className="flex gap-4">
-                      <a href="mailto:business.billychan@gmail.com" className="p-4 rounded-2xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
-                        <FaEnvelope size={24} />
+                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Connect</h3>
+                    <div className="flex gap-3">
+                      <a href="mailto:business.billychan@gmail.com" className="p-3.5 rounded-xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
+                        <FaEnvelope size={20} />
                       </a>
-                      <a href="https://github.com/Channers8432" target="_blank" rel="noreferrer" className="p-4 rounded-2xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
-                        <FaGithub size={24} />
+                      <a href="https://github.com/Channers8432" target="_blank" rel="noreferrer" className="p-3.5 rounded-xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
+                        <FaGithub size={20} />
                       </a>
-                      <a href="https://discord.com/users/884839188313296919" target="_blank" rel="noreferrer" className="p-4 rounded-2xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
-                        <FaDiscord size={24} />
+                      <a href="https://discord.com/users/884839188313296919" target="_blank" rel="noreferrer" className="p-3.5 rounded-xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
+                        <FaDiscord size={20} />
                       </a>
                     </div>
                   </div>
 
                   <div className="overflow-hidden">
-                    <h3 className="text-text-default font-bold text-sm uppercase tracking-widest mb-6">Tools</h3>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background-default to-transparent z-10"></div>
-                      <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background-default to-transparent z-10"></div>
+                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Tools</h3>
+                    <div className="relative px-2">
                       <div className="flex overflow-hidden">
                         <motion.div 
-                          className="flex gap-12 items-center whitespace-nowrap"
+                          className="flex gap-10 items-center whitespace-nowrap"
                           animate={{ x: ["0%", "-50%"] }}
                           transition={{ duration: 30, ease: "linear", repeat: Infinity }}
                         >
                           {[...SKILLS, ...SKILLS].map((skill, i) => (
-                            <div key={i} className="flex items-center gap-4 group opacity-70 hover:opacity-100 transition-opacity">
-                              <img src={skill.icon} alt={skill.name} className="w-8 h-8 object-contain" />
-                              <span className="text-base font-bold text-text-secondary uppercase tracking-widest">{skill.name}</span>
+                            <div key={i} className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity">
+                              <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
+                              <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">{skill.name}</span>
                             </div>
                           ))}
                         </motion.div>
@@ -216,28 +211,18 @@ const Home: React.FC = () => {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="bg-cta-bg p-10 rounded-[2.5rem] border border-border-default group hover:border-brand-default/30 transition-all">
-              <Globe className="text-brand-default mb-6" size={32} />
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-default transition-colors">Localisation</h3>
-              <p className="text-text-secondary text-lg leading-relaxed font-light">
-                Fluent in English and Mandarin Chinese, I localise interfaces and technical content with deep attention to cultural tone and player retention.
-              </p>
-            </div>
-            <div className="bg-cta-bg p-10 rounded-[2.5rem] border border-border-default group hover:border-brand-default/30 transition-all">
-              <Code className="text-brand-default mb-6" size={32} />
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-default transition-colors">Development</h3>
-              <p className="text-text-secondary text-lg leading-relaxed font-light">
-                Specialising in Luau and TypeScript. I build robust gameplay systems and modern user interfaces for the Roblox platform and the web.
-              </p>
-            </div>
-            <div className="bg-cta-bg p-10 rounded-[2.5rem] border border-border-default group hover:border-brand-default/30 transition-all">
-              <Box className="text-brand-default mb-6" size={32} />
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-default transition-colors">Engineering</h3>
-              <p className="text-text-secondary text-lg leading-relaxed font-light">
-                High-fidelity mechanical design using SolidWorks and Blender, bridging the gap between technical engineering and 3D visual assets.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 gap-5">
+            {[
+              { icon: <Globe size={28} />, title: "Localisation", body: "Fluent in English and Mandarin Chinese, I localise interfaces and content with deep attention to cultural tone." },
+              { icon: <Code size={28} />, title: "Development", body: "Specialising in Luau and TypeScript. I build robust gameplay systems and modern interfaces for Roblox and web." },
+              { icon: <Box size={28} />, title: "Engineering", body: "Mechanical design using SolidWorks and Blender, bridging the gap between engineering and visual assets." }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-cta-bg p-8 rounded-[2rem] border border-border-default group hover:border-brand-default/30 transition-all">
+                <div className="text-brand-default mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-brand-default transition-colors">{item.title}</h3>
+                <p className="text-text-secondary text-lg leading-relaxed font-light">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
