@@ -287,7 +287,7 @@ const SKILLS = [
                         >
                           {[...SKILLS, ...SKILLS].map((skill, i) => (
                             <div key={i} className="flex items-center gap-3 group">
-                              <div className="w-10 h-10 rounded-xl bg-cta-bg border border-border-default flex items-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
+                              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden p-2 group-hover:border-white/20 transition-all">
                                 <img
                                   src={skill.icon} 
                                   alt={skill.name} 
