@@ -124,61 +124,44 @@ const SKILLS = [
     <div className="pt-24 pb-16">
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="grid grid -cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
-
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-
-            {/* name */}
-            <div className="flex items-center gap-2 mb-8 font-mono text-sm md:text-base">
-              <span style={{ color: '#ff7b7b' }}>local</span>
-              <span style={{ color: '#cccccc' }}>developer</span>
-              <span style={{ color: '#cccccc' }}>=</span>
-              <span style={{ color: '#a3e4c1' }}>"Billy Chan"</span>
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)" }}
-                className="w-[1.5px] h-4 bg-[#cccccc] -ml-1"
+            {/* Visual Header */}
+            <div className="flex items-center gap-6 mb-12">
+              <img 
+                src="/avatar.jpg" 
+                alt="Billy Chan" 
+                className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0"
               />
+              <div className="h-24 md:h-32 flex flex-col justify-between py-0">
+                <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.75] -ml-1">
+                  Billy Chan
+                </h1>
+                <p className="text-lg md:text-2xl text-text-secondary font-semibold ml-0.5 leading-none">
+                  Developer · UI Designer · Translator
+                </p>
+              </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] xl:text-8xl font-bold text-text-default mb-6 whitespace-nowrap tracking-tighter">
-              Developer · UI Designer · Translator
-            </h1>
-{/*
-            <div className="flex items-center gap-4 mb-10">
-               <span className="text-7xl md:text-9xl font-bold text-text-default/5 select-none leading-none">BI|</span>
-               <div className="flex flex-col gap-1.5 opacity-20">
-                  <div className="w-12 h-1.5 bg-brand-default"></div>
-                  <div className="w-20 h-1.5 bg-brand-default"></div>
-                  <div className="w-10 h-1.5 bg-brand-default"></div>
-               </div>
-            </div>
-*/}
             <p className="text-xl text-text-secondary mb-10 max-w-2xl leading-relaxed">
-              Hi, I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland. I build 
-              practical, well-designed systems and adapt them for global audiences through technical localisation 
-              and scalable software development.
+              Hi, I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland working across
+              localisation, software development, and Roblox systems. My focus is on practical, well-designed solutions
+              that scale beyond small prototypes.
             </p>
             
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/roblox"
-                className="bg-brand-default hover:bg-brand-hover text-white px-8 py-4 rounded-xl font-semibold transition-all flex items-center gap-2 group shadow-lg shadow-brand-default/20"
+                className="bg-brand-default hover:bg-brand-hover text-white px-8 py-4 rounded-2xl font-semibold transition-all flex items-center gap-2 group"
               >
-                View Projects
+                View Roblox Work
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="#about"
-                className="bg-button-bg-transparent border border-border-default hover:border-text-secondary text-text-default px-8 py-4 rounded-xl font-semibold transition-all"
-              >
-                Get in Touch
-              </a>
             </div>
           </motion.div>
         </div>
