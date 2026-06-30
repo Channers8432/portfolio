@@ -110,7 +110,7 @@ const Home: React.FC = () => {
                   Billy Chan
                 </h1>
                 <p className="text-lg md:text-2xl text-text-secondary font-semibold ml-0.5 leading-none">
-                  Developer · UI Designer · Translator
+                  Developer  ·  UI Designer  ·  Translator
                 </p>
               </div>
             </div>
