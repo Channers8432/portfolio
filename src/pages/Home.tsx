@@ -134,7 +134,7 @@ const SKILLS = [
           >
 
             {/* name */}
-            <div className="flex items-center gap-2 mb-8 font-mono text-sm md:text-base bg-[#1e1e20] py-1.5 px-4 rounded-md border border-white/5 shadow-inner">
+            <div className="flex items-center gap-2 mb-8 font-mono text-sm md:text-base">
               <span style={{ color: '#ff7b7b' }}>local</span>
               <span style={{ color: '#cccccc' }}>developer</span>
               <span style={{ color: '#cccccc' }}>=</span>
@@ -146,7 +146,7 @@ const SKILLS = [
               />
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-[5rem] xl:text-8xl font-bold text-text-default mb-6 whitespace-nowrap tracking-tighter">
+            <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] xl:text-8xl font-bold text-text-default mb-6 whitespace-nowrap tracking-tighter">
               Developer · UI Designer · Translator
             </h1>
 {/*
