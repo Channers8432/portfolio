@@ -146,7 +146,7 @@ const SKILLS = [
               />
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold text-text-default mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-[5.5rem] xl:text-8xl font-bold text-text-default mb-6 whitespace-nowrap tracking-tighter">
               Developer · UI Designer · Translator
             </h1>
 {/*
