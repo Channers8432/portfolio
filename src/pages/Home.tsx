@@ -85,15 +85,39 @@ const Home: React.FC = () => {
     { value: 'C1', label: 'Certified English proficiency' },
   ];
 
-  const SKILLS = [
-    { name: "TypeScript", icon: <SiTypescript size={16} /> },
-    { name: "React", icon: <FaReact size={16} /> },
-    { name: "Luau", icon: <SiLuau size={16} /> },
-    { name: "Roblox Studio", icon: <SiRoblox size={16} /> },
-    //{ name: "SolidWorks", icon: <SiSolidworks size={16} /> },
-    { name: "Blender", icon: <SiBlender size={16} /> },
-    { name: "Python", icon: <SiPython size={16} /> },
-    { name: "Tailwind", icon: <SiTailwindcss size={16} /> },
+const SKILLS = [
+    { 
+      name: "TypeScript", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" 
+    },
+    { 
+      name: "React", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+    },
+    { 
+      name: "Luau", 
+      icon: "/icons/luau.svg" // Use a local SVG for Luau as it's not on Devicon
+    },
+    { 
+      name: "Roblox Studio", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/roblox/roblox-original.svg" 
+    },
+    { 
+      name: "SolidWorks", 
+      icon: "/icons/solidworks.svg" // Use a local SVG or high-res PNG
+    },
+    { 
+      name: "Blender", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" 
+    },
+    { 
+      name: "Python", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
+    },
+    { 
+      name: "Tailwind", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" 
+    },
   ];
 
   return (
@@ -261,11 +285,15 @@ const Home: React.FC = () => {
                             repeat: Infinity 
                           }}
                         >
-                          {/* Map the SKILLS array twice for seamless loop */}
                           {[...SKILLS, ...SKILLS].map((skill, i) => (
                             <div key={i} className="flex items-center gap-3 group">
                               <div className="w-10 h-10 rounded-xl bg-cta-bg border border-border-default flex items-center justify-center text-brand-default group-hover:border-brand-default/50 transition-colors">
-                                {skill.icon}
+                                <img
+                                  src={skill.icon} 
+                                  alt={skill.name} 
+                                  className="w-full h-full object-contain" 
+                                  onError={(e) => (e.currentTarget.style.display = "none")} 
+                                />
                               </div>
                               <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
                                 {skill.name}
