@@ -368,7 +368,7 @@ const RobloxPage: React.FC = () => {
           visits: visitsStr,
           numericVisits,
           imageUrl,
-          title: live.name || p.title,
+          title: live?.name || p.title,
           author,
           isLive
         };
