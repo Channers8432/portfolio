@@ -68,7 +68,7 @@ const Home: React.FC = () => {
   return (
     <div className="pt-24 pb-16">
       {/* Hero Section */}
-      <section className="max-w-[96%] mx-auto px-4 mb-20">
+      <section className="max-w-[94%] mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
