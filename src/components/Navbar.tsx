@@ -24,7 +24,7 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-nav-bg-dark/80 backdrop-blur-md border-b border-border-default">
       {/* Updated max-width to match Home page hero and decreased padding */}
-      <div className="max-w-[96%] mx-auto px-4">
+      <div className="max-w-[98%] mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="text-xl font-bold tracking-tighter text-brand-default uppercase">
