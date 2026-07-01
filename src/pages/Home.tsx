@@ -93,7 +93,7 @@ const Home: React.FC = () => {
             </div>
             
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
-              Hi, I'm <span className="text-text-default font-semibold underline decoration-brand-default underline-offset-4">Billy</span>, a student based in Ireland. I build practical software solutions and adapt platforms for global audiences through expert Chinese localisation.
+              Building practical software solutions and adapt platforms for global audiences through expert Chinese localisation.
             </p>
           </div>
 
