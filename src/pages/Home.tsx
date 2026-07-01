@@ -109,7 +109,7 @@ const Home: React.FC = () => {
               </Link>
               <a
                 href="mailto:business.billychan@gmail.com"
-                className="flex-1 bg-cta-bg hover:bg-button-bg-transparent-hover border border-border-default text-text-default px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+                className="flex-1 bg-text-secondary hover:bg-button-bg-transparent-hover border border-border-default text-bg-primary px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <Mail size={18} />
                 Get in Touch
