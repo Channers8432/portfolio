@@ -23,21 +23,23 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-nav-bg-dark/80 backdrop-blur-md border-b border-border-default">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Updated max-width to match Home page hero and decreased padding */}
+      <div className="max-w-[96%] mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold tracking-tighter text-brand-default">
+            <Link to="/" className="text-xl font-bold tracking-tighter text-brand-default uppercase">
               Channers
             </Link>
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            {/* Changed items-baseline to items-center for perfect vertical alignment */}
+            <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-bold transition-colors ${
                     location.pathname === item.path
                       ? 'text-brand-default'
                       : 'text-text-secondary hover:text-text-default'
@@ -46,9 +48,12 @@ export const Navbar: React.FC = () => {
                   {item.label}
                 </Link>
               ))}
+              
+              {/* Vertically centered toggle button */}
               <button
                 onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-full bg-button-bg-transparent hover:bg-button-bg-transparent-hover transition-colors"
+                className="flex items-center justify-center p-2 rounded-xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover border border-border-default/50 transition-colors text-text-default"
+                aria-label="Toggle theme"
               >
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
               </button>
@@ -58,13 +63,13 @@ export const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-full bg-button-bg-transparent hover:bg-button-bg-transparent-hover transition-colors"
+              className="p-2 rounded-xl bg-button-bg-transparent border border-border-default/50 transition-colors"
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-text-default hover:bg-button-bg-transparent transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-text-default transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -80,15 +85,15 @@ export const Navbar: React.FC = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-nav-bg-dark border-b border-border-default overflow-hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-4 pt-2 pb-6 space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  className={`block px-4 py-3 rounded-xl text-base font-bold ${
                     location.pathname === item.path
-                      ? 'text-brand-default bg-button-bg-transparent'
+                      ? 'text-brand-default bg-brand-default/5'
                       : 'text-text-secondary hover:text-text-default hover:bg-button-bg-transparent'
                   }`}
                 >

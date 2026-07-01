@@ -151,7 +151,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="max-w-[96%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
+      <section id="about" className="max-w-[94%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
