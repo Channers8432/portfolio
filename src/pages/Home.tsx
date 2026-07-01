@@ -132,7 +132,7 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Work */}
       <section className="max-w-[96%] mx-auto px-4 mb-24">
         <div className="flex items-end justify-between mb-10 border-b border-border-default pb-6">
           <div>
@@ -211,15 +211,18 @@ const Home: React.FC = () => {
             </div>
           </motion.div>
 
+          {/* Right Column: Expertise Boxes with Icons next to Titles */}
           <div className="grid grid-cols-1 gap-5">
             {[
-              { icon: <Globe size={28} />, title: "Localisation", body: "Fluent in English and Mandarin Chinese, I localise interfaces and content with deep attention to cultural tone." },
-              { icon: <Code size={28} />, title: "Development", body: "Specialising in Luau and TypeScript. I build robust gameplay systems and modern interfaces for Roblox and web." },
-              { icon: <Box size={28} />, title: "Engineering", body: "Mechanical design using SolidWorks and Blender, bridging the gap between engineering and visual assets." }
+              { icon: <Globe size={24} />, title: "Localisation", body: "Fluent in English and Mandarin Chinese, I localise interfaces and content with deep attention to cultural tone." },
+              { icon: <Code size={24} />, title: "Development", body: "Specialising in Luau and TypeScript. I build robust gameplay systems and modern interfaces for Roblox and web." },
+              { icon: <Box size={24} />, title: "Engineering", body: "Mechanical design using SolidWorks and Blender, bridging the gap between engineering and visual assets." }
             ].map((item, idx) => (
               <div key={idx} className="bg-cta-bg p-8 rounded-[2rem] border border-border-default group hover:border-brand-default/30 transition-all">
-                <div className="text-brand-default mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-brand-default transition-colors">{item.title}</h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-brand-default">{item.icon}</div>
+                  <h3 className="text-xl font-bold group-hover:text-brand-default transition-colors">{item.title}</h3>
+                </div>
                 <p className="text-text-secondary text-lg leading-relaxed font-light">{item.body}</p>
               </div>
             ))}
