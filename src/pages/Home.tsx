@@ -189,17 +189,37 @@ const Home: React.FC = () => {
 
                   <div className="overflow-hidden">
                     <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Tools</h3>
-                    <div className="relative px-2">
+  
+                    {/* Relative wrapper for gradients */}
+                    <div className="relative group">
+    
+                      {/* Left Fade Gradient */}
+                      <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background-default to-transparent z-10 pointer-events-none" />
+    
+                      {/* Right Fade Gradient */}
+                      <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background-default to-transparent z-10 pointer-events-none" />
+    
                       <div className="flex overflow-hidden">
                         <motion.div 
-                          className="flex gap-10 items-center whitespace-nowrap"
-                          animate={{ x: ["0%", "-50%"] }}
-                          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+                          className="flex gap-10 items-center whitespace-nowrap px-4"
+                          animate={{ x: ["0%", "-33.33%"] }} // Scroll 1/3 of the total width
+                          transition={{ 
+                            duration: 20, 
+                            ease: "linear", 
+                            repeat: Infinity 
+                          }}
                         >
-                          {[...SKILLS, ...SKILLS].map((skill, i) => (
-                            <div key={i} className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity">
-                              <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
-                              <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">{skill.name}</span>
+                          {/* Triple the items to ensure there's always a leading/trailing set to prevent jumps */}
+                          {[...SKILLS, ...SKILLS, ...SKILLS].map((skill, i) => (
+                            <div key={i} className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                              <img 
+                                src={skill.icon} 
+                                alt={skill.name} 
+                                className="w-6 h-6 object-contain filter grayscale brightness-200 group-hover:grayscale-0 transition-all" 
+                              />
+                              <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">
+                                {skill.name}
+                              </span>
                             </div>
                           ))}
                         </motion.div>
