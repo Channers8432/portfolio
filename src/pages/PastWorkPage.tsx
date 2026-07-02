@@ -81,7 +81,7 @@ const PastWorkPage: React.FC = () => {
                 className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-xl"
               />
               <div className="flex flex-col">
-                <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1 mb-3">
+                <h1 className="text-5lg md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1 mb-3">
                   Billy Chan
                 </h1>
                 <p className="text-lg md:text-2xl text-text-secondary font-bold tracking-tight leading-none">
@@ -139,7 +139,6 @@ const PastWorkPage: React.FC = () => {
             return (
               <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
                 <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Strict Square Container: Fixed sizes + self-start + aspect-square */}
                   <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
                     <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
                   </div>
