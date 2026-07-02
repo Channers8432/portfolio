@@ -36,18 +36,18 @@
 
 :root {
   /* Dark Mode (Default) */
-  --brand-default: #4f7eee;
-  --brand-hover: #3b66d1;
-  --accent-color: #f59e0b; /* Amber/Orange */
-  --text-default: #ffffff;
-  --text-secondary: #a1a1aa;
-  --bg-primary: #18181b;
-  --bg-input: #27272a;
-  --cta-bg: #27272a;
-  --nav-bg-dark: #09090b;
-  --border-default: rgba(255, 255, 255, 0.1);
-  --button-bg-transparent: rgba(255, 255, 255, 0.05);
-  --button-bg-transparent-hover: rgba(255, 255, 255, 0.1);
+  --brand-default:          #4f7eee;
+  --brand-hover:            #3b66d1;
+  --accent-color:           #f59e0b; /* Amber/Orange */
+  --text-default:           #ffffff;
+  --text-secondary:         #a1a1aa;
+  --bg-primary:             #18181b;
+  --bg-input:               #27272a;
+  --cta-bg:                 #27272a;
+  --nav-bg-dark:            #09090b;
+  --border-default:               rgba(255, 255, 255, 0.1);
+  --button-bg-transparent:        rgba(255, 255, 255, 0.05);
+  --button-bg-transparent-hover:  rgba(255, 255, 255, 0.1);
 }
 
 .light {

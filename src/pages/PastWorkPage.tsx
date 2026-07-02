@@ -50,7 +50,7 @@ const PastWorkPage: React.FC = () => {
   const stats = [
     { value: '7B+', label: 'Users reached' },
     { value: '10+', label: 'Shipped projects' },
-    { value: 'C1', label: 'Advanced English' },
+    { value: 'C1 Advanced', label: 'CEFR English' },
   ];
 
   const SKILLS = [
