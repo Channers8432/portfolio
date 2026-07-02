@@ -68,8 +68,8 @@ const PastWorkPage: React.FC = () => {
     <div className="pt-24 pb-16">
 
 
-
-      {/* Hero */}
+      
+      {/* Hero Section */}
       <section className="max-w-[94%] mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -297,7 +297,7 @@ const PastWorkPage: React.FC = () => {
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            made the manual chinese for the rare discord user to reads
+                            made the manual chinese for the rare discord user who reads
                           </p>
                         </div>
                       </div>
