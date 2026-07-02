@@ -332,6 +332,9 @@ const PastWorkPage: React.FC = () => {
                 My work focuses on building practical, reliable systems and adapting them for different audiences through
                 localisation. I have contributed to projects used by millions of players worldwide.
               </p>
+              <p>
+                Lorem ipsum or some shit, idk
+              </p>
 
               <div className="pt-10 mt-10 border-t border-border-default">
                 <div className="grid grid-cols-1 xl:grid-cols-[200px_1fr] gap-12">
