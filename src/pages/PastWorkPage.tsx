@@ -131,7 +131,7 @@ const PastWorkPage: React.FC = () => {
       {/* REPLICATED WORK SECTION */}
       <section className="max-w-[96%] mx-auto px-4 mb-24">
         <div className="mb-10 border-b border-border-default pb-6">
-          <h2 className="text-xl font-bold tracking-tight mb-1 uppercase tracking-widest opacity-80">Selected Contributions</h2>
+          <h2 className="text-xl font-bold tracking-tight mb-1 uppercase tracking-widest opacity-80">Past Work</h2>
         </div>
 
         <div className="space-y-5">
