@@ -181,7 +181,7 @@ const PastWorkPage: React.FC = () => {
 
           {/* BOX 2: SCARY SHAWARMA KIOSK */}
           {(() => {
-            const p = featuredProjects.find(proj => proj.id === 'scary-shawarma-kiosk');
+            const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
             return (
               <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
                 <div className="flex flex-col lg:flex-row gap-8">
