@@ -10,6 +10,7 @@ import RobloxPage from './pages/RobloxPage';
 import EngineeringPage from './pages/EngineeringPage';
 import TranslationPage from './pages/TranslationPage';
 import LeavingCertPage from './pages/LeavingCertPage';
+import PastWorkPage from './pages/PastWorkPage';
 import ClothingPage from './pages/ClothingPage';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/roblox" element={<RobloxPage />} />
+            <Route path="/past-work" element={<PastWorkPage />} />
           </Routes>
         </main>
         
