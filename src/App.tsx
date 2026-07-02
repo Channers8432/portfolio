@@ -25,10 +25,10 @@ export default function App() {
             <Route path="/past-work" element={<PastWorkPage />} />
           </Routes>
         </main>
-        
+
         <footer className="border-t border-border-default py-12 mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-text-secondary text-sm">
+          <div className="max-w-[96%] mx-auto px-4 flex flex-col items-center md:items-start gap-6">
+            <div className="text-text-secondary text-sm text-center md:text-left">
               © {new Date().getFullYear()} Billy Chan. All rights reserved.
             </div>
           </div>
