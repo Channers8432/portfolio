@@ -136,7 +136,7 @@ const Home: React.FC = () => {
       <section className="max-w-[96%] mx-auto px-4 mb-24">
         <div className="flex items-end justify-between mb-10 border-b border-border-default pb-6">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight mb-1">Project Examples</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
             {/* <p className="text-text-secondary text-lg font-light">Contributions to high-impact platforms.</p> */}
           </div>
           {/*}
