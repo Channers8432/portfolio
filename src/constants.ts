@@ -155,7 +155,7 @@ export const PROJECTS: Project[] = [
     id: 'voicemaster',
     title: 'voicemaster.xyz Documentation',
     author: 'VoiceMaster',
-    visits: '455,000+ Servers',
+    visits: '455,000+',
     description: 'Full documentation localisation for the VoiceMaster Discord bot.',
     category: 'Translation',
     tags: ['Localisation', 'Discord'],

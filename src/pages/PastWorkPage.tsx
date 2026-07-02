@@ -169,7 +169,7 @@ const PastWorkPage: React.FC = () => {
                       <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                         <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                         <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                          Provided full Chinese (Simplified & Traditional) localisation, translating complex dynamic stand systems and game interfaces for global parity.
+                          Provided full Chinese (Simplified) localisation, translating complex dynamic stand systems and game interfaces for global parity.
                         </p>
                       </div>
                     </div>
@@ -238,7 +238,7 @@ const PastWorkPage: React.FC = () => {
                         <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                        <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Servers</span>
                         <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
                       </div>
                     </div>
