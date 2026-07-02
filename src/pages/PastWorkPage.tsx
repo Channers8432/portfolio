@@ -131,41 +131,44 @@ const PastWorkPage: React.FC = () => {
       {/* REPLICATED WORK SECTION */}
       <section className="max-w-[96%] mx-auto px-4 mb-24">
         <div className="mb-10 border-b border-border-default pb-6">
-          <h2 className="text-2xl font-bold tracking-tight mb-1">Some of My Work</h2>
+          <h2 className="text-xl font-bold tracking-tight mb-1 uppercase tracking-widest opacity-80">Selected Contributions</h2>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-5">
 
           {/* BOX 1: PLS DONATE */}
           {(() => {
             const p = featuredProjects.find(proj => proj.id === 'pls-donate');
             return (
-              <div className="bg-cta-bg/40 border border-border-default rounded-[2rem] p-6 lg:p-8 hover:bg-cta-bg/60 transition-all group">
+              <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
                 <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="w-full lg:w-[220px] aspect-square shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
-                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover" />
+                  {/* Strict Square Container: Fixed sizes + self-start + aspect-square */}
+                  <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
                   </div>
+
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-row justify-between items-start mb-6 border-b border-border-default pb-6">
+                    <div className="flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-default uppercase tracking-tight">{p?.title || "PLS DONATE"}</h3>
-                        <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-60 mt-1">{p?.author || "Quataun"}</p>
+                        <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "PLS DONATE"}</h3>
+                        <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author || "Quataun"}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
-                        <span className="text-xl md:text-2xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                        <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                      <div className="space-y-3">
-                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
-                        <p className="text-base text-text-secondary leading-relaxed font-light">
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-2">
+                        <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
                           The platform's leading donation experience, allowing millions of players to claim stands and earn Robux through social interaction.
                         </p>
                       </div>
-                      <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
-                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
-                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                      <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                        <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
                           Provided full Chinese (Simplified & Traditional) localisation, translating complex dynamic stand systems and game interfaces for global parity.
                         </p>
                       </div>
@@ -180,32 +183,34 @@ const PastWorkPage: React.FC = () => {
           {(() => {
             const p = featuredProjects.find(proj => proj.id === 'scary-shawarma-kiosk');
             return (
-              <div className="bg-cta-bg/40 border border-border-default rounded-[2rem] p-6 lg:p-8 hover:bg-cta-bg/60 transition-all group">
+              <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
                 <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="w-full lg:w-[220px] aspect-square shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
-                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover" />
+                  <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
                   </div>
+
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-row justify-between items-start mb-6 border-b border-border-default pb-6">
+                    <div className="flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
-                        <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-60 mt-1">{p?.author}</p>
+                        <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                        <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
-                        <span className="text-xl md:text-2xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                        <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                      <div className="space-y-3">
-                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
-                        <p className="text-base text-text-secondary leading-relaxed font-light">
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-2">
+                        <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
                           A horror-management simulator where players operate a kiosk under eerie conditions, relying on environmental cues and unique mechanics.
                         </p>
                       </div>
-                      <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
-                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
-                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                      <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                        <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
                           Full localisation management, adapting technical instructions and narrative elements while maintaining the game's specific atmospheric tone.
                         </p>
                       </div>
@@ -220,32 +225,34 @@ const PastWorkPage: React.FC = () => {
           {(() => {
             const p = featuredProjects.find(proj => proj.id === 'voicemaster');
             return (
-              <div className="bg-cta-bg/40 border border-border-default rounded-[2rem] p-6 lg:p-8 hover:bg-cta-bg/60 transition-all group">
+              <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
                 <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="w-full lg:w-[220px] aspect-square shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
-                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover" />
+                  <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
                   </div>
+
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-row justify-between items-start mb-6 border-b border-border-default pb-6">
+                    <div className="flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                       <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-default uppercase tracking-tight">{p?.title || "VoiceMaster"}</h3>
-                        <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-60 mt-1">{p?.author}</p>
+                        <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "VoiceMaster"}</h3>
+                        <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
-                        <span className="text-xl md:text-2xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                        <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                      <div className="space-y-3">
-                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
-                        <p className="text-base text-text-secondary leading-relaxed font-light">
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-2">
+                        <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
                           A social networking experience centered around proximity voice chat, featuring modular UI and custom social interaction tools.
                         </p>
                       </div>
-                      <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
-                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
-                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                      <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                        <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
                           Combined Luau-based front-end development with Chinese localisation to create a native-feeling experience for international users.
                         </p>
                       </div>
