@@ -129,12 +129,9 @@ const PastWorkPage: React.FC = () => {
       </section>
 
       {/* REPLICATED WORK SECTION */}
-      <section className="max-w-[96%] mx-auto px-4 mb-24">
-        <div className="mb-10 border-t border-border-default pb-6">
+      <section id="past-work" className="max-w-[94%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start space-y-5">
           <h2 className="text-4xl font-bold tracking-tight mb-8">Past Work</h2>
-        </div>
-
-        <div className="space-y-5">
 
           {/* BOX 1: PLS DONATE */}
           {(() => {
