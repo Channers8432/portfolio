@@ -188,7 +188,7 @@ const Home: React.FC = () => {
                   </div>
 
                   <div className="overflow-hidden">
-                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Tools</h3>
+                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Skills and Tools</h3>
   
                     {/* Relative wrapper for gradients */}
                     <div className="relative group">
@@ -200,7 +200,6 @@ const Home: React.FC = () => {
                       <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background-default to-transparent z-10 pointer-events-none" />
     
                       <div className="overflow-hidden">
-                        <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Tools</h3>
   
                         <div className="relative px-2">
                           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background-default via-background-default/80 to-transparent z-20 pointer-events-none" />
