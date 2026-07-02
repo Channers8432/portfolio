@@ -291,7 +291,7 @@ const PastWorkPage: React.FC = () => {
                         <div className="space-y-2">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            Discord vc bot for it doesnt look messy
+                            Discord vc bot so it doesnt look messy
                           </p>
                         </div>
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
