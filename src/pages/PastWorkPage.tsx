@@ -68,15 +68,16 @@ const PastWorkPage: React.FC = () => {
     <div className="pt-24 pb-16">
 
 
-      
+
       {/* Hero Section */}
       <section className="max-w-[94%] mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-stretch"
         >
-          <div className="space-y-8">
+          {/* Left Column */}
+          <div className="space-y-8 flex flex-col justify-center">
             <div className="flex items-center gap-6">
               <img
                 src="/avatar.jpg"
@@ -97,7 +98,9 @@ const PastWorkPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-5 pt-2">
+          {/* Right Column: Anchored Stats */}
+          <div className="flex flex-col justify-between h-full py-2 gap-8">
+            {/* Top: Buttons */}
             <div className="flex flex-row gap-4 w-full">
               <Link
                 to="/roblox"
@@ -115,6 +118,7 @@ const PastWorkPage: React.FC = () => {
               </a>
             </div>
 
+            {/* Bottom: Stats anchored to the baseline of the left-side text */}
             <div className="flex flex-row gap-3 w-full">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
