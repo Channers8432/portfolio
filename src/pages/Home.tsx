@@ -139,9 +139,11 @@ const Home: React.FC = () => {
             <h2 className="text-3xl font-bold tracking-tight mb-1">Project Examples</h2>
             {/* <p className="text-text-secondary text-lg font-light">Contributions to high-impact platforms.</p> */}
           </div>
+          {/*}
           <Link to="/roblox" className="text-brand-default hover:text-brand-hover font-bold flex items-center gap-2">
             Browse all <ArrowRight size={18} />
           </Link>
+          */}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredProjects.map((project) => (
