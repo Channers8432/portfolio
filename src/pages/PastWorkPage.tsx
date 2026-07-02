@@ -7,7 +7,7 @@ import { PROJECTS } from '../constants';
 import { Project } from '../types';
 
 const PastWorkPage: React.FC = () => {
-  const featuredIds = ['pls-donate', 'voicemaster', 'lc-dcg-project'];
+  const featuredIds = ['pls-donate', 'voicemaster', 'scary-shawarma'];
 
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>(
     PROJECTS.filter(p => featuredIds.includes(p.id))
