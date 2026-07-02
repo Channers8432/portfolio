@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { FaDiscord, FaEnvelope, FaGithub } from 'react-icons/fa';
 import { ArrowRight, Globe, Code, Box, Mail } from 'lucide-react';
 import { PROJECTS } from '../constants';
-import { ProjectCard } from '../components/ProjectCard';
 import { Project } from '../types';
 
 const Home: React.FC = () => {
@@ -74,7 +73,6 @@ const Home: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start"
         >
-          {/* LEFT COLUMN: Name, Titles, Desc */}
           <div className="space-y-8">
             <div className="flex items-center gap-6">
               <img 
@@ -91,13 +89,11 @@ const Home: React.FC = () => {
                 </p>
               </div>
             </div>
-            
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
-              Building practical software solutions and adapt platforms for global audiences through expert Chinese localisation.
+              Building practical software solutions and adapting platforms for global audiences through expert Chinese localisation.
             </p>
           </div>
 
-          {/* RIGHT COLUMN: Buttons and Stats Row */}
           <div className="flex flex-col gap-5 pt-2">
             <div className="flex flex-row gap-4 w-full">
               <Link
@@ -109,7 +105,7 @@ const Home: React.FC = () => {
               </Link>
               <a
                 href="mailto:business.billychan@gmail.com"
-                className="flex-1 bg-text-default hover:bg-button-bg-transparent-hover border border-border-default text-bg-primary px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+                className="flex-1 bg-text-default hover:opacity-90 border border-border-default text-bg-primary px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <Mail size={18} />
                 Get in Touch
@@ -132,22 +128,76 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Featured Work */}
+      {/* REPLICATED WORK SECTION */}
       <section className="max-w-[96%] mx-auto px-4 mb-24">
-        <div className="flex items-end justify-between mb-10 border-b border-border-default pb-6">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
-            {/* <p className="text-text-secondary text-lg font-light">Contributions to high-impact platforms.</p> */}
-          </div>
-          {/*}
-          <Link to="/roblox" className="text-brand-default hover:text-brand-hover font-bold flex items-center gap-2">
-            Browse all <ArrowRight size={18} />
-          </Link>
-          */}
+        <div className="mb-10 border-b border-border-default pb-6">
+          <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {/* Row Header - Desktop Only */}
+        <div className="hidden lg:grid grid-cols-[140px_1fr_1.5fr_1fr_120px] gap-8 px-6 mb-4 text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary/60">
+          <div>Visual</div>
+          <div>Title · Owner</div>
+          <div className="pl-8 border-l border-border-default/50">Project Overview</div>
+          <div className="pl-8 border-l border-border-default/50">My Contribution</div>
+          <div className="text-right">Visits</div>
+        </div>
+
+        <div className="space-y-4">
           {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <div 
+              key={project.id}
+              className="bg-cta-bg border border-border-default rounded-[2rem] p-4 lg:p-6 hover:border-brand-default/40 transition-all group"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-[140px_1fr_1.5fr_1fr_120px] gap-6 lg:gap-8 items-center">
+                
+                {/* Visual */}
+                <div className="aspect-square w-full lg:w-[140px] rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Title & Owner */}
+                <div className="space-y-1">
+                  <h3 className="text-xl font-bold text-text-default group-hover:text-brand-default transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-text-secondary font-medium">
+                    {project.author || "Unknown Creator"}
+                  </p>
+                </div>
+
+                {/* Overview - Desktop Vertical Line Left */}
+                <div className="lg:pl-8 lg:border-l border-border-default/50 h-full flex flex-col justify-center">
+                  <p className="text-sm text-text-secondary leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Contribution/Role - Desktop Vertical Line Left */}
+                <div className="lg:pl-8 lg:border-l border-border-default/50 h-full flex flex-col justify-center">
+                   <div className="flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map(tag => (
+                      <span key={tag} className="text-[10px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded-md text-text-secondary uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Visits - Desktop Right Aligned */}
+                <div className="text-left lg:text-right">
+                   <div className="text-xs font-black text-text-secondary/40 uppercase tracking-widest mb-1 lg:hidden">Total Visits</div>
+                   <span className="text-lg font-black tracking-tighter text-text-default">
+                    {project.visits}
+                  </span>
+                </div>
+
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -191,8 +241,6 @@ const Home: React.FC = () => {
 
                   <div className="overflow-hidden">
                     <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Skills and Tools</h3>
-  
-                    {/* The Mask approach: no extra divs needed, just one style on the container */}
                     <div 
                       className="flex overflow-hidden"
                       style={{
@@ -203,19 +251,11 @@ const Home: React.FC = () => {
                       <motion.div 
                         className="flex gap-10 items-center whitespace-nowrap px-4"
                         animate={{ x: ["0%", "-50%"] }}
-                        transition={{ 
-                          duration: 30, 
-                          ease: "linear", 
-                          repeat: Infinity 
-                        }}
+                        transition={{ duration: 30, ease: "linear", repeat: Infinity }}
                       >
                         {[...SKILLS, ...SKILLS].map((skill, i) => (
                           <div key={i} className="flex items-center gap-3 shrink-0">
-                            <img 
-                              src={skill.icon} 
-                              alt={skill.name} 
-                              className="w-6 h-6 object-contain" 
-                            />
+                            <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
                             <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">
                               {skill.name}
                             </span>
@@ -229,7 +269,6 @@ const Home: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Expertise Boxes with Icons next to Titles */}
           <div className="grid grid-cols-1 gap-5">
             {[
               { icon: <Globe size={24} />, title: "Localisation", body: "Fluent in English and Mandarin Chinese, I localise interfaces and content with deep attention to cultural tone." },
