@@ -66,7 +66,10 @@ const PastWorkPage: React.FC = () => {
 
   return (
     <div className="pt-24 pb-16">
-      {/* Hero Section */}
+
+
+
+      {/* Hero */}
       <section className="max-w-[94%] mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -129,14 +132,14 @@ const PastWorkPage: React.FC = () => {
       </section>
 
 
-
+      {/* Past Work */}
       <section id="past-work" className="max-w-[96%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
         <div className="mb-10 pb-6 space-y-5">
           <h2 className="text-4xl font-bold tracking-tight mb-8">Past Work</h2>
 
           <div className="space-y-6 max-w-[90%] mx-auto">
 
-            {/* BOX 1: PLS DONATE */}
+            {/* PLS DONATE */}
             {(() => {
               const p = featuredProjects.find(proj => proj.id === 'pls-donate');
               return (
@@ -194,7 +197,7 @@ const PastWorkPage: React.FC = () => {
               );
             })()}
 
-            {/* BOX 2: SCARY SHAWARMA KIOSK */}
+            {/* SCARY SHAWARMA KIOSK */}
             {(() => {
               const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
               return (
@@ -249,7 +252,7 @@ const PastWorkPage: React.FC = () => {
               );
             })()}
 
-            {/* BOX 3: VOICEMASTER */}
+            {/* VOICEMASTER */}
             {(() => {
               const p = featuredProjects.find(proj => proj.id === 'voicemaster');
               return (
@@ -310,7 +313,7 @@ const PastWorkPage: React.FC = () => {
 
 
 
-      {/* About Section */}
+      {/* About */}
       <section id="about" className="max-w-[94%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
