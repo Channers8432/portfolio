@@ -138,13 +138,29 @@ const PastWorkPage: React.FC = () => {
             const p = featuredProjects.find(proj => proj.id === 'pls-donate');
             return (
               <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
-                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                  {/* Mobile Header Wrapper: Groups Image and Stats on mobile, dissolves on desktop */}
+                  <div className="flex flex-row items-center lg:contents gap-5">
+                    <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                      <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                    </div>
+
+                    {/* Mobile-only Title/Visits Section */}
+                    <div className="flex-1 flex flex-col lg:hidden">
+                      <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "PLS DONATE"}</h3>
+                      <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author || "Quataun"}</p>
+
+                      <div className="pt-2 border-t border-border-default/40">
+                        <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Visits</span>
+                        <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                    {/* Desktop-only Header Section */}
+                    <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "PLS DONATE"}</h3>
                         <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author || "Quataun"}</p>
@@ -155,7 +171,7 @@ const PastWorkPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                       <div className="space-y-2">
                         <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                         <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
@@ -180,13 +196,26 @@ const PastWorkPage: React.FC = () => {
             const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
             return (
               <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
-                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                  <div className="flex flex-row items-center lg:contents gap-5">
+                    <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                      <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                    </div>
+
+                    <div className="flex-1 flex flex-col lg:hidden">
+                      <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                      <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author}</p>
+
+                      <div className="pt-2 border-t border-border-default/40">
+                        <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Visits</span>
+                        <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                    <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
                         <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
@@ -197,7 +226,7 @@ const PastWorkPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                       <div className="space-y-2">
                         <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                         <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
@@ -222,13 +251,26 @@ const PastWorkPage: React.FC = () => {
             const p = featuredProjects.find(proj => proj.id === 'voicemaster');
             return (
               <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="w-32 h-32 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
-                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                  <div className="flex flex-row items-center lg:contents gap-5">
+                    <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                      <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                    </div>
+
+                    <div className="flex-1 flex flex-col lg:hidden">
+                      <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "VoiceMaster"}</h3>
+                      <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author}</p>
+
+                      <div className="pt-2 border-t border-border-default/40">
+                        <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Servers</span>
+                        <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                    <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "VoiceMaster"}</h3>
                         <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
@@ -239,7 +281,7 @@ const PastWorkPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                       <div className="space-y-2">
                         <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                         <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
@@ -258,7 +300,6 @@ const PastWorkPage: React.FC = () => {
               </div>
             );
           })()}
-
         </div>
       </section>
 
