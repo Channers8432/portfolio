@@ -134,81 +134,90 @@ const PastWorkPage: React.FC = () => {
     <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
         </div>
 
-        <div className="space-y-6">
-          {featuredProjects.map((project) => (
-            <div 
-              key={project.id}
-              className="bg-cta-bg/40 border border-border-default rounded-[2.5rem] p-6 lg:p-10 hover:bg-cta-bg/60 hover:border-brand-default/30 transition-all group"
-            >
-              <div className="flex flex-col lg:flex-row gap-10">
-          
-                {/* Left: Large Visual Square */}
-                <div className="w-full lg:w-[240px] aspect-square shrink-0 rounded-3xl overflow-hidden bg-neutral-900 border border-border-default shadow-inner">
-                  <img 
-                    src={project.imageUrl} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
+        <div className="space-y-8">
+          {[
+            {
+              id: 'pls-donate',
+              projectText: "A world-renowned donation platform allowing players to claim stands and earn Robux. The game features complex dynamic UI systems and a massive global player base.",
+              roleText: "Provided comprehensive Chinese (Simplified & Traditional) localisation. This involved translating dynamic stand text, gamepass interfaces, and complex system messages to ensure cultural accuracy for millions of users."
+            },
+            {
+              id: 'scary-shawarma', // Ensure this ID matches your PROJECTS constant exactly
+              projectText: "A unique horror-themed management simulator where players operate a shawarma stand. The experience relies heavily on atmospheric storytelling and specific environmental interactions.",
+              roleText: "Managed full localisation and cultural adaptation. Focused on maintaining the specific 'horror' tone of the game while ensuring technical instructions and UI elements remained clear for the Chinese market."
+            },
+            {
+              id: 'voicemaster',
+              projectText: "A high-fidelity social hangout focused on proximity voice chat and interactive environments. It utilizes advanced Luau scripting for modular UI and social networking features.",
+              roleText: "Contributed Luau-based UI development and complete Chinese localisation. Bridged the gap for international players by adapting the voice-chat interface and social tools for a seamless non-English experience."
+            }
+          ].map((item) => {
+            // Find the project in the state to get live visits and images
+            const liveProject = featuredProjects.find(p => p.id === item.id);
+            if (!liveProject) return null;
 
-                {/* Right: Data Section */}
-                <div className="flex-1 flex flex-col">
+            return (
+              <div 
+                key={item.id}
+                className="bg-cta-bg/40 border border-border-default rounded-[2.5rem] p-6 lg:p-10 hover:bg-cta-bg/60 hover:border-brand-default/30 transition-all group"
+              >
+                <div className="flex flex-col lg:flex-row gap-10">
             
-                  {/* Top Row: Title/Owner and Visits */}
-                  <div className="flex flex-row justify-between items-start mb-8 border-b border-border-default pb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-text-default uppercase tracking-tight mb-1">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm text-text-secondary font-black uppercase tracking-[0.2em] opacity-60">
-                        {project.author || "Unknown Creator"}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Visits</span>
-                      <span className="text-2xl font-black tracking-tighter text-text-default tabular-nums">
-                        {project.visits}
-                      </span>
-                    </div>
+                  {/* Left: Large Visual Square */}
+                  <div className="w-full lg:w-[260px] aspect-square shrink-0 rounded-3xl overflow-hidden bg-neutral-900 border border-border-default shadow-inner">
+                    <img 
+                      src={liveProject.imageUrl} 
+                      alt={liveProject.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
                   </div>
-      
-                  {/* Bottom Row: Text Columns */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 flex-1">
-                    
-                    {/* Column 1: The Project (Overview) */}
-                    <div className="space-y-3">
-                      <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
-                      <p className="text-base text-text-secondary leading-relaxed font-light">
-                        {project.description}
-                      </p>
-                    </div>
 
-                    {/* Column 2: My Role (Text based) */}
-                    <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
-                      <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
-                      <p className="text-base text-text-secondary leading-relaxed font-light">
-                        {/* Note: If you add a 'roleDescription' field to your constants, use it here */}
-                        Specialised in providing high-accuracy localisation and UI implementation to ensure a seamless experience for global players.
-                      </p>
-                    </div>
-
-                    {/* Column 3: Tech/Tags (Optional) */}
-                    <div className="space-y-3 lg:pl-10 lg:border-l border-border-default/50 hidden lg:block">
-                      <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">Specifications</span>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map(tag => (
-                          <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] font-bold text-text-secondary uppercase">
-                            {tag}
-                          </span>
-                        ))}
+                  {/* Right: Data Section */}
+                  <div className="flex-1 flex flex-col">
+              
+                    {/* Top Row: Title/Owner and Visits */}
+                    <div className="flex flex-row justify-between items-start mb-10 border-b border-border-default pb-8">
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-text-default uppercase tracking-tight mb-1">
+                          {liveProject.title}
+                        </h3>
+                        <p className="text-sm text-text-secondary font-black uppercase tracking-[0.2em] opacity-60">
+                          {liveProject.author || "Unknown Creator"}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
+                        <span className="text-2xl md:text-3xl font-black tracking-tighter text-brand-default tabular-nums">
+                          {liveProject.visits}
+                        </span>
                       </div>
                     </div>
-      
+
+                    {/* Bottom Row: Text Columns */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 flex-1">
+                
+                      {/* Column 1: The Project */}
+                      <div className="space-y-4">
+                        <span className="text-[11px] font-black text-brand-default uppercase tracking-[0.2em] px-3 py-1 bg-brand-default/10 rounded-full inline-block">The Project</span>
+                        <p className="text-lg text-text-secondary leading-relaxed font-light">
+                          {item.projectText}
+                        </p>
+                      </div>
+
+                      {/* Column 2: My Role */}
+                      <div className="space-y-4 md:pl-12 md:border-l border-border-default/50">
+                        <span className="text-[11px] font-black text-brand-default uppercase tracking-[0.2em] px-3 py-1 bg-brand-default/10 rounded-full inline-block">My Role</span>
+                        <p className="text-lg text-text-secondary leading-relaxed font-light">
+                          {item.roleText}
+                        </p>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
