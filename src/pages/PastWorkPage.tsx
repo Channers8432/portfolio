@@ -75,9 +75,9 @@ const PastWorkPage: React.FC = () => {
         >
           <div className="space-y-8">
             <div className="flex items-center gap-6">
-              <img 
-                src="/avatar.jpg" 
-                alt="Billy Chan" 
+              <img
+                src="/avatar.jpg"
+                alt="Billy Chan"
                 className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-xl"
               />
               <div className="flex flex-col">
@@ -131,93 +131,131 @@ const PastWorkPage: React.FC = () => {
       {/* REPLICATED WORK SECTION */}
       <section className="max-w-[96%] mx-auto px-4 mb-24">
         <div className="mb-10 border-b border-border-default pb-6">
-    <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
+          <h2 className="text-2xl font-bold tracking-tight mb-1">Some of My Work</h2>
         </div>
 
-        <div className="space-y-8">
-          {[
-            {
-              id: 'pls-donate',
-              projectText: "A world-renowned donation platform allowing players to claim stands and earn Robux. The game features complex dynamic UI systems and a massive global player base.",
-              roleText: "Provided comprehensive Chinese (Simplified & Traditional) localisation. This involved translating dynamic stand text, gamepass interfaces, and complex system messages to ensure cultural accuracy for millions of users."
-            },
-            {
-              id: 'scary-shawarma', // Ensure this ID matches your PROJECTS constant exactly
-              projectText: "A unique horror-themed management simulator where players operate a shawarma stand. The experience relies heavily on atmospheric storytelling and specific environmental interactions.",
-              roleText: "Managed full localisation and cultural adaptation. Focused on maintaining the specific 'horror' tone of the game while ensuring technical instructions and UI elements remained clear for the Chinese market."
-            },
-            {
-              id: 'voicemaster',
-              projectText: "A high-fidelity social hangout focused on proximity voice chat and interactive environments. It utilizes advanced Luau scripting for modular UI and social networking features.",
-              roleText: "Contributed Luau-based UI development and complete Chinese localisation. Bridged the gap for international players by adapting the voice-chat interface and social tools for a seamless non-English experience."
-            }
-          ].map((item) => {
-            // Find the project in the state to get live visits and images
-            const liveProject = featuredProjects.find(p => p.id === item.id);
-            if (!liveProject) return null;
+        <div className="space-y-6">
 
+          {/* BOX 1: PLS DONATE */}
+          {(() => {
+            const p = featuredProjects.find(proj => proj.id === 'pls-donate');
             return (
-              <div 
-                key={item.id}
-                className="bg-cta-bg/40 border border-border-default rounded-[2.5rem] p-6 lg:p-10 hover:bg-cta-bg/60 hover:border-brand-default/30 transition-all group"
-              >
-                <div className="flex flex-col lg:flex-row gap-10">
-            
-                  {/* Left: Large Visual Square */}
-                  <div className="w-full lg:w-[260px] aspect-square shrink-0 rounded-3xl overflow-hidden bg-neutral-900 border border-border-default shadow-inner">
-                    <img 
-                      src={liveProject.imageUrl} 
-                      alt={liveProject.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+              <div className="bg-cta-bg/40 border border-border-default rounded-[2rem] p-6 lg:p-8 hover:bg-cta-bg/60 transition-all group">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="w-full lg:w-[220px] aspect-square shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
+                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover" />
                   </div>
-
-                  {/* Right: Data Section */}
                   <div className="flex-1 flex flex-col">
-              
-                    {/* Top Row: Title/Owner and Visits */}
-                    <div className="flex flex-row justify-between items-start mb-10 border-b border-border-default pb-8">
+                    <div className="flex flex-row justify-between items-start mb-6 border-b border-border-default pb-6">
                       <div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-text-default uppercase tracking-tight mb-1">
-                          {liveProject.title}
-                        </h3>
-                        <p className="text-sm text-text-secondary font-black uppercase tracking-[0.2em] opacity-60">
-                          {liveProject.author || "Unknown Creator"}
-                        </p>
+                        <h3 className="text-xl md:text-2xl font-bold text-text-default uppercase tracking-tight">{p?.title || "PLS DONATE"}</h3>
+                        <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-60 mt-1">{p?.author || "Quataun"}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-xs font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
-                        <span className="text-2xl md:text-3xl font-black tracking-tighter text-brand-default tabular-nums">
-                          {liveProject.visits}
-                        </span>
+                        <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
+                        <span className="text-xl md:text-2xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
                       </div>
                     </div>
-
-                    {/* Bottom Row: Text Columns */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 flex-1">
-                
-                      {/* Column 1: The Project */}
-                      <div className="space-y-4">
-                        <span className="text-[11px] font-black text-brand-default uppercase tracking-[0.2em] px-3 py-1 bg-brand-default/10 rounded-full inline-block">The Project</span>
-                        <p className="text-lg text-text-secondary leading-relaxed font-light">
-                          {item.projectText}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3">
+                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                          The platform's leading donation experience, allowing millions of players to claim stands and earn Robux through social interaction.
                         </p>
                       </div>
-
-                      {/* Column 2: My Role */}
-                      <div className="space-y-4 md:pl-12 md:border-l border-border-default/50">
-                        <span className="text-[11px] font-black text-brand-default uppercase tracking-[0.2em] px-3 py-1 bg-brand-default/10 rounded-full inline-block">My Role</span>
-                        <p className="text-lg text-text-secondary leading-relaxed font-light">
-                          {item.roleText}
+                      <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
+                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                          Provided full Chinese (Simplified & Traditional) localisation, translating complex dynamic stand systems and game interfaces for global parity.
                         </p>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             );
-          })}
+          })()}
+
+          {/* BOX 2: SCARY SHAWARMA KIOSK */}
+          {(() => {
+            const p = featuredProjects.find(proj => proj.id === 'scary-shawarma-kiosk');
+            return (
+              <div className="bg-cta-bg/40 border border-border-default rounded-[2rem] p-6 lg:p-8 hover:bg-cta-bg/60 transition-all group">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="w-full lg:w-[220px] aspect-square shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
+                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 flex flex-col">
+                    <div className="flex flex-row justify-between items-start mb-6 border-b border-border-default pb-6">
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                        <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-60 mt-1">{p?.author}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
+                        <span className="text-xl md:text-2xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3">
+                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                          A horror-management simulator where players operate a kiosk under eerie conditions, relying on environmental cues and unique mechanics.
+                        </p>
+                      </div>
+                      <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
+                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                          Full localisation management, adapting technical instructions and narrative elements while maintaining the game's specific atmospheric tone.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* BOX 3: VOICEMASTER */}
+          {(() => {
+            const p = featuredProjects.find(proj => proj.id === 'voicemaster');
+            return (
+              <div className="bg-cta-bg/40 border border-border-default rounded-[2rem] p-6 lg:p-8 hover:bg-cta-bg/60 transition-all group">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="w-full lg:w-[220px] aspect-square shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
+                    <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 flex flex-col">
+                    <div className="flex flex-row justify-between items-start mb-6 border-b border-border-default pb-6">
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold text-text-default uppercase tracking-tight">{p?.title || "VoiceMaster"}</h3>
+                        <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-60 mt-1">{p?.author}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Total Visits</span>
+                        <span className="text-xl md:text-2xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3">
+                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                          A social networking experience centered around proximity voice chat, featuring modular UI and custom social interaction tools.
+                        </p>
+                      </div>
+                      <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
+                        <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                        <p className="text-base text-text-secondary leading-relaxed font-light">
+                          Combined Luau-based front-end development with Chinese localisation to create a native-feeling experience for international users.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
         </div>
       </section>
 
@@ -240,7 +278,7 @@ const PastWorkPage: React.FC = () => {
                 My work focuses on building practical, reliable systems and adapting them for different audiences through
                 localisation. I have contributed to projects used by millions of players worldwide.
               </p>
-              
+
               <div className="pt-10 mt-10 border-t border-border-default">
                 <div className="grid grid-cols-1 xl:grid-cols-[200px_1fr] gap-12">
                   <div>
@@ -260,14 +298,14 @@ const PastWorkPage: React.FC = () => {
 
                   <div className="overflow-hidden">
                     <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Skills and Tools</h3>
-                    <div 
+                    <div
                       className="flex overflow-hidden"
                       style={{
                         WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                         maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                       }}
                     >
-                      <motion.div 
+                      <motion.div
                         className="flex gap-10 items-center whitespace-nowrap px-4"
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{ duration: 30, ease: "linear", repeat: Infinity }}
