@@ -90,7 +90,7 @@ const PastWorkPage: React.FC = () => {
               </div>
             </div>
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
-              Building practical software solutions and adapting platforms for global audiences through expert Chinese localisation.
+              "need a better summary here"
             </p>
           </div>
 
