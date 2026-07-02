@@ -1,535 +1,288 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FaDiscord, FaEnvelope, FaGithub } from 'react-icons/fa';
+import { ArrowRight, Globe, Code, Box, Mail } from 'lucide-react';
 import { PROJECTS } from '../constants';
-import { ProjectCard } from '../components/ProjectCard';
-import { Globe, Languages, Layout, Award, Users, RefreshCw, ExternalLink, Code2, Shirt, ArrowRight, Twitter, MessageSquare, Linkedin, Youtube } from 'lucide-react';
-import { AnimatedCounter } from '../components/AnimatedCounter';
 import { Project } from '../types';
 
-const RobloxPage: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'All';
+const PastWorkPage: React.FC = () => {
+  const featuredIds = ['pls-donate', 'voicemaster', 'lc-dcg-project'];
 
-  const setActiveTab = (tab: string) => {
-    setSearchParams({ tab });
-  };
-
-  const parseVisits = (visits?: string): number => {
-    if (!visits) return 0;
-    const cleanVisits = visits.replace(/,/g, '');
-    const match = cleanVisits.match(/([\d.]+)([BMk]?)/);
-    if (match) {
-      const val = parseFloat(match[1]);
-      const unit = match[2];
-      const mult = unit === 'B' ? 1000000000 : unit === 'M' ? 1000000 : unit === 'k' ? 1000 : 1;
-      return val * mult;
-    }
-    return 0;
-  };
-
-  const initialProjects = PROJECTS.filter(p => p.category === 'Roblox').map(p => ({
-    ...p,
-    numericVisits: parseVisits(p.visits)
-  }));
-
-  const [projects, setProjects] = useState<Project[]>(initialProjects);
-  
-  const sortedProjects = [...projects].sort((a, b) => (b.numericVisits || 0) - (a.numericVisits || 0));
-  const topThree = sortedProjects.slice(0, 3);
-  
-  const filteredProjects = sortedProjects.filter(p => {
-    if (activeTab === 'All') return true;
-    if (activeTab === 'Localisation') return p.tags.includes('Localisation');
-    if (activeTab === 'Development') return p.tags.includes('Development') || p.tags.includes('Scripting') || p.tags.includes('Luau') || p.tags.includes('UI/UX');
-    if (activeTab === 'Clothing') return p.tags.includes('Clothing');
-    return true;
-  });
-
-  const tabs = ['All', 'Localisation', 'Development', 'Clothing'];
-  
-  const [totalVisits, setTotalVisits] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [lastSynced, setLastSynced] = useState<string>(new Date().toLocaleTimeString());
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case 'Localisation':
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-24"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-                    Bridging the gap with <span className="text-brand-default">Chinese Localisation</span>
-                  </h2>
-                  <p className="text-xl text-text-secondary leading-relaxed">
-                    I specialise in Chinese and bring extensive experience in providing localisation services that ensure cultural resonance and player retention.
-                  </p>
-                </div>
-
-                <div className="p-6 bg-cta-bg rounded-3xl border border-border-default shadow-sm space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-brand-default/10 rounded-2xl text-brand-default">
-                      <Award size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold">Certified Proficiency</h4>
-                      <p className="text-sm text-text-secondary">CEFR Standardised Assessment</p>
-                    </div>
-                  </div>
-                  <p className="text-text-secondary leading-relaxed">
-                    I hold a certified reading score of <a 
-                      href="https://cert.efset.org/srrbM1" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-default font-bold underline decoration-brand-default underline-offset-4 hover:text-brand-default transition-colors"
-                      title="View EFSET Certification"
-                    >C1 Advanced</a> on the CEFR scale, ensuring high-accuracy translations.
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute -inset-4 bg-brand-default/5 rounded-[3rem] blur-2xl -z-10" />
-                <div className="bg-cta-bg rounded-[2.5rem] border border-border-default p-8 shadow-xl">
-                  <div className="flex flex-col sm:flex-row items-center gap-8">
-                    <div className="w-32 h-32 shrink-0 flex items-center justify-center group transition-colors">
-                      <img 
-                        src="/assets/ITSLogo.png" 
-                        alt="International Translation Services Logo" 
-                        className="w-full h-full object-contain group-hover:scale-110 transition-transform"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="flex-1 space-y-4 text-center sm:text-left">
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold">ITS Member</h3>
-                        <p className="text-text-secondary text-sm leading-relaxed">
-                          Proud member of George Gaitanis's <span className="text-text-default font-bold">International Translation Services</span>. Join us to access professional localisation across dozens of languages.
-                        </p>
-                      </div>
-    
-                      <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          <a href="https://x.com/TranslationRBLX" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-xl border border-border-default hover:border-brand-default hover:text-brand-default transition-all" title="ITS Twitter">
-                            <Twitter size={16} />
-                          </a>
-                          <a href="https://translationsrblx.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-xl border border-border-default hover:border-brand-default hover:text-brand-default transition-all" title="ITS Website">
-                            <Globe size={16} />
-                          </a>
-                          <a href="https://cg.linkedin.com/company/international-translation-services" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-xl border border-border-default hover:border-brand-default hover:text-brand-default transition-all" title="ITS LinkedIn">
-                            <Linkedin size={16} />
-                          </a>
-                          <a href="https://www.youtube.com/channel/UCgOQX_mSvYTCg9Q8unp6idA" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-xl border border-border-default hover:border-brand-default hover:text-brand-default transition-all" title="ITS YouTube">
-                            <Youtube size={16} />
-                          </a>
-                        </div>
-                        <a href="https://discord.gg/mXSCev9jUm" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-brand-default text-white rounded-xl text-xs font-bold hover:opacity-90 transition-opacity">
-                          <span>Join ITS</span>
-                          <ArrowRight size={14} />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold mb-8">Localisation Portfolio</h3>
-              <div className="flex flex-wrap justify-center gap-6">
-                {projects.filter(p => p.tags.includes('Localisation')).map((project) => (
-                  <div key={project.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] max-w-[320px]">
-                    <ProjectCard project={project} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        );
-      case 'Development':
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-16"
-          >
-            <p>Soon</p>
-          </motion.div>
-        );
-      case 'Clothing':
-        return (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-5xl mx-auto space-y-24 py-12"
-          >
-            {/* An Garda Síochána Section */}
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">An Garda Síochána</h2>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-[725fr_350fr] gap-8">
-                <div className="aspect-[725/348] overflow-hidden">
-                  <img src="/assets/GdaShirt.png" alt="Garda shirts and gilets" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/GdaDecJacket1.png" alt="A Detective Garda jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row gap-8 items-start">
-                <div className="aspect-[350/348] w-full md:w-[350px] shrink-0 overflow-hidden">
-                  <img src="/assets/ASUFleece.png" alt="ASU Fleece" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="flex-1 space-y-4">
-                  <div className="text-sm text-text-secondary space-y-4 leading-relaxed">
-                    <p>
-                      An Garda Síochána is the national police and security force for the Republic of Ireland. 
-                      Since Ireland is a small island, they are the only police force in the country. 
-                      The name comes from the Irish term 'The Guardians of Peace'. 
-                      Unlike many other security forces throughout the world, the Gardaí (plural for Garda, a single member of An Garda Síochána) are an unarmed police force, 
-                      with only specialised units having firearms, noteably the Armed Support Unit, depicted to the left.
-                    </p>
-                    <p>
-                      There many divisions in the Garda Síochána, such as the prementioned Armed Support Unit, the Regular Unit, the Roads Policing Unit, 
-                      the Technical Unit, Water Unit, Criminal Assets Buerea, and Detectives, all of which have been drawn out as closely as possible to real life uniforms.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full aspect-[1000/348] overflow-hidden">
-                <img src="/assets/GdaJacket.png" alt="Garda jackets with unit variants" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-              </div>
-
-              <div className="grid grid-cols-3 gap-8">
-                <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/GdaDecJacket2.png" alt="A Detective Garda Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/CABJacket.png" alt="CAB Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/ASUFleece.png" alt="ASU Fleece" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
-            </div>
-
-            {/* Gotham City Police Department Section */}
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Gotham City Police Department</h2>
-              </div>
-
-               <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-start">
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/GCPDShirt.png" alt="GCPD standard" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="space-y-4">
-                  <div className="text-sm text-text-secondary space-y-4 leading-relaxed">
-                    <p>
-                      The GCPD is a fictional police department from the Batman universe. There have been many versions of the uniform, 
-                      such as the green uniforms from Batman 2004, or the NYPD inspired ones from Nolan.
-                    </p>
-                    <p>
-                      My personal favourite is the uniform from the FOX show, 'Gotham', which is what I have drawn. 
-                      The uniform consists of a peaked cap, a light blue shirt with a dark-blue tie and black pants, with an optional black leather jacket. 
-                      Note that there are multiple variants of the jacket.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-center">
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/GCPDJacket.png" alt="GCPD Template 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="grid grid-cols-2 gap-4 items-center">
-                  <div className="flex flex-col gap-4">
-                    <div className="aspect-[1141/1012] overflow-hidden">
-                      <img src="/assets/GCPDBadge.png" alt="Badge 1" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
-                    </div>
-                    <div className="aspect-[976/1114] overflow-hidden">
-                      <img src="/assets/GCPDPatch.png" alt="Badge 2" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
-                    </div>
-                  </div>
-                  <div className="aspect-[515/705] overflow-hidden">
-                    <img src="/assets/GCPDRef.png" alt="GCPD Reference" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Scotland Section */}
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Scotland</h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8">
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/SAS.png" alt="Scotland Template 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/SASShort.png" alt="Scotland Template 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
-
-              <div className="max-w-[658px] mx-auto w-full aspect-[630/348] overflow-hidden">
-                <img src="/assets/SFRS.png" alt="Scotland Template 3" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-              </div>
-            </div>
-
-            {/* Arizona State Highway Patrol Section */}
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Arizona State Highway Patrol</h2>
-              </div>
-
-              <div className="space-y-8 max-w-[658px] mx-auto">
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/AZDPSA.png" alt="Arizona Template 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/AZDPSB.png" alt="Arizona Template 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[725/348] overflow-hidden">
-                  <img src="/assets/AZDPSC.png" alt="AZDPS C" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        );
-      default:
-        return (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-2">Project Library</h2>
-              <p className="text-text-secondary text-sm">Browse through my complete portfolio of Roblox work.</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-6">
-              {sortedProjects.map((project) => (
-                <div key={project.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] max-w-[320px]">
-                  <ProjectCard project={project} />
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        );
-    }
-  };
-
-  const fetchLiveStats = async () => {
-    const robloxProjects = projects.filter(p => p.placeId);
-    setIsLoading(true);
-    
-    try {
-      const placeIds = robloxProjects.map(p => p.placeId).join(',');
-      const apiUrl = import.meta.env.VITE_API_URL || '';
-      const response = await fetch(`${apiUrl}/api/roblox/games?placeIds=${placeIds}&_t=${Date.now()}`);
-      
-      let liveData = [];
-      if (response.ok) {
-        liveData = await response.json();
-      }
-      
-      let newTotal = 0;
-      const updatedProjects = projects.map(p => {
-        const live = Array.isArray(liveData) ? liveData.find(ld => ld.placeId === p.placeId) : null;
-        let numericVisits = p.numericVisits || 0;
-        let visitsStr = p.visits || '0';
-        let imageUrl = p.imageUrl;
-        let author = p.author;
-        let isLive = false;
-
-        if (live) {
-          numericVisits = live.visits;
-          visitsStr = live.visits.toLocaleString();
-          imageUrl = live.iconUrl || p.imageUrl;
-          author = live.creator || p.author;
-          isLive = true;
-        } else if (p.visits) {
-          numericVisits = parseVisits(p.visits);
-          visitsStr = p.visits;
-        }
-
-        newTotal += numericVisits;
-        return {
-          ...p,
-          visits: visitsStr,
-          numericVisits,
-          imageUrl,
-          title: live?.name || p.title,
-          author,
-          isLive
-        };
-      });
-
-      setProjects(updatedProjects);
-      setTotalVisits(newTotal);
-      setLastSynced(new Date().toLocaleTimeString());
-    } catch (error) {
-      console.error("Failed to fetch live stats:", error);
-      let staticTotal = 0;
-      projects.forEach(p => {
-        staticTotal += parseVisits(p.visits);
-      });
-      setTotalVisits(staticTotal);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [featuredProjects, setFeaturedProjects] = useState<Project[]>(
+    PROJECTS.filter(p => featuredIds.includes(p.id))
+  );
 
   useEffect(() => {
-    fetchLiveStats();
+    const fetchLiveData = async () => {
+      const robloxFeatured = featuredProjects.filter(p => p.placeId);
+      if (robloxFeatured.length === 0) return;
+
+      try {
+        const placeIds = robloxFeatured.map(p => p.placeId).join(',');
+        const apiUrl = import.meta.env.VITE_API_URL || '';
+        const response = await fetch(`${apiUrl}/api/roblox/games?placeIds=${placeIds}&_t=${Date.now()}`);
+        if (!response.ok) return;
+
+        const liveData = await response.json();
+        if (!Array.isArray(liveData) || liveData.length === 0) return;
+
+        setFeaturedProjects(prev => prev.map(p => {
+          const live = liveData.find((ld: any) => String(ld.placeId) === String(p.placeId));
+          if (!live) return p;
+          return {
+            ...p,
+            visits: live.visits.toLocaleString(),
+            numericVisits: live.visits,
+            imageUrl: live.iconUrl || p.imageUrl,
+            author: live.creator || p.author,
+            isLive: true,
+          };
+        }));
+      } catch (error) {
+        console.error('Failed to fetch live data for featured projects:', error);
+      }
+    };
+
+    fetchLiveData();
   }, []);
 
+  const stats = [
+    { value: '7B+', label: 'Users reached' },
+    { value: '10+', label: 'Shipped projects' },
+    { value: 'C1', label: 'Advanced English' },
+  ];
+
+  const SKILLS = [
+    { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Luau", icon: "/icons/luau.svg" },
+    { name: "Roblox Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/roblox/roblox-original.svg" },
+    { name: "SolidWorks", icon: "/icons/solidworks.svg" },
+    { name: "Blender", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" },
+    { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+  ];
+
   return (
-    <div className="pt-24 pb-16 min-h-screen">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-24 pb-16">
+      {/* Hero Section */}
+      <section className="max-w-[94%] mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start"
         >
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-brand-default/10 text-brand-default rounded-2xl">
-                <Layout size={32} />
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight">Roblox</h1>
-            </div>
-            <button 
-              onClick={fetchLiveStats}
-              disabled={isLoading}
-              className="p-2 text-text-secondary hover:text-brand-default transition-colors disabled:opacity-50"
-              title="Refresh live stats"
-            >
-              <RefreshCw size={20} className={isLoading ? "animate-spin" : ""} />
-            </button>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-            <div className="space-y-6">
-              <p className="text-text-secondary text-lg leading-relaxed">
-                I've contributed to some of the biggest games on the platform, providing Chinese localisation, Luau scripting, custom avatar clothing, and more.
-              </p>
-              <div className="flex items-start gap-4 p-6 bg-cta-bg rounded-3xl border border-border-default">
-                <Users className="text-brand-default shrink-0" size={24} />
-                <div>
-                  <h3 className="font-bold mb-1">Proven Track Record</h3>
-                  <p className="text-text-secondary text-sm">Work spanning games with over a billion combined visits, serving players across dozens of regions.</p>
-                </div>
-              </div>
-              <p className="text-text-secondary leading-relaxed">
-                I take pride in quality over quantity, every project gets the same attention to detail regardless of scope.
-              </p>
-            </div>
-
-            <div className="bg-brand-default p-8 md:p-12 rounded-[2.5rem] text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Users size={120} />
-              </div>
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
-                  <h3 className="text-white/80 uppercase tracking-widest text-xs font-bold">Contributed to over</h3>
-                </div>
-                <div className="text-4xl md:text-5xl font-bold mb-2 tracking-tighter">
-                  {isLoading && totalVisits === 0 ? (
-                    <span className="opacity-50">Loading...</span>
-                  ) : (
-                    <AnimatedCounter value={totalVisits} />
-                  )}
-                </div>
-                <p className="text-white/90 font-medium text-sm">game visits</p>
-                <p className="text-white/60 text-[10px] mt-4 uppercase tracking-widest">
-                  {isLoading ? "Syncing with Roblox..." : `Last synced: ${lastSynced}`}
+          <div className="space-y-8">
+            <div className="flex items-center gap-6">
+              <img 
+                src="/avatar.jpg" 
+                alt="Billy Chan" 
+                className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-xl"
+              />
+              <div className="flex flex-col">
+                <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1 mb-3">
+                  Billy Chan
+                </h1>
+                <p className="text-lg md:text-2xl text-text-secondary font-bold tracking-tight leading-none">
+                  Developer · UI Designer · Translator
                 </p>
               </div>
             </div>
+            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
+              Building practical software solutions and adapting platforms for global audiences through expert Chinese localisation.
+            </p>
           </div>
-        </motion.div>
 
-        {/* Top 3 Games Section */}
-        <div className="mb-24 p-8 md:p-12 bg-cta-bg/40 rounded-[3rem] border border-border-default/60">
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-2">Top Contributions</h2>
-            <p className="text-text-secondary text-sm">High-impact experiences with the largest player counts.</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            {topThree.map((project) => (
-              <div key={project.id} className="w-full md:w-[calc(33.333%-22px)] max-w-[320px]">
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
-        </div>
+          <div className="flex flex-col gap-5 pt-2">
+            <div className="flex flex-row gap-4 w-full">
+              <Link
+                to="/roblox"
+                className="flex-1 bg-brand-default hover:bg-brand-hover text-white px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 group whitespace-nowrap shadow-lg shadow-brand-default/10"
+              >
+                View Roblox Work
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href="mailto:business.billychan@gmail.com"
+                className="flex-1 bg-text-default hover:opacity-90 border border-border-default text-bg-primary px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                <Mail size={18} />
+                Get in Touch
+              </a>
+            </div>
 
-        {/* Subsection Redirects */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          <button onClick={() => setActiveTab('Localisation')} className="text-left p-8 bg-cta-bg rounded-3xl border border-border-default hover:border-brand-default/30 transition-all hover:-translate-y-1 group">
-            <Languages className="text-brand-default mb-4 group-hover:scale-110 transition-transform" size={24} />
-            <h3 className="font-bold mb-2">Localisation</h3>
-            <p className="text-text-secondary text-sm mb-4">Expert Chinese-English translation with a focus on retention and cultural fit.</p>
-            <span className="text-brand-default text-xs font-bold flex items-center gap-1">
-              View Localisation Services <ArrowRight size={12} />
-            </span>
-          </button>
-          <button onClick={() => setActiveTab('Development')} className="text-left p-8 bg-cta-bg rounded-3xl border border-border-default hover:border-brand-default/30 transition-all hover:-translate-y-1 group">
-            <Code2 className="text-brand-default mb-4 group-hover:scale-110 transition-transform" size={24} />
-            <h3 className="font-bold mb-2">Development</h3>
-            <p className="text-text-secondary text-sm mb-4">Specialising in Luau-based GUI systems and front-end game mechanics.</p>
-            <span className="text-brand-default text-xs font-bold flex items-center gap-1">
-              View Development Services <ArrowRight size={12} />
-            </span>
-          </button>
-          <button onClick={() => setActiveTab('Clothing')} className="text-left p-8 bg-cta-bg rounded-3xl border border-border-default hover:border-brand-default/30 transition-all hover:-translate-y-1 group">
-            <Shirt className="text-brand-default mb-4 group-hover:scale-110 transition-transform" size={24} />
-            <h3 className="font-bold mb-2">Avatar Assets</h3>
-            <p className="text-text-secondary text-sm mb-4">Custom clothing design and 2D asset creation for the Roblox marketplace.</p>
-            <span className="text-brand-default text-xs font-bold flex items-center gap-1">
-              View Clothing Collection <ArrowRight size={12} />
-            </span>
-          </button>
-        </div>
-
-        <div className="space-y-20">
-          {/* Tabs Navigation */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-border-default pb-8">
-            <div className="flex p-1 bg-cta-bg rounded-2xl border border-border-default overflow-x-auto no-scrollbar">
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-8 py-3 rounded-xl text-sm font-semibold transition-all relative whitespace-nowrap ${
-                    activeTab === tab ? 'text-white' : 'text-text-secondary hover:text-text-default'
-                  }`}
-                >
-                  {activeTab === tab && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute inset-0 bg-brand-default rounded-xl -z-10"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  {tab}
-                </button>
+            <div className="flex flex-row gap-3 w-full">
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
+                  <span className="text-2xl md:text-3xl font-black tracking-tighter text-brand-default leading-none mb-1">
+                    {stat.value}
+                  </span>
+                  <span className="text-text-secondary text-[9px] md:text-[10px] font-bold uppercase tracking-widest leading-none">
+                    {stat.label}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
+        </motion.div>
+      </section>
 
-          {/* Dynamic Tab Content */}
-          <div className="min-h-[400px]">
-            {renderTabContent()}
+      {/* REPLICATED WORK SECTION */}
+      <section className="max-w-[96%] mx-auto px-4 mb-24">
+        <div className="mb-10 border-b border-border-default pb-6">
+          <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
+        </div>
+
+        {/* Row Header - Desktop Only */}
+        <div className="hidden lg:grid grid-cols-[140px_1fr_1.5fr_1fr_120px] gap-8 px-6 mb-4 text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary/60">
+          <div>Visual</div>
+          <div>Title · Owner</div>
+          <div className="pl-8 border-l border-border-default/50">Project Overview</div>
+          <div className="pl-8 border-l border-border-default/50">My Contribution</div>
+          <div className="text-right">Visits</div>
+        </div>
+
+        <div className="space-y-4">
+          {featuredProjects.map((project) => (
+            <div 
+              key={project.id}
+              className="bg-cta-bg border border-border-default rounded-[2rem] p-4 lg:p-6 hover:border-brand-default/40 transition-all group"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-[140px_1fr_1.5fr_1fr_120px] gap-6 lg:gap-8 items-center">
+                
+                {/* Visual */}
+                <div className="aspect-square w-full lg:w-[140px] rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Title & Owner */}
+                <div className="space-y-1">
+                  <h3 className="text-xl font-bold text-text-default group-hover:text-brand-default transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-text-secondary font-medium">
+                    {project.author || "Unknown Creator"}
+                  </p>
+                </div>
+
+                {/* Overview - Desktop Vertical Line Left */}
+                <div className="lg:pl-8 lg:border-l border-border-default/50 h-full flex flex-col justify-center">
+                  <p className="text-sm text-text-secondary leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Contribution/Role - Desktop Vertical Line Left */}
+                <div className="lg:pl-8 lg:border-l border-border-default/50 h-full flex flex-col justify-center">
+                   <div className="flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map(tag => (
+                      <span key={tag} className="text-[10px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded-md text-text-secondary uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Visits - Desktop Right Aligned */}
+                <div className="text-left lg:text-right">
+                   <div className="text-xs font-black text-text-secondary/40 uppercase tracking-widest mb-1 lg:hidden">Total Visits</div>
+                   <span className="text-lg font-black tracking-tighter text-text-default">
+                    {project.visits}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="max-w-[94%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-bold tracking-tight mb-8">About Me</h2>
+            <div className="space-y-6 text-text-secondary text-xl leading-relaxed font-light">
+              <p>
+                I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland. Online, I am also known as
+                <span className="text-text-default font-medium"> Channers</span> or
+                <span className="text-text-default font-medium"> VexorianDev</span>.
+              </p>
+              <p>
+                My work focuses on building practical, reliable systems and adapting them for different audiences through
+                localisation. I have contributed to projects used by millions of players worldwide.
+              </p>
+              
+              <div className="pt-10 mt-10 border-t border-border-default">
+                <div className="grid grid-cols-1 xl:grid-cols-[200px_1fr] gap-12">
+                  <div>
+                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Connect</h3>
+                    <div className="flex gap-3">
+                      <a href="mailto:business.billychan@gmail.com" className="p-3.5 rounded-xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
+                        <FaEnvelope size={20} />
+                      </a>
+                      <a href="https://github.com/Channers8432" target="_blank" rel="noreferrer" className="p-3.5 rounded-xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
+                        <FaGithub size={20} />
+                      </a>
+                      <a href="https://discord.com/users/884839188313296919" target="_blank" rel="noreferrer" className="p-3.5 rounded-xl bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default transition-all shadow-sm">
+                        <FaDiscord size={20} />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden">
+                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Skills and Tools</h3>
+                    <div 
+                      className="flex overflow-hidden"
+                      style={{
+                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                        maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                      }}
+                    >
+                      <motion.div 
+                        className="flex gap-10 items-center whitespace-nowrap px-4"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+                      >
+                        {[...SKILLS, ...SKILLS].map((skill, i) => (
+                          <div key={i} className="flex items-center gap-3 shrink-0">
+                            <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
+                            <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">
+                              {skill.name}
+                            </span>
+                          </div>
+                        ))}
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-5">
+            {[
+              { icon: <Globe size={24} />, title: "Localisation", body: "Fluent in English and Mandarin Chinese, I localise interfaces and content with deep attention to cultural tone." },
+              { icon: <Code size={24} />, title: "Development", body: "Specialising in Luau and TypeScript. I build robust gameplay systems and modern interfaces for Roblox and web." },
+              { icon: <Box size={24} />, title: "Engineering", body: "Mechanical design using SolidWorks and Blender, bridging the gap between engineering and visual assets." }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-cta-bg p-8 rounded-[2rem] border border-border-default group hover:border-brand-default/30 transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-brand-default">{item.icon}</div>
+                  <h3 className="text-xl font-bold group-hover:text-brand-default transition-colors">{item.title}</h3>
+                </div>
+                <p className="text-text-secondary text-lg leading-relaxed font-light">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -537,4 +290,4 @@ const RobloxPage: React.FC = () => {
   );
 };
 
-export default RobloxPage;
+export default PastWorkPage;
