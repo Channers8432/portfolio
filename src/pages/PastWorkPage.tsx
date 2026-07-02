@@ -131,71 +131,81 @@ const PastWorkPage: React.FC = () => {
       {/* REPLICATED WORK SECTION */}
       <section className="max-w-[96%] mx-auto px-4 mb-24">
         <div className="mb-10 border-b border-border-default pb-6">
-          <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
+    <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
         </div>
 
-        {/* Row Header - Desktop Only */}
-        <div className="hidden lg:grid grid-cols-[140px_1fr_1.5fr_1fr_120px] gap-8 px-6 mb-4 text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary/60">
-          <div>Visual</div>
-          <div>Title · Owner</div>
-          <div className="pl-8 border-l border-border-default/50">Project Overview</div>
-          <div className="pl-8 border-l border-border-default/50">My Contribution</div>
-          <div className="text-right">Visits</div>
-        </div>
-
-        <div className="space-y-4">
+        <div className="space-y-6">
           {featuredProjects.map((project) => (
             <div 
               key={project.id}
-              className="bg-cta-bg border border-border-default rounded-[2rem] p-4 lg:p-6 hover:border-brand-default/40 transition-all group"
+              className="bg-cta-bg/40 border border-border-default rounded-[2.5rem] p-6 lg:p-10 hover:bg-cta-bg/60 hover:border-brand-default/30 transition-all group"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-[140px_1fr_1.5fr_1fr_120px] gap-6 lg:gap-8 items-center">
-                
-                {/* Visual */}
-                <div className="aspect-square w-full lg:w-[140px] rounded-2xl overflow-hidden bg-neutral-900 border border-border-default">
+              <div className="flex flex-col lg:flex-row gap-10">
+          
+                {/* Left: Large Visual Square */}
+                <div className="w-full lg:w-[240px] aspect-square shrink-0 rounded-3xl overflow-hidden bg-neutral-900 border border-border-default shadow-inner">
                   <img 
                     src={project.imageUrl} 
                     alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
 
-                {/* Title & Owner */}
-                <div className="space-y-1">
-                  <h3 className="text-xl font-bold text-text-default group-hover:text-brand-default transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-text-secondary font-medium">
-                    {project.author || "Unknown Creator"}
-                  </p>
-                </div>
-
-                {/* Overview - Desktop Vertical Line Left */}
-                <div className="lg:pl-8 lg:border-l border-border-default/50 h-full flex flex-col justify-center">
-                  <p className="text-sm text-text-secondary leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Contribution/Role - Desktop Vertical Line Left */}
-                <div className="lg:pl-8 lg:border-l border-border-default/50 h-full flex flex-col justify-center">
-                   <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[10px] font-bold px-2 py-1 bg-white/5 border border-white/10 rounded-md text-text-secondary uppercase tracking-wider">
-                        {tag}
+                {/* Right: Data Section */}
+                <div className="flex-1 flex flex-col">
+            
+                  {/* Top Row: Title/Owner and Visits */}
+                  <div className="flex flex-row justify-between items-start mb-8 border-b border-border-default pb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-text-default uppercase tracking-tight mb-1">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-text-secondary font-black uppercase tracking-[0.2em] opacity-60">
+                        {project.author || "Unknown Creator"}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs font-black text-text-secondary uppercase tracking-[0.2em] block mb-1 opacity-40">Visits</span>
+                      <span className="text-2xl font-black tracking-tighter text-text-default tabular-nums">
+                        {project.visits}
                       </span>
-                    ))}
+                    </div>
+                  </div>
+      
+                  {/* Bottom Row: Text Columns */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 flex-1">
+                    
+                    {/* Column 1: The Project (Overview) */}
+                    <div className="space-y-3">
+                      <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                      <p className="text-base text-text-secondary leading-relaxed font-light">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Column 2: My Role (Text based) */}
+                    <div className="space-y-3 md:pl-10 md:border-l border-border-default/50">
+                      <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                      <p className="text-base text-text-secondary leading-relaxed font-light">
+                        {/* Note: If you add a 'roleDescription' field to your constants, use it here */}
+                        Specialised in providing high-accuracy localisation and UI implementation to ensure a seamless experience for global players.
+                      </p>
+                    </div>
+
+                    {/* Column 3: Tech/Tags (Optional) */}
+                    <div className="space-y-3 lg:pl-10 lg:border-l border-border-default/50 hidden lg:block">
+                      <span className="text-[10px] font-black text-brand-default uppercase tracking-[0.2em]">Specifications</span>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] font-bold text-text-secondary uppercase">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+      
                   </div>
                 </div>
-
-                {/* Visits - Desktop Right Aligned */}
-                <div className="text-left lg:text-right">
-                   <div className="text-xs font-black text-text-secondary/40 uppercase tracking-widest mb-1 lg:hidden">Total Visits</div>
-                   <span className="text-lg font-black tracking-tighter text-text-default">
-                    {project.visits}
-                  </span>
-                </div>
-
               </div>
             </div>
           ))}
