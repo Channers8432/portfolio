@@ -128,12 +128,13 @@ const PastWorkPage: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* REPLICATED WORK SECTION */}
+
+
       <section id="past-work" className="max-w-[96%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
         <div className="mb-10 pb-6 space-y-5">
           <h2 className="text-4xl font-bold tracking-tight mb-8">Past Work</h2>
 
-          <div className="space-y-6 lg:max-w-[1100px] xl:max-w-[1250px] mx-auto">
+          <div className="space-y-6 max-w-[90%] mx-auto">
 
             {/* BOX 1: PLS DONATE */}
             {(() => {
@@ -305,6 +306,9 @@ const PastWorkPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+
+
 
       {/* About Section */}
       <section id="about" className="max-w-[94%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
