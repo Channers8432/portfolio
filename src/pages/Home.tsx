@@ -188,7 +188,7 @@ const Home: React.FC = () => {
                   </div>
 
                   <div className="overflow-hidden">
-                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Tools</h3>
+                    <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Skills and Tools</h3>
   
                     {/* The Mask approach: no extra divs needed, just one style on the container */}
                     <div 
