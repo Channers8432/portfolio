@@ -134,7 +134,7 @@ const PastWorkPage: React.FC = () => {
           <h2 className="text-4xl font-bold tracking-tight mb-8">Past Work</h2>
         </div>
 
-        <div>
+        <div className="space-y-5">
 
           {/* BOX 1: PLS DONATE */}
           {(() => {
