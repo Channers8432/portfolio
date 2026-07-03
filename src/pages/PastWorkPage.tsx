@@ -88,16 +88,16 @@ const PastWorkPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-stretch"
         >
-          {/* Left Column */}
-          <div className="space-y-8 flex flex-col justify-center">
-            <div className="flex items-center gap-6">
+          {/* Left Column - Changed to justify-between to anchor text to bottom */}
+          <div className="flex flex-col justify-between py-2">
+            <div className="flex items-center gap-6 mb-8 lg:mb-0">
               <img
                 src="/avatar.jpg"
                 alt="Billy Chan"
                 className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-xl"
               />
               <div className="flex flex-col">
-                <h1 className="text-5lg md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1 mb-3">
+                <h1 className="text-5xl md:text-[5.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.8] -ml-1 mb-3">
                   Billy Chan
                 </h1>
                 <p className="text-lg md:text-2xl text-text-secondary font-bold tracking-tight leading-none">
@@ -106,8 +106,8 @@ const PastWorkPage: React.FC = () => {
               </div>
             </div>
 
-            {/* 2. Animated Sentence Cycler */}
-            <div className="h-[4.5rem] md:h-20 flex flex-col justify-start overflow-hidden">
+            {/* Animated Sentence Cycler - Anchored to bottom of this column */}
+            <div className="h-16 md:h-20 flex flex-col justify-end overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={currentSentence}
@@ -125,7 +125,7 @@ const PastWorkPage: React.FC = () => {
 
           {/* Right Column: Anchored Stats */}
           <div className="flex flex-col justify-between h-full py-2 gap-8">
-            {/* Top: Buttons */}
+            {/* Top: Buttons aligned with Name/Avatar */}
             <div className="flex flex-row gap-4 w-full">
               <Link
                 to="/roblox"
@@ -143,7 +143,7 @@ const PastWorkPage: React.FC = () => {
               </a>
             </div>
 
-            {/* Stats */}
+            {/* Stats aligned with bottom Animated Text */}
             <div className="flex flex-row gap-3 w-full">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
