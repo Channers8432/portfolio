@@ -94,7 +94,9 @@ const PastWorkPage: React.FC = () => {
               </div>
             </div>
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
-              "need a better summary here"
+              Bridging gaps between the world through localisation.
+              Creating engaging experiences for millions of users.
+              Engineering practical solutions that turn complex ideas into reality.
             </p>
           </div>
 
@@ -118,7 +120,7 @@ const PastWorkPage: React.FC = () => {
               </a>
             </div>
 
-            {/* Bottom: Stats anchored to the baseline of the left-side text */}
+            {/* Stats*/}
             <div className="flex flex-row gap-3 w-full">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
@@ -233,6 +235,61 @@ const PastWorkPage: React.FC = () => {
                         <div className="text-right">
                           <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
                           <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        <div className="space-y-2">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            give humans kebabs and discriminate against "anomolies"
+                          </p>
+                        </div>
+                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            i made the buttons look nice
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* WEATHERWISODM */}
+            {(() => {
+              // const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
+              return (
+                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                    <div className="flex flex-row items-center lg:contents gap-5">
+                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                        <img src="./public/assets/weatherwisodm.png" alt="weatherwisdom" className="w-full h-full object-cover aspect-square" />
+                      </div>
+
+                      <div className="flex-1 flex flex-col lg:hidden">
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">"WeatherWisdom"</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">"ExamReady"</p>
+
+                        <div className="pt-2 border-t border-border-default/40">
+                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Hackathon</span>
+                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">NASA SpaceApps 2025</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">WeatherWisdom</h3>
+                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">ExamReady</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Hackathon</span>
+                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">NASA SpaceApps 2025</span>
                         </div>
                       </div>
 
