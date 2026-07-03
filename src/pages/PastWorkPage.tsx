@@ -64,11 +64,23 @@ const PastWorkPage: React.FC = () => {
     { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
   ];
 
+  const sentences = [
+    "Bridging gaps between the world through localisation.",
+    "Creating engaging experiences for millions of users.",
+    "Engineering practical solutions that turn complex ideas into reality."
+  ];
+  const [currentSentence, setCurrentSentence] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSentence((prev) => (prev + 1) % sentences.length);
+    }, 4000); // Cycles every 4 seconds
+    return () => clearInterval(timer);
+  }, []);
+
+
   return (
     <div className="pt-24 pb-16">
-
-
-
       {/* Hero Section */}
       <section className="max-w-[94%] mx-auto px-4 mb-20">
         <motion.div
@@ -93,11 +105,22 @@ const PastWorkPage: React.FC = () => {
                 </p>
               </div>
             </div>
-            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
-              Bridging gaps between the world through localisation.
-              Creating engaging experiences for millions of users.
-              Engineering practical solutions that turn complex ideas into reality.
-            </p>
+
+            {/* 2. Animated Sentence Cycler */}
+            <div className="h-[4.5rem] md:h-20 flex flex-col justify-start overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentSentence}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light"
+                >
+                  {sentences[currentSentence]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Right Column: Anchored Stats */}
@@ -120,7 +143,7 @@ const PastWorkPage: React.FC = () => {
               </a>
             </div>
 
-            {/* Stats*/}
+            {/* Stats */}
             <div className="flex flex-row gap-3 w-full">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
