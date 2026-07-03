@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { FaDiscord, FaEnvelope, FaGithub } from 'react-icons/fa';
 import { ArrowRight, Globe, Code, Box, Mail } from 'lucide-react';
