@@ -291,7 +291,7 @@ const PastWorkPage: React.FC = () => {
 
                     <div className="flex flex-row items-center lg:contents gap-5">
                       <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
-                        <img src="../public/assets/weatherwisdom.png" alt="weatherwisdom" className="w-full h-full object-cover aspect-square" />
+                        <img src="/assets/weatherwisdom.png" alt="weatherwisdom" className="w-full h-full object-cover aspect-square" />
                       </div>
 
                       <div className="flex-1 flex flex-col lg:hidden">
