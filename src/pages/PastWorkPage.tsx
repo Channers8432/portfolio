@@ -175,13 +175,11 @@ const PastWorkPage: React.FC = () => {
                 <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
                   <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
 
-                    {/* Mobile Header Wrapper: Groups Image and Stats on mobile, dissolves on desktop */}
                     <div className="flex flex-row items-center lg:contents gap-5">
                       <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
                         <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
                       </div>
 
-                      {/* Mobile-only Title/Visits Section */}
                       <div className="flex-1 flex flex-col lg:hidden">
                         <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "PLS DONATE"}</h3>
                         <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author || "Quataun"}</p>
@@ -194,7 +192,6 @@ const PastWorkPage: React.FC = () => {
                     </div>
 
                     <div className="flex-1 flex flex-col">
-                      {/* Desktop-only Header Section */}
                       <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
                         <div>
                           <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "PLS DONATE"}</h3>
@@ -226,61 +223,7 @@ const PastWorkPage: React.FC = () => {
               );
             })()}
 
-            {/* SCARY SHAWARMA KIOSK 
-            {(() => {
-              const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
-              return (
-                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
-                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
 
-                    <div className="flex flex-row items-center lg:contents gap-5">
-                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
-                        <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
-                      </div>
-
-                      <div className="flex-1 flex flex-col lg:hidden">
-                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
-                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author}</p>
-
-                        <div className="pt-2 border-t border-border-default/40">
-                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Visits</span>
-                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex-1 flex flex-col">
-                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
-                        <div>
-                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
-                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
-                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        <div className="space-y-2">
-                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
-                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            give humans kebabs and discriminate against "anomolies"
-                          </p>
-                        </div>
-                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
-                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
-                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            i made the buttons look nice
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-            */}
 
             {/* WEATHERWISODM */}
             {(() => {
@@ -321,7 +264,64 @@ const PastWorkPage: React.FC = () => {
                         <div className="space-y-2">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            give humans kebabs and discriminate against "anomolies"
+                            A website that predicts the weather based on past weather events for specific locations and gives recommendations based on conditions, made in 2 days for the 2025 NASA SpaceApps Hackathon.
+                          </p>
+                        </div>
+                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            Made forntend functionality and some of the UI design
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+
+
+            {/* SCARY SHAWARMA KIOSK */}
+            {(() => {
+              const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
+              return (
+                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                    <div className="flex flex-row items-center lg:contents gap-5">
+                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                        <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                      </div>
+
+                      <div className="flex-1 flex flex-col lg:hidden">
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author}</p>
+
+                        <div className="pt-2 border-t border-border-default/40">
+                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Visits</span>
+                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        <div className="space-y-2">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            A popular Roblox experience where you give humans kebabs and discriminate against "anomolies"
                           </p>
                         </div>
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
@@ -376,13 +376,13 @@ const PastWorkPage: React.FC = () => {
                         <div className="space-y-2">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            Discord vc bot so it doesnt look messy
+                            A Discord bot for creating temporary, join-to-create voice channels that automatically delete when empty to keep your server clean.
                           </p>
                         </div>
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            made the manual chinese for the rare discord user who reads
+                            Translated the VoiceMaster documentation into Mandarin Chinese (Simplified) 
                           </p>
                         </div>
                       </div>
