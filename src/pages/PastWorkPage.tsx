@@ -226,7 +226,7 @@ const PastWorkPage: React.FC = () => {
               );
             })()}
 
-            {/* SCARY SHAWARMA KIOSK */}
+            {/* SCARY SHAWARMA KIOSK 
             {(() => {
               const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
               return (
@@ -280,6 +280,7 @@ const PastWorkPage: React.FC = () => {
                 </div>
               );
             })()}
+            */}
 
             {/* WEATHERWISODM */}
             {(() => {
