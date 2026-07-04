@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { FaDiscord, FaEnvelope, FaGithub } from 'react-icons/fa';
 import { ArrowRight, Globe, Code, Box, Mail } from 'lucide-react';
 import { PROJECTS } from '../constants';
-import { ProjectCard } from '../components/ProjectCard';
 import { Project } from '../types';
 
 const Home: React.FC = () => {
-  const featuredIds = ['pls-donate', 'voicemaster', 'lc-dcg-project'];
+  const featuredIds = ['pls-donate', 'voicemaster', 'scary-shawarma'];
 
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>(
     PROJECTS.filter(p => featuredIds.includes(p.id))
@@ -50,8 +49,8 @@ const Home: React.FC = () => {
 
   const stats = [
     { value: '7B+', label: 'Users reached' },
-    { value: '10+', label: 'Shipped projects' },
-    { value: 'C1', label: 'Advanced English' },
+    { value: '10+', label: 'Contributions' },
+    { value: '0', label: 'Friends' },
   ];
 
   const SKILLS = [
@@ -65,6 +64,21 @@ const Home: React.FC = () => {
     { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
   ];
 
+  const sentences = [
+    "Bridging gaps between the world through localisation.",
+    "Creating engaging experiences for millions of users.",
+    "Engineering practical solutions that turn complex ideas into reality."
+  ];
+  const [currentSentence, setCurrentSentence] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSentence((prev) => (prev + 1) % sentences.length);
+    }, 4000); // Cycles every 4 seconds
+    return () => clearInterval(timer);
+  }, []);
+
+
   return (
     <div className="pt-24 pb-16">
       {/* Hero Section */}
@@ -72,14 +86,14 @@ const Home: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-stretch"
         >
-          {/* LEFT COLUMN: Name, Titles, Desc */}
-          <div className="space-y-8">
-            <div className="flex items-center gap-6">
-              <img 
-                src="/avatar.jpg" 
-                alt="Billy Chan" 
+          {/* Left Column - Changed to justify-between to anchor text to bottom */}
+          <div className="flex flex-col justify-between py-2">
+            <div className="flex items-center gap-6 mb-8 lg:mb-0">
+              <img
+                src="/avatar.jpg"
+                alt="Billy Chan"
                 className="w-24 h-24 md:w-32 md:h-32 object-cover bg-neutral-800 flex-shrink-0 rounded-2xl shadow-xl"
               />
               <div className="flex flex-col">
@@ -91,14 +105,27 @@ const Home: React.FC = () => {
                 </p>
               </div>
             </div>
-            
-            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light">
-              Building practical software solutions and adapt platforms for global audiences through expert Chinese localisation.
-            </p>
+
+            {/* Animated Sentence Cycler - Anchored to bottom of this column */}
+            <div className="h-16 md:h-20 flex flex-col justify-end overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentSentence}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="text-xl md:text-2xl text-text-secondary max-w-3xl leading-relaxed font-light"
+                >
+                  {sentences[currentSentence]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
           </div>
 
-          {/* RIGHT COLUMN: Buttons and Stats Row */}
-          <div className="flex flex-col gap-5 pt-2">
+          {/* Right Column: Anchored Stats */}
+          <div className="flex flex-col justify-between h-full py-2 gap-8">
+            {/* Top: Buttons aligned with Name/Avatar */}
             <div className="flex flex-row gap-4 w-full">
               <Link
                 to="/roblox"
@@ -109,13 +136,14 @@ const Home: React.FC = () => {
               </Link>
               <a
                 href="mailto:business.billychan@gmail.com"
-                className="flex-1 bg-text-default hover:bg-button-bg-transparent-hover border border-border-default text-bg-primary px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+                className="flex-1 bg-text-default hover:opacity-90 border border-border-default text-bg-primary px-4 py-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <Mail size={18} />
                 Get in Touch
               </a>
             </div>
 
+            {/* Stats aligned with bottom Animated Text */}
             <div className="flex flex-row gap-3 w-full">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex-1 bg-cta-bg border border-border-default p-4 rounded-xl flex flex-col items-center text-center">
@@ -132,27 +160,245 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Featured Work */}
-      <section className="max-w-[96%] mx-auto px-4 mb-24">
-        <div className="flex items-end justify-between mb-10 border-b border-border-default pb-6">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight mb-1">Some of My Work</h2>
-            {/* <p className="text-text-secondary text-lg font-light">Contributions to high-impact platforms.</p> */}
+
+      {/* Past Work */}
+      <section id="past-work" className="max-w-[96%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
+        <div className="mb-10 pb-6 space-y-5">
+          <h2 className="text-4xl font-bold tracking-tight mb-8">Past Work</h2>
+
+          <div className="space-y-6 max-w-[90%] mx-auto">
+
+            {/* PLS DONATE */}
+            {(() => {
+              const p = featuredProjects.find(proj => proj.id === 'pls-donate');
+              return (
+                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                    <div className="flex flex-row items-center lg:contents gap-5">
+                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                        <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                      </div>
+
+                      <div className="flex-1 flex flex-col lg:hidden">
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "PLS DONATE"}</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author || "Quataun"}</p>
+
+                        <div className="pt-2 border-t border-border-default/40">
+                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Visits</span>
+                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "PLS DONATE"}</h3>
+                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author || "Quataun"}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        <div className="space-y-2">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            give money to people and hope others give you money
+                          </p>
+                        </div>
+                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            turned into chinese propaganda
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+
+
+            {/* WEATHERWISODM */}
+            {(() => {
+              // const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
+              return (
+                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                    <div className="flex flex-row items-center lg:contents gap-5">
+                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                        <img src="/assets/weatherwisdom.png" alt="weatherwisdom" className="w-full h-full object-cover aspect-square" />
+                      </div>
+
+                      <div className="flex-1 flex flex-col lg:hidden">
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">"WeatherWisdom"</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">"ExamReady"</p>
+
+                        <div className="pt-2 border-t border-border-default/40">
+                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Hackathon</span>
+                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">NASA SpaceApps 2025</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">WeatherWisdom</h3>
+                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">ExamReady</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Hackathon</span>
+                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">NASA SpaceApps 2025</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        <div className="space-y-2">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            A website that predicts the weather based on past weather events for specific locations and gives recommendations based on conditions, made in 2 days for the 2025 NASA SpaceApps Hackathon.
+                          </p>
+                        </div>
+                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            Made forntend functionality and some of the UI design ← needs to be redone
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+
+
+            {/* SCARY SHAWARMA KIOSK */}
+            {(() => {
+              const p = featuredProjects.find(proj => proj.id === 'scary-shawarma');
+              return (
+                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                    <div className="flex flex-row items-center lg:contents gap-5">
+                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                        <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                      </div>
+
+                      <div className="flex-1 flex flex-col lg:hidden">
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author}</p>
+
+                        <div className="pt-2 border-t border-border-default/40">
+                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Visits</span>
+                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "Scary Shawarma Kiosk"}</h3>
+                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Visits</span>
+                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        <div className="space-y-2">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            A popular Roblox experience where you give humans kebabs and discriminate against "anomolies"
+                          </p>
+                        </div>
+                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            i made the buttons look nice
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* VOICEMASTER */}
+            {(() => {
+              const p = featuredProjects.find(proj => proj.id === 'voicemaster');
+              return (
+                <div className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
+                    <div className="flex flex-row items-center lg:contents gap-5">
+                      <div className="w-24 h-24 lg:w-44 lg:h-44 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default self-start shadow-lg">
+                        <img src={p?.imageUrl} alt={p?.title} className="w-full h-full object-cover aspect-square" />
+                      </div>
+
+                      <div className="flex-1 flex flex-col lg:hidden">
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">{p?.title || "VoiceMaster"}</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">{p?.author}</p>
+
+                        <div className="pt-2 border-t border-border-default/40">
+                          <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Total Servers</span>
+                          <span className="text-lg font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <div className="hidden lg:flex flex-row justify-between items-start mb-5 border-b border-border-default/60 pb-5">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">{p?.title || "VoiceMaster"}</h3>
+                          <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">{p?.author}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[9px] font-black text-text-secondary uppercase tracking-[0.2em] block mb-0.5 opacity-40">Total Servers</span>
+                          <span className="text-lg md:text-xl font-black tracking-tighter text-brand-default tabular-nums">{p?.visits || "0"}</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        <div className="space-y-2">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            A Discord bot for creating temporary, join-to-create voice channels that automatically delete when empty to keep your server clean.
+                          </p>
+                        </div>
+                        <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
+                          <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
+                          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                            Translated the VoiceMaster documentation into Mandarin Chinese (Simplified) 
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
-          {/*}
-          <Link to="/roblox" className="text-brand-default hover:text-brand-hover font-bold flex items-center gap-2">
-            Browse all <ArrowRight size={18} />
-          </Link>
-          */}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
         </div>
       </section>
 
-      {/* About Section */}
+
+
+
+      {/* About */}
       <section id="about" className="max-w-[94%] mx-auto px-4 mb-12 pt-20 border-t border-border-default">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
@@ -171,7 +417,10 @@ const Home: React.FC = () => {
                 My work focuses on building practical, reliable systems and adapting them for different audiences through
                 localisation. I have contributed to projects used by millions of players worldwide.
               </p>
-              
+              <p>
+                Lorem ipsum or some shit, idk
+              </p>
+
               <div className="pt-10 mt-10 border-t border-border-default">
                 <div className="grid grid-cols-1 xl:grid-cols-[200px_1fr] gap-12">
                   <div>
@@ -191,31 +440,21 @@ const Home: React.FC = () => {
 
                   <div className="overflow-hidden">
                     <h3 className="text-text-default font-bold text-xs uppercase tracking-widest mb-5">Skills and Tools</h3>
-  
-                    {/* The Mask approach: no extra divs needed, just one style on the container */}
-                    <div 
+                    <div
                       className="flex overflow-hidden"
                       style={{
                         WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                         maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                       }}
                     >
-                      <motion.div 
+                      <motion.div
                         className="flex gap-10 items-center whitespace-nowrap px-4"
                         animate={{ x: ["0%", "-50%"] }}
-                        transition={{ 
-                          duration: 30, 
-                          ease: "linear", 
-                          repeat: Infinity 
-                        }}
+                        transition={{ duration: 30, ease: "linear", repeat: Infinity }}
                       >
                         {[...SKILLS, ...SKILLS].map((skill, i) => (
                           <div key={i} className="flex items-center gap-3 shrink-0">
-                            <img 
-                              src={skill.icon} 
-                              alt={skill.name} 
-                              className="w-6 h-6 object-contain" 
-                            />
+                            <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
                             <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">
                               {skill.name}
                             </span>
@@ -229,7 +468,6 @@ const Home: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Expertise Boxes with Icons next to Titles */}
           <div className="grid grid-cols-1 gap-5">
             {[
               { icon: <Globe size={24} />, title: "Localisation", body: "Fluent in English and Mandarin Chinese, I localise interfaces and content with deep attention to cultural tone." },
