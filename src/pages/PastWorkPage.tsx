@@ -270,7 +270,7 @@ const PastWorkPage: React.FC = () => {
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            Made forntend functionality and some of the UI design
+                            Made forntend functionality and some of the UI design ← needs to be redone
                           </p>
                         </div>
                       </div>
