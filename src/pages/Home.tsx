@@ -207,13 +207,15 @@ const Home: React.FC = () => {
                         <div className="space-y-2">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            give money to people and hope others give you money
+                            A popular Roblox game where players can give and receive Robux. 
+                            It is a place where People set up custom virtual stands to ask for donations, 
+                            while others can walk up to these stands to buy items and donate.
                           </p>
                         </div>
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            turned into chinese propaganda
+                            Translated the entire game from English to Simplified Chinese in preperation for the 2024 Roblox The Hunt: First Edition event.
                           </p>
                         </div>
                       </div>
@@ -270,7 +272,7 @@ const Home: React.FC = () => {
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            Made forntend functionality and some of the UI design ← needs to be redone
+                            Worked on the frontend of the site, as well as some of the design. A 5-man team project
                           </p>
                         </div>
                       </div>
