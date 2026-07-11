@@ -238,8 +238,8 @@ const Home: React.FC = () => {
                       </div>
 
                       <div className="flex-1 flex flex-col lg:hidden">
-                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">"WeatherWisdom"</h3>
-                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">"ExamReady"</p>
+                        <h3 className="text-base font-bold text-text-default uppercase tracking-tight leading-tight">WeatherWisdom</h3>
+                        <p className="text-[8px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mb-3">ExamReady</p>
 
                         <div className="pt-2 border-t border-border-default/40">
                           <span className="text-[8px] font-black text-text-secondary uppercase tracking-[0.2em] block opacity-40">Hackathon</span>
