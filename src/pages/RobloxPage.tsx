@@ -216,7 +216,7 @@ const RobloxPage: React.FC = () => {
                   <img src="/assets/CABJacket.png" alt="CAB Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/ASUJackket.png" alt="ASU Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="/assets/ASUJacket.png" alt="ASU Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
               </div>
             </div>
