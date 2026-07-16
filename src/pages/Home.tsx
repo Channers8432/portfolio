@@ -323,13 +323,16 @@ const Home: React.FC = () => {
                         <div className="space-y-2">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">The Project</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            A popular Roblox experience where you give humans kebabs and discriminate against "anomolies"
+                            Another popular horror and survival game on Roblox. 
+                            You play the night shift at a late-night food stand. 
+                            Your goal is to serve customers while avoiding anomalies, such as monsters or weird people. 
+                            If you serve the wrong person or break the rules, you lose.
                           </p>
                         </div>
                         <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
                           <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">My Role</span>
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                            i made the buttons look nice
+                            Worked on rehauling all the UI elements of the game, and stayed on to create new interfaces for future updates.
                           </p>
                         </div>
                       </div>
