@@ -169,7 +169,7 @@ const RobloxPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-5xl mx-auto space-y-24 py-12"
           >
-            {/* An Garda Síochána Section */}
+            {/* AGS */}
             <div className="space-y-12">
               <div className="text-center">
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">An Garda Síochána</h2>
@@ -221,7 +221,7 @@ const RobloxPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Gotham City Police Department Section */}
+            {/* GCPD */}
             <div className="space-y-12">
               <div className="text-center">
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Gotham City Police Department</h2>
@@ -266,7 +266,18 @@ const RobloxPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Scotland Section */}
+            {/* Other */}
+            <div className="space-y-12">
+              <div className="text-center">
+                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
+              </div>
+
+
+              
+            </div>
+
+{/*}
+            {/* Scotland Section 
             <div className="space-y-12">
               <div className="text-center">
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Scotland</h2>
@@ -275,7 +286,23 @@ const RobloxPage: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8">
                 <div className="aspect-[630/348] overflow-hidden">
                   <img src="/assets/Clothing/ClothingCollage/SAS.png" alt="Scotland Template 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
+                </div>##
+
+                I fucking hate this 
+
+
+
+                SO the uniforms won't delete properly
+                i blame the great firewall
+        // this shitty internet
+        if internet != good
+          die
+
+
+          gayniggers from outer space is my favourite film
+          i genuinely need to watch it
+
+
                 <div className="aspect-[350/348] overflow-hidden">
                   <img src="/assets/Clothing/ClothingCollage/SASShort.png" alt="Scotland Template 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
@@ -286,25 +313,36 @@ const RobloxPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Arizona State Highway Patrol Section */}
+
+            Grok AI
+            <div>h2 class="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Grok AI</div>
+            Grok is a bit ass iwl
+            oifaawjwad
+
+            {/* AZDPS 
+            3008
             <div className="space-y-12">
               <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Arizona State Highway Patrol</h2>
+                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Arizona Department of Public Safety Highway Patrol</h2>
               </div>
 
               <div className="space-y-8 max-w-[658px] mx-auto">
                 <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/AZDPSA.png" alt="Arizona Template 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="/assets/Clothing/ClothingCollage/AZDPSA.png" alt="AZDPS Class A" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="Arizona Template 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="AZDPS Class B" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div className="aspect-[725/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/AZDPSC.png" alt="AZDPS C" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="/assets/Clothing/ClothingCollage/AZDPSC.png" alt="AZDPS Class C" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
               </div>
             </div>
+            */}
           </motion.div>
+
+          
+
         );
       default:
         return (
@@ -336,6 +374,13 @@ const RobloxPage: React.FC = () => {
       const placeIds = robloxProjects.map(p => p.placeId).join(',');
       const apiUrl = import.meta.env.VITE_API_URL || '';
       const response = await fetch(`${apiUrl}/api/roblox/games?placeIds=${placeIds}&_t=${Date.now()}`);
+
+      {/* nofahjsfnkjdfnoiwjpojfei feunj j  jj oihfiohf if number != 6760 then do
+        for i in range 52 do
+          kill yourself
+          
+          
+      */}
       
       let liveData = [];
       if (response.ok) {
@@ -459,7 +504,7 @@ const RobloxPage: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Top 3 Games Section */}
+        {/* Top Games */}
         <div className="mb-24 p-8 md:p-12 bg-cta-bg/40 rounded-[3rem] border border-border-default/60">
           <div className="mb-10">
             <h2 className="text-2xl font-bold mb-2">Top Contributions</h2>
@@ -487,7 +532,7 @@ const RobloxPage: React.FC = () => {
           <button onClick={() => setActiveTab('Development')} className="text-left p-8 bg-cta-bg rounded-3xl border border-border-default hover:border-brand-default/30 transition-all hover:-translate-y-1 group">
             <Code2 className="text-brand-default mb-4 group-hover:scale-110 transition-transform" size={24} />
             <h3 className="font-bold mb-2">Development</h3>
-            <p className="text-text-secondary text-sm mb-4">Specialising in Luau-based GUI systems and front-end game mechanics.</p>
+            <p className="text-text-secondary text-sm mb-4">Specialising in GUI systems and front-end game mechanics.</p>
             <span className="text-brand-default text-xs font-bold flex items-center gap-1">
               View Development Services <ArrowRight size={12} />
             </span>
@@ -503,7 +548,6 @@ const RobloxPage: React.FC = () => {
         </div>
 
         <div className="space-y-20">
-          {/* Tabs Navigation */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-border-default pb-8">
             <div className="flex p-1 bg-cta-bg rounded-2xl border border-border-default overflow-x-auto no-scrollbar">
               {tabs.map((tab) => (
@@ -527,7 +571,6 @@ const RobloxPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Dynamic Tab Content */}
           <div className="min-h-[400px]">
             {renderTabContent()}
           </div>
