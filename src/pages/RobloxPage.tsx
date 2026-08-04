@@ -555,7 +555,7 @@ const RobloxPage: React.FC = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-8 py-3 rounded-xl text-sm font-semibold transition-all relative whitespace-nowrap ${
-                    activeTab === tab ? 'text-white' : 'text-text-secondary hover:text-text-default'
+                    activeTab === tab ? 'text-text-default' : 'text-text-secondary hover:text-text-default'
                   }`}
                 >
                   {activeTab === tab && (
