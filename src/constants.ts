@@ -37,17 +37,6 @@ export const PROJECTS: Project[] = [
     placeId: '16446180574'
   },
   {
-    id: 'creepy-stories',
-    title: 'Short Creepy Horror Stories',
-    author: '@kharbor_ykt',
-    description: 'Localisation for a collection of immersive horror experiences.',
-    category: 'Roblox',
-    tags: ['Localisation'],
-    imageUrl: 'https://tr.rbxcdn.com/180DAY-f780e08711932f2b53a4f62135d24b6c/256/256/Image/Webp/noFilter',
-    link: 'https://www.roblox.com/games/105265986112006/Short-Creepy-Horror-Stories-New-STORY',
-    placeId: '105265986112006'
-  },
-  {
     id: 'musical-chairs',
     title: 'Musical Chairs 🎵🪑',
     author: 'Infinity Forge Interactive',
