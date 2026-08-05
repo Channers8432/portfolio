@@ -6,6 +6,53 @@ import { ProjectCard } from '../components/ProjectCard';
 import { Globe, Languages, Layout, Award, Users, RefreshCw, ExternalLink, Code2, Shirt, ArrowRight, Twitter, MessageSquare, Linkedin, Youtube } from 'lucide-react';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { Project } from '../types';
+import { useMemo } from "react";
+
+interface CollageImage {
+  src: string;
+  alt: string;
+  aspect: number; // width / height
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function RandomCollage({
+  images,
+  height = 348, // matches the original 348px denominator
+}: {
+  images: CollageImage[];
+  height?: number;
+}) {
+  // useMemo with [] means it re-shuffles once per mount (i.e. every time
+  // the page/section renders), but stays stable during that render pass.
+  const ordered = useMemo(() => shuffle(images), []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <div className="flex flex-wrap justify-center gap-4">
+      {ordered.map((img) => (
+        <div
+          key={img.src}
+          style={{ height, aspectRatio: img.aspect }}
+          className="overflow-hidden"
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const RobloxPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -272,77 +319,27 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
               </div>
 
+              {/* Scotland Section */}
+              <div className="space-y-12">
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">
+                    Scotland
+                  </h2>
+                </div>
 
-              
+                <RandomCollage
+                  images={[
+                    { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "Scotland Template 1", aspect: 630 / 348 },
+                    { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "Scotland Template 2", aspect: 350 / 348 },
+                    { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "Scotland Template 3", aspect: 630 / 348 },
+                    { src: "/assets/Clothing/ClothingCollage/AZDPSA.png", alt: "AZDPS Class A", aspect: 630 / 348 },
+                    { src: "/assets/Clothing/ClothingCollage/AZDPSB.png", alt: "AZDPS Class B", aspect: 630 / 348 },
+                    { src: "/assets/Clothing/ClothingCollage/AZDPSC.png", alt: "AZDPS Class C", aspect: 725 / 348 },
+                  ]}
+                />
+              </div>              
             </div>
-
-{/*}
-            {/* Scotland Section 
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Scotland</h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8">
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/SAS.png" alt="Scotland Template 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>##
-
-                I fucking hate this 
-
-
-
-                SO the uniforms won't delete properly
-                i blame the great firewall
-        // this shitty internet
-        if internet != good
-          die
-
-
-          gayniggers from outer space is my favourite film
-          i genuinely need to watch it
-
-
-                <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/SASShort.png" alt="Scotland Template 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
-
-              <div className="max-w-[658px] mx-auto w-full aspect-[630/348] overflow-hidden">
-                <img src="/assets/Clothing/ClothingCollage/SFRS.png" alt="Scotland Template 3" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-              </div>
-            </div>
-
-
-            Grok AI
-            <div>h2 class="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Grok AI</div>
-            Grok is a bit ass iwl
-            oifaawjwad
-
-            {/* AZDPS 
-            3008
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Arizona Department of Public Safety Highway Patrol</h2>
-              </div>
-
-              <div className="space-y-8 max-w-[658px] mx-auto">
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/AZDPSA.png" alt="AZDPS Class A" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[630/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="AZDPS Class B" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[725/348] overflow-hidden">
-                  <img src="/assets/Clothing/ClothingCollage/AZDPSC.png" alt="AZDPS Class C" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
-            </div>
-            */}
           </motion.div>
-
-          
-
         );
       default:
         return (
