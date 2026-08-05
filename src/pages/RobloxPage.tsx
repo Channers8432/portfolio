@@ -319,27 +319,18 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
               </div>
 
-              {/* Scotland Section */}
-              <div className="space-y-12">
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">
-                    Scotland
-                  </h2>
-                </div>
-
-                <RandomCollage
-                  images={[
-                    { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "Scotland Template 1", aspect: 630 / 348 },
-                    { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "Scotland Template 2", aspect: 350 / 348 },
-                    { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "Scotland Template 3", aspect: 630 / 348 },
-                    { src: "/assets/Clothing/ClothingCollage/AZDPSA.png", alt: "AZDPS Class A", aspect: 630 / 348 },
-                    { src: "/assets/Clothing/ClothingCollage/AZDPSB.png", alt: "AZDPS Class B", aspect: 630 / 348 },
-                    { src: "/assets/Clothing/ClothingCollage/AZDPSC.png", alt: "AZDPS Class C", aspect: 725 / 348 },
-                  ]}
-                />
-              </div>              
-            </div>
-          </motion.div>
+              <RandomCollage
+                images={[
+                  { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "Scotland Template 1", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "Scotland Template 2", aspect: 350 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "Scotland Template 3", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/AZDPSA.png", alt: "AZDPS Class A", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/AZDPSB.png", alt: "AZDPS Class B", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/AZDPSC.png", alt: "AZDPS Class C", aspect: 725 / 348 },
+                ]}
+              />
+            </div>              
+        </motion.div>
         );
       default:
         return (
