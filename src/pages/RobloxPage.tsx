@@ -333,8 +333,8 @@ const RobloxPage: React.FC = () => {
                   { src: "/assets/Clothing/ClothingCollage/KFBShirt.png", alt: "KFB Shirt", aspect: 350 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/KFBPolo.png", alt: "KFB Polo", aspect: 350 / 348 },
 
-                  { src: "/assets/Clothing/ClothingCollage/NASPolo.png", alt: "NAS Polo", aspect: 350 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/NASShirt.png", alt: "NAS Shirt", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/NASPolo.png", alt: "NAS Polo", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/NASShirt.png", alt: "NAS Shirt", aspect: 350 / 348 },
                 ]}
               />
             </div>              
