@@ -321,12 +321,20 @@ const RobloxPage: React.FC = () => {
 
               <RandomCollage
                 images={[
-                  { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "Scotland Template 1", aspect: 630 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "Scotland Template 2", aspect: 350 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "Scotland Template 3", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "SAS Shirt", aspect: 630 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "SAS Shirt Short", aspect: 350 / 348 },
+
+                  { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "SFRS Polo", aspect: 630 / 348 },
+
                   { src: "/assets/Clothing/ClothingCollage/AZDPSA.png", alt: "AZDPS Class A", aspect: 630 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/AZDPSB.png", alt: "AZDPS Class B", aspect: 630 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/AZDPSC.png", alt: "AZDPS Class C", aspect: 725 / 348 },
+
+                  { src: "/assets/Clothing/ClothingCollage/KFBShirt.png", alt: "KFB Shirt", aspect: 350 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/KFBPolo.png", alt: "KFB Polo", aspect: 350 / 348 },
+
+                  { src: "/assets/Clothing/ClothingCollage/NASPolo.png", alt: "NAS Polo", aspect: 350 / 348 },
+                  { src: "/assets/Clothing/ClothingCollage/NASShirt.png", alt: "NAS Shirt", aspect: 630 / 348 },
                 ]}
               />
             </div>              
