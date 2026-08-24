@@ -343,6 +343,7 @@ const RobloxPage: React.FC = () => {
         );
       default:
         return (
+          { /*
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -359,6 +360,7 @@ const RobloxPage: React.FC = () => {
               ))}
             </div>
           </motion.div>
+          */ }
         );
     }
   };
