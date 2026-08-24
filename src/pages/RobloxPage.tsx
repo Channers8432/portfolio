@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { ProjectCard } from '../components/ProjectCard';
-import { Globe, Languages, Layout, Award, Users, RefreshCw, ExternalLink, Code2, Shirt, ArrowRight, Twitter, MessageSquare, Linkedin, Youtube } from 'lucide-react';
+import { Globe, Languages, Layout, Award, Users, RefreshCw, ExternalLink, Code2, Shirt, ArrowRight, X, Twitter, MessageSquare, Linkedin, Youtube } from 'lucide-react';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { Project } from '../types';
 import { useMemo } from "react";
@@ -11,16 +11,106 @@ import { useMemo } from "react";
 interface CollageImage {
   src: string;
   alt: string;
-  aspect: number; // width / height
+  aspect: number;
 }
 
-function shuffle<T>(arr: T[]): T[] {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
+interface MediaItem {
+  id: string;
+  src: string;
+  type: 'image' | 'gif' | 'video';
+  aspect: number; // width / height, for thumbnail sizing
+  title: string;
+  description: string;
+  tags?: string[]; // optional, e.g. category labels
+}
+
+function MediaLightboxGrid({ items, thumbHeight = 220 }: { items: MediaItem[]; thumbHeight?: number }) {
+  const [selected, setSelected] = useState<MediaItem | null>(null);
+
+  // lock scroll + close on escape while open
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [selected]);
+
+  return (
+    <>
+      <div className="flex flex-wrap justify-center gap-4">
+        {items.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => setSelected(item)}
+            style={{ height: thumbHeight, aspectRatio: item.aspect }}
+            className="overflow-hidden rounded-xl border border-border-default group relative"
+          >
+            {item.type === 'video' ? (
+              <video src={item.src} className="w-full h-full object-cover" muted loop playsInline autoPlay />
+            ) : (
+              <img src={item.src} alt={item.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            )}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+          </button>
+        ))}
+      </div>
+
+      {selected && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelected(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/50 backdrop-blur-md"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden grid grid-cols-1 md:grid-cols-[1.3fr_1fr]"
+          >
+            <div className="bg-black/20 flex items-center justify-center max-h-[50vh] md:max-h-[85vh]">
+              {selected.type === 'video' ? (
+                <video src={selected.src} className="w-full h-full object-contain" controls autoPlay loop />
+              ) : (
+                <img src={selected.src} alt={selected.title} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              )}
+            </div>
+
+            <div className="p-8 space-y-4 overflow-y-auto">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-xl font-bold">{selected.title}</h3>
+                <button
+                  onClick={() => setSelected(null)}
+                  className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {selected.tags && selected.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {selected.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-brand-default/10 text-brand-default rounded-full text-xs font-bold">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <p className="text-text-secondary text-sm leading-relaxed">{selected.description}</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </>
+  );
 }
 
 const RobloxPage: React.FC = () => {
