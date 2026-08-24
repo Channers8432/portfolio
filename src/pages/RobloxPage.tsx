@@ -23,37 +23,6 @@ function shuffle<T>(arr: T[]): T[] {
   return copy;
 }
 
-function RandomCollage({
-  images,
-  height = 348, // matches the original 348px denominator
-}: {
-  images: CollageImage[];
-  height?: number;
-}) {
-  // useMemo with [] means it re-shuffles once per mount (i.e. every time
-  // the page/section renders), but stays stable during that render pass.
-  const ordered = useMemo(() => shuffle(images), []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  return (
-    <div className="flex flex-wrap justify-center gap-4">
-      {ordered.map((img) => (
-        <div
-          key={img.src}
-          style={{ height, aspectRatio: img.aspect }}
-          className="overflow-hidden"
-        >
-          <img
-            src={img.src}
-            alt={img.alt}
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
 const RobloxPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get('tab') || 'All';
@@ -320,24 +289,24 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
               </div>
 
-              <RandomCollage
-                images={[
+              <div className="flex flex-wrap justify-center gap-4">
+                {[
                   { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "SAS Shirt", aspect: 630 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "SAS Shirt Short", aspect: 350 / 348 },
-
                   { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "SFRS Polo", aspect: 630 / 348 },
-
                   { src: "/assets/Clothing/ClothingCollage/AZDPSA.png", alt: "AZDPS Class A", aspect: 630 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/AZDPSB.png", alt: "AZDPS Class B", aspect: 630 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/AZDPSC.png", alt: "AZDPS Class C", aspect: 725 / 348 },
-
                   { src: "/assets/Clothing/ClothingCollage/KFBShirt.png", alt: "KFB Shirt", aspect: 350 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/KFBPolo.png", alt: "KFB Polo", aspect: 350 / 348 },
-
                   { src: "/assets/Clothing/ClothingCollage/NASPolo.png", alt: "NAS Polo", aspect: 630 / 348 },
                   { src: "/assets/Clothing/ClothingCollage/NASShirt.png", alt: "NAS Shirt", aspect: 350 / 348 },
-                ]}
-              />
+                ].map((img) => (
+                  <div key={img.src} style={{ height: 348, aspectRatio: img.aspect }} className="overflow-hidden">
+                    <img src={img.src} alt={img.alt} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
         );
@@ -361,13 +330,6 @@ const RobloxPage: React.FC = () => {
       const placeIds = robloxProjects.map(p => p.placeId).join(',');
       const apiUrl = import.meta.env.VITE_API_URL || '';
       const response = await fetch(`${apiUrl}/api/roblox/games?placeIds=${placeIds}&_t=${Date.now()}`);
-
-      {/* nofahjsfnkjdfnoiwjpojfei feunj j  jj oihfiohf if number != 6760 then do
-        for i in range 52 do
-          kill yourself
-          
-          
-      */}
 
       let liveData = [];
       if (response.ok) {
