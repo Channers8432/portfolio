@@ -343,24 +343,12 @@ const RobloxPage: React.FC = () => {
         );
       default:
         return (
-          { /*
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-2">Project Library</h2>
-              <p className="text-text-secondary text-sm">Browse through my complete portfolio of Roblox work.</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-6">
-              {sortedProjects.map((project) => (
-                <div key={project.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] max-w-[320px]">
-                  <ProjectCard project={project} />
-                </div>
-              ))}
-            </div>
+
           </motion.div>
-          */ }
         );
     }
   };
