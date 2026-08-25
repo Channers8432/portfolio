@@ -1,6 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { X } from 'lucide-react';
+
+const imgRef = useRef<HTMLImageElement>(null);
+
+const handleClick = (e: React.MouseEvent) => {
+    const img = imgRef.current;
+    if (!img || !img.naturalWidth || !img.naturalHeight) {
+        setOpen(false);
+        return;
+    }
+
+    const rect = img.getBoundingClientrReact();
+    const containerRatio = rect.width / rect.height;
+    const imgRatio = img.naturalWidth / img.naturalHeight;
+
+    let renderedWidth: number, renderedHeight: number;
+    if (imageRatio > containerRatio) {
+        renderedWidth = rect.width;
+        renderedHeight = rect.width / imageRatio;
+    } else {
+        renderedWidth = rect.height * imageRatio;
+        renderedHeight = rect.height;
+    }
+
+    const offsetX = (rect.width - renderedWidth) / 2;
+    const offsetY = (rect.height - renderedHeight) / 2;
+
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    const insideImage =
+        clickX >= offsetX && clickX <= offsetX + renderedWidth &&
+        clickY >= offsetY && clickY <= offsetY + renderedHeight;
+
+    if (!insideImage) {
+        setOpen(false);
+    }
+};
 
 export interface PopoutMediaProps {
     src: string;
@@ -56,11 +93,11 @@ export function PopoutMedia({ src, type = 'image', alt, title, description, tags
                         className="flex flex-col md:flex-row items-center gap-6 w-full h-full max-w-[98vw] max-h-[95vh]"
                     >
 
-                        <div className="flex-1 min-w-0 min-h-0 w-full h-full flex items-center justify-center">
+                        <div className="flex-1 min-w-0 min-h-0 w-full h-full flex items-center justify-center" onClick={handleImageAreaClick}>
                             {type === 'video' ? (
-                                <video src={src} onClick={(e) => e.stopPropagation()} className="w-full h-full object-contain" controls autoPlay loop />
+                                <video src={src} className="w-full h-full object-contain" controls autoPlay loop />
                             ) : (
-                                <img src={src} alt={alt} onClick={(e) => e.stopPropagation()} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                                <img ref={imgRef} src={src} alt={alt} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                             )}
                         </div>
 
