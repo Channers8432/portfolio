@@ -164,10 +164,10 @@ function PopoutMedia({ src, type = 'image', alt, title, description, tags, class
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
             onClick={(e) => e.stopPropagation()}
-            className="flex flex-col md:flex-row items-center gap-6 max-w-5xl w-full max-h-[85vh]"
+            className="flex flex-col md:flex-row items-center gap-6 max-w-[95vw] w-full max-h-[90vh]"
           >
             {/* Image, full and uncropped, no box/rounding */}
-            <div className="flex-1 min-w-0 max-h-[50vh] md:max-h-[85vh] flex items-center justify-center">
+            <div className="flex-1 min-w-0 max-h-[60vh] md:max-h-[90vh] flex items-center justify-center">
               {type === 'video' ? (
                 <video src={src} className="max-w-full max-h-full object-contain" controls autoPlay loop />
               ) : (
@@ -467,84 +467,33 @@ const RobloxPage: React.FC = () => {
             </div>
 
             {/* Other */}
-            <div className="space-y-8">
+            <div className="space-y-8 -mx-12 md:-mx-20">
               <div className="text-center">
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[160px] md:auto-rows-[180px]">
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/SAS.png"
-                  alt="SAS Shirt"
-                  title="Scottish Ambulance Service Shirt"
-                  description="A long-sleeve duty shirt based on the Scottish Ambulance Service uniform, featuring the service's green colour scheme, epaulettes, and embroidered crest for front-line paramedic duty."
-                  className="col-span-2 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/SASShort.png"
-                  alt="SAS Shirt Short"
-                  title="Scottish Ambulance Service Shirt (Short Sleeve)"
-                  description="A warm-weather variant of the Scottish Ambulance Service shirt, trading long sleeves for a short-sleeve cut while keeping the same green uniform styling and insignia."
-                  className="col-span-1 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/SFRS.png"
-                  alt="SFRS Polo"
-                  title="Fire & Rescue Service Polo"
-                  description="A duty polo shirt styled after UK fire and rescue service uniforms, featuring embroidered service branding and reflective detailing suited for day-to-day station wear."
-                  className="col-span-1 row-span-1"
-                />
+              <div className="flex flex-col gap-4 px-4">
+                <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-4">
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/SAS.png" alt="SAS Shirt" title="Scottish Ambulance Service Shirt" description="A long-sleeve duty shirt based on the Scottish Ambulance Service uniform, featuring the service's green colour scheme, epaulettes, and embroidered crest for front-line paramedic duty." className="aspect-[630/348]" />
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/SASShort.png" alt="SAS Shirt Short" title="Scottish Ambulance Service Shirt (Short Sleeve)" description="A warm-weather variant of the Scottish Ambulance Service shirt, trading long sleeves for a short-sleeve cut while keeping the same green uniform styling and insignia." className="aspect-[350/348]" />
+                </div>
 
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/AZDPSA.png"
-                  alt="AZDPS Class A"
-                  title="State Police Class A Uniform"
-                  description="A formal dress uniform modelled on US state police 'Class A' attire — pressed shirt, tie, and badge — worn for ceremonies, courtroom appearances, and official duties."
-                  className="col-span-1 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/AZDPSB.png"
-                  alt="AZDPS Class B"
-                  title="State Police Class B Uniform"
-                  description="A step down from Class A, this everyday patrol uniform swaps the tie for an open-collar shirt while keeping the badge and shoulder patches intact."
-                  className="col-span-1 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/AZDPSC.png"
-                  alt="AZDPS Class C"
-                  title="State Police Class C Uniform"
-                  description="The most casual tier of the trooper uniform set, built for training and utility duty — short sleeves, softer fabric cues, and reduced formal detailing."
-                  className="col-span-2 row-span-1"
-                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/SFRS.png" alt="SFRS Polo" title="Fire & Rescue Service Polo" description="A duty polo shirt styled after UK fire and rescue service uniforms, featuring embroidered service branding and reflective detailing suited for day-to-day station wear." className="aspect-[350/348]" />
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSA.png" alt="AZDPS Class A" title="State Police Class A Uniform" description="A formal dress uniform modelled on US state police 'Class A' attire — pressed shirt, tie, and badge — worn for ceremonies, courtroom appearances, and official duties." className="aspect-[350/348]" />
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="AZDPS Class B" title="State Police Class B Uniform" description="A step down from Class A, this everyday patrol uniform swaps the tie for an open-collar shirt while keeping the badge and shoulder patches intact." className="aspect-[350/348]" />
+                </div>
 
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/KFBPolo.png"
-                  alt="KFB Polo"
-                  title="Kildare Fire Brigade Polo"
-                  description="A casual duty polo for Kildare Fire Brigade staff, worn during non-emergency shifts and community outreach, featuring embroidered crest and rank markings."
-                  className="col-span-1 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/KFBShirt.png"
-                  alt="KFB Shirt"
-                  title="Kildare Fire Brigade Duty Shirt"
-                  description="A structured button-up worn under turnout gear or on station duty, styled with the Kildare Fire Brigade crest and standard rank insignia placement."
-                  className="col-span-1 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/NASPolo.png"
-                  alt="NAS Polo"
-                  title="National Ambulance Service Polo"
-                  description="A green duty polo based on Ireland's National Ambulance Service uniform, worn by paramedics for non-clinical shifts and training days."
-                  className="col-span-1 row-span-1"
-                />
-                <PopoutMedia
-                  src="/assets/Clothing/ClothingCollage/NASShirt.png"
-                  alt="NAS Shirt"
-                  title="National Ambulance Service Shirt"
-                  description="The formal green shirt component of the ambulance service uniform, worn with epaulettes and service branding for front-line duty."
-                  className="col-span-1 row-span-1"
-                />
+                <div className="grid grid-cols-1 md:grid-cols-[725fr_350fr] gap-4">
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSC.png" alt="AZDPS Class C" title="State Police Class C Uniform" description="The most casual tier of the trooper uniform set, built for training and utility duty — short sleeves, softer fabric cues, and reduced formal detailing." className="aspect-[725/348]" />
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/KFBPolo.png" alt="KFB Polo" title="Kildare Fire Brigade Polo" description="A casual duty polo for Kildare Fire Brigade staff, worn during non-emergency shifts and community outreach, featuring embroidered crest and rank markings." className="aspect-[350/348]" />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/KFBShirt.png" alt="KFB Shirt" title="Kildare Fire Brigade Duty Shirt" description="A structured button-up worn under turnout gear or on station duty, styled with the Kildare Fire Brigade crest and standard rank insignia placement." className="aspect-[350/348]" />
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/NASPolo.png" alt="NAS Polo" title="National Ambulance Service Polo" description="A green duty polo based on Ireland's National Ambulance Service uniform, worn by paramedics for non-clinical shifts and training days." className="aspect-[350/348]" />
+                  <PopoutMedia src="/assets/Clothing/ClothingCollage/NASShirt.png" alt="NAS Shirt" title="National Ambulance Service Shirt" description="The formal green shirt component of the ambulance service uniform, worn with epaulettes and service branding for front-line duty." className="aspect-[350/348]" />
+                </div>
               </div>
             </div>
           </motion.div>
