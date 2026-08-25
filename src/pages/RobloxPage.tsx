@@ -140,66 +140,58 @@ function PopoutMedia({ src, type = 'image', alt, title, description, tags, class
     <>
       <button
         onClick={() => setOpen(true)}
-        className={`overflow-hidden rounded-xl border border-border-default group relative flex items-center justify-center bg-cta-bg ${className || ''}`}
+        className={`overflow-hidden group relative block ${className || ''}`}
       >
         {type === 'video' ? (
-          <video src={src} className="max-w-full max-h-full object-contain" muted loop playsInline autoPlay />
+          <video src={src} className="w-full h-full object-contain" muted loop playsInline autoPlay />
         ) : (
-          <img src={src} alt={alt} className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
+          <img src={src} alt={alt} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
         )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
       </button>
 
       {open && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/50 backdrop-blur-md"
+          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 10 }}
+          transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+          onClick={(e) => e.stopPropagation()}
+          className="flex flex-col md:flex-row items-center gap-6 max-w-5xl w-full max-h-[85vh]"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-            onClick={(e) => e.stopPropagation()}
-            className="flex flex-col md:flex-row-reverse items-center gap-6 max-w-5xl w-full max-h-[85vh]"
-          >
-            {/* Image, full and uncropped */}
-            <div className="flex-1 min-w-0 max-h-[50vh] md:max-h-[85vh] flex items-center justify-center">
-              {type === 'video' ? (
-                <video src={src} className="max-w-full max-h-full object-contain rounded-2xl" controls autoPlay loop />
-              ) : (
-                <img src={src} alt={alt} className="max-w-full max-h-full object-contain rounded-2xl" referrerPolicy="no-referrer" />
-              )}
+          {/* Image, full and uncropped, no box/rounding */}
+          <div className="flex-1 min-w-0 max-h-[50vh] md:max-h-[85vh] flex items-center justify-center">
+            {type === 'video' ? (
+              <video src={src} className="max-w-full max-h-full object-contain" controls autoPlay loop />
+            ) : (
+              <img src={src} alt={alt} className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
+            )}
+          </div>
+
+          {/* Fixed-size info box, independent of image dimensions */}
+          <div className="w-full md:w-80 h-80 shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 overflow-y-auto space-y-4">
+            <div className="flex items-start justify-between gap-4">
+              <h3 className="text-xl font-bold">{title}</h3>
+              <button
+                onClick={() => setOpen(false)}
+                className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
+              >
+                <X size={18} />
+              </button>
             </div>
 
-            {/* Fixed-size info box, independent of image dimensions */}
-            <div className="w-full md:w-80 h-80 shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 overflow-y-auto space-y-4">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-bold">{title}</h3>
-                <button
-                  onClick={() => setOpen(false)}
-                  className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
-                >
-                  <X size={18} />
-                </button>
+            {tags && tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1 bg-brand-default/10 text-brand-default rounded-full text-xs font-bold">
+                    {tag}
+                  </span>
+                ))}
               </div>
+            )}
 
-              {tags && tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-brand-default/10 text-brand-default rounded-full text-xs font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <p className="text-text-secondary text-sm leading-relaxed">{description}</p>
-            </div>
-          </motion.div>
+            <p className="text-text-secondary text-sm leading-relaxed">{description}</p>
+          </div>
         </motion.div>
       )}
     </>
