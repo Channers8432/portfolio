@@ -179,16 +179,17 @@ const RobloxPage: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-[725fr_350fr] gap-4">
                 <div className="aspect-[725/348] overflow-hidden">
-                  <img src="/assets/Clothing/GdaShirt.png" alt="Garda shirts and gilets" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <PopoutMedia src="/assets/Clothing/GdaShirt.png" alt="Garda shirts and gilets" title="Garda Polos and Gilets" description='A uniform set consisting of long and short sleeve light polos and a black belt with an embroidered Garda buckle. The polo includes a two-button placket and a gold Garda crest on the left chest. An optional gilet fits over the top, complete with a central zip, dual side zip pockets, and a gold Garda crest above "GARDA" text on the left chest. The sleeves are detailed with yellow Garda shoulder patches and rank chevrons.' className="w-full h-full" />
                 </div>
                 <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/Clothing/GdaDecJacket1.png" alt="A Detective Garda jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="/assets/Clothing/.png" alt="A Detective Garda jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <PopoutMedia src="/assets/Clothing/GdaDecJacket1.png" alt="Garda Detective Jacket" title="Detective Garda Jacket" description='A dark navy jacket worn over a white collared shirt and blue necktie. The front features a central button placket along with dual vertical lower zip pockets. Black and gold circular Garda shoulder patches are detailed on the upper sleeves, set against a plain, unadorned back.' className="w-full h-full" />
                 </div>
               </div>
 
               <div className="flex flex-col md:flex-row gap-4 items-start">
                 <div className="aspect-[350/348] w-full md:w-[350px] shrink-0 overflow-hidden">
-                  <img src="/assets/Clothing/ASUFleece.png" alt="ASU Fleece" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <PopoutMedia src="/assets/Clothing/ASUFleece.png" alt="ASU Fleece" title="Armed Support Unit Fleece" description='A dark navy fleece jacket featuring a central front zip and dual vertical lower zip pockets. Yellow-and-black checkered bands wrap around the upper chest and sleeves. The upper sleeves are detailed with a gold Garda crest above yellow "ARMED SUPPORT UNIT" text.' className="w-full h-full" />
                 </div>
                 <div className="flex-1 space-y-4">
                   <div className="text-sm text-text-secondary space-y-4 leading-relaxed">
@@ -208,18 +209,18 @@ const RobloxPage: React.FC = () => {
               </div>
 
               <div className="w-full aspect-[1000/348] overflow-hidden">
-                <img src="/assets/Clothing/GdaJacket.png" alt="Garda jackets with unit variants" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <PopoutMedia src="/assets/Clothing/GdaJacket.png" alt="Garda Jackets" title="Garda High-Visibility Softshell Jacket" description='A high-visibility two-tone softshell jacket paired with dark navy trousers and a black belt with an embroidered Garda buckle. The jacket design combines a fluorescent yellow upper chest with a black lower torso and sleeves, separated by horizontal reflective silver striping across the chest, back, and arms. The front includes a central vertical zipper, dual zip side pockets, and a yellow Garda crest logo on the left chest. Silver reflective "GARDA" text is printed across the upper back, while the sleeves display Garda shoulder crests and rank chevrons.\n\nAlternate upper-chest variants include specialized unit text overlaying the high-visibility fabric, such as "ROADS POLICING", "TECHNICAL BUREAU", and "WATER UNIT".' className="w-full h-full" />
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/Clothing/GdaDecJacket2.png" alt="A Detective Garda Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <PopoutMedia src="/assets/Clothing/GdaDecJacket2.png" alt="Detective Garda Jacket" title="Garda Detective Jacket" description='A dark navy jacket worn over a white collared shirt and blue necktie. The front features a central button placket, dual vertical lower zippers, and a yellow Garda crest logo with "GARDA" text on the left chest. Bold yellow "GARDA" lettering is printed across the center back.' className="w-full h-full" />
                 </div>
                 <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/Clothing/CABJacket.png" alt="CAB Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <PopoutMedia src="/assets/Clothing/CABJacket.png" alt="CAB Jacket" title="Criminal Assets Bureau Jacket" description='A black jacket worn over a white collared shirt and blue tie. The front features a central button placket, dual vertical lower zippers, and a patch reading "CRIMINAL ASSETS BUREAU" on the left chest. Bold white "CAB" lettering is printed across the back as well as on both shoulders.' className="w-full h-full" />
                 </div>
                 <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/Clothing/ASUJacket.png" alt="ASU Jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <PopoutMedia src="/assets/Clothing/ASUJacket.png" alt="ASU Jacket" title='Armed Support Unit Outer Jacket" description="A dark navy jacket featuring a yellow-and-black checkered band across the upper chest, back, and sleeve cuffs. The front is detailed with a central button placket, dual vertical chest zippers, and a blue GARDA badge on the left chest. The back features a prominent blue patch printed with bold yellow text reading "GARDA ARMED SUPPORT UNIT".' className="w-full h-full" />
                 </div>
               </div>
             </div>
@@ -263,7 +264,7 @@ const RobloxPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="aspect-[515/705] overflow-hidden">
-                    <PopoutMedia src="/assets/Clothing/GCPDRef.png" alt="GCPD Reference" title="GCPD  Image" description="Random image I pulled of Google. Obviously I didn't draw this." className="w-full h-full" />
+                    <PopoutMedia src="/assets/Clothing/GCPDRef.png" alt="GCPD Reference" title="GCPD Reference Image" description="Random image I pulled of Google. Obviously I didn't draw this." className="w-full h-full" />
                   </div>
                 </div>
               </div>
