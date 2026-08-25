@@ -171,11 +171,11 @@ const RobloxPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-5xl mx-auto space-y-24 pb-12"
           >
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                  Custom <span className="text-brand-default">avatar clothing</span>, drawn to detail
+            </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-                  Custom <span className="text-brand-default">avatar clothing</span>, drawn to detail
-                </h2>
                 <p className="text-xl text-text-secondary leading-relaxed">
                   Designing outfits for Roblox avatars, from real-world emergency to fictional universes, matching reference material as closely as the medium allows.
                 </p>
