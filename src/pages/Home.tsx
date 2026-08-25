@@ -414,7 +414,7 @@ const Home: React.FC = () => {
             <h2 className="text-4xl font-bold tracking-tight mb-8">About Me</h2>
             <div className="space-y-6 text-text-secondary text-xl leading-relaxed font-light">
               <p>
-                I'm <span className="text-text-default font-medium">Billy</span>, a student based in Ireland. Online, I am also known as
+                I'm <span className="text-text-default font-medium">Billy</span>, an Irish student based in the UK. Online, I am also known as
                 <span className="text-text-default font-medium"> Channers</span> or
                 <span className="text-text-default font-medium"> VexorianDev</span>.
               </p>
@@ -423,7 +423,7 @@ const Home: React.FC = () => {
                 localisation. I have contributed to projects used by millions of players worldwide.
               </p>
               <p>
-                Lorem ipsum or some shit, idk
+                Currently, I am studying Mechatronic Engineering at the University of Manchester.
               </p>
 
               <div className="pt-10 mt-10 border-t border-border-default">
