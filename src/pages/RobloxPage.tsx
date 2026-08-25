@@ -214,7 +214,7 @@ const RobloxPage: React.FC = () => {
                     <br /><br />
                     Alternate upper-chest variants include specialized unit text overlaying the high-visibility fabric, such as "ROADS POLICING", "TECHNICAL BUREAU", and "WATER UNIT".
                   </>
-                } className="w-full h-full" /> { /* guh */ }
+                } className="w-full h-full" />
               </div>
 
               <div className="grid grid-cols-3 gap-4">
@@ -482,9 +482,9 @@ const RobloxPage: React.FC = () => {
           </button>
         </div>
 
-        <div className="space-y-20">
+        <div className="space-y-20 overflow-x-hidden">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-border-default pb-8">
-            <div className="flex p-1 bg-cta-bg rounded-2xl border border-border-default overflow-x-auto no-scrollbar">
+            <div className="flex p-1 bg-cta-bg rounded-2xl border border-border-default overflow-x-auto no-scrollbar w-full max-w-full">
               {tabs.map((tab) => (
                 <button
                   key={tab}
