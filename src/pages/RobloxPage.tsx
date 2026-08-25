@@ -10,22 +10,6 @@ import { useMemo } from "react";
 
 import { PopoutMedia } from '../components/PopoutMedia';
 
-interface CollageImage {
-  src: string;
-  alt: string;
-  aspect: number;
-}
-
-interface PopoutMediaProps {
-  src: string;
-  type?: 'image' | 'gif' | 'video';
-  alt: string;
-  title: string;
-  description: string;
-  tags?: string[];
-  className?: string;
-}
-
 const RobloxPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get('tab') || 'All';
