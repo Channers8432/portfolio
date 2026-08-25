@@ -230,8 +230,8 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Gotham City Police Department</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-start">
-                <div className="aspect-[630/348] overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8">
+                <div className="aspect-[630/348] w-full overflow-hidden">
                   <PopoutMedia src="/assets/Clothing/GCPDShirt.png" alt="GCPD Shirt" title="GCPD Uniform" description="A formal dress uniform featuring a light blue collared shirt with dual chest flap pockets, paired with a dark blue necktie. It includes an illustrated GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="h-72" />
                 </div>
                 <div className="space-y-4">
