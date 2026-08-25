@@ -182,7 +182,6 @@ const RobloxPage: React.FC = () => {
                   <PopoutMedia src="/assets/Clothing/GdaShirt.png" alt="Garda shirts and gilets" title="Garda Polos and Gilets" description='A uniform set consisting of long and short sleeve light polos and a black belt with an embroidered Garda buckle. The polo includes a two-button placket and a gold Garda crest on the left chest. An optional gilet fits over the top, complete with a central zip, dual side zip pockets, and a gold Garda crest above "GARDA" text on the left chest. The sleeves are detailed with yellow Garda shoulder patches and rank chevrons.' className="w-full h-full" />
                 </div>
                 <div className="aspect-[350/348] overflow-hidden">
-                  <img src="/assets/Clothing/.png" alt="A Detective Garda jacket" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   <PopoutMedia src="/assets/Clothing/GdaDecJacket1.png" alt="Garda Detective Jacket" title="Detective Garda Jacket" description='A dark navy jacket worn over a white collared shirt and blue necktie. The front features a central button placket along with dual vertical lower zip pockets. Black and gold circular Garda shoulder patches are detailed on the upper sleeves, set against a plain, unadorned back.' className="w-full h-full" />
                 </div>
               </div>
