@@ -12,7 +12,7 @@ import { PopoutMedia } from '../components/PopoutMedia';
 
 const RobloxPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'All';
+  const activeTab = searchParams.get('tab') || 'Localisation';
 
   const setActiveTab = (tab: string) => {
     setSearchParams({ tab });
