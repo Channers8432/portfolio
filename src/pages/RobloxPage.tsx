@@ -485,7 +485,6 @@ const RobloxPage: React.FC = () => {
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/NASShirt.png" alt="NAS Shirt" title="National Ambulance Service Shirt" description="The formal green shirt component of the ambulance service uniform, worn with epaulettes and service branding for front-line duty." className="h-72" />
               </div>
             </div>
-            </div>
           </motion.div>
         );
       default:
