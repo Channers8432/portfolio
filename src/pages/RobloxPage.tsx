@@ -219,7 +219,7 @@ const RobloxPage: React.FC = () => {
                   <PopoutMedia src="/assets/Clothing/CABJacket.png" alt="CAB Jacket" title="Criminal Assets Bureau Jacket" description='A black jacket worn over a white collared shirt and blue tie. The front features a central button placket, dual vertical lower zippers, and a patch reading "CRIMINAL ASSETS BUREAU" on the left chest. Bold white "CAB" lettering is printed across the back as well as on both shoulders.' className="w-full h-full" />
                 </div>
                 <div className="aspect-[350/348] overflow-hidden">
-                  <PopoutMedia src="/assets/Clothing/ASUJacket.png" alt="ASU Jacket" title='Armed Support Unit Outer Jacket" description="A dark navy jacket featuring a yellow-and-black checkered band across the upper chest, back, and sleeve cuffs. The front is detailed with a central button placket, dual vertical chest zippers, and a blue GARDA badge on the left chest. The back features a prominent blue patch printed with bold yellow text reading "GARDA ARMED SUPPORT UNIT".' className="w-full h-full" />
+                  <PopoutMedia src="/assets/Clothing/ASUJacket.png" alt="ASU Jacket" title="Armed Support Unit Outer Jacket" description='A dark navy jacket featuring a yellow-and-black checkered band across the upper chest, back, and sleeve cuffs. The front is detailed with a central button placket, dual vertical chest zippers, and a blue GARDA badge on the left chest. The back features a prominent blue patch printed with bold yellow text reading "GARDA ARMED SUPPORT UNIT".' className="w-full h-full" />
                 </div>
               </div>
             </div>
@@ -251,7 +251,7 @@ const RobloxPage: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-center">
                 <div className="aspect-[630/348] overflow-hidden">
-                  <PopoutMedia src="/assets/Clothing/GCPDJacket.png" alt="GCPD Jacket" title="GCPD Leather Jacket" description="A black leather jacket with silver buttons and 2 chest pockets, worn on top of a light blue shirt with a dark blue necktie. It includes a GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="w-full h-full" />
+                  <PopoutMedia src="/assets/Clothing/GCPDJacket.png" alt="GCPD Jacket" title="GCPD Leather Jacket" description="A black leather jacket with silver buttons and two chest pockets, worn on top of a light blue shirt with a dark blue necktie. It includes a GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="w-full h-full" />
                 </div>
                 <div className="grid grid-cols-2 gap-4 items-center">
                   <div className="flex flex-col gap-4">
