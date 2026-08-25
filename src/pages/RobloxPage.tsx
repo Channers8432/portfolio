@@ -256,10 +256,10 @@ const RobloxPage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-4 items-center">
                   <div className="flex flex-col gap-4">
                     <div className="aspect-[1141/1012] overflow-hidden">
-                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Badge" title="GCPD Badge" description="The metal badge worn my Gotham City police officers, on a black leather shield." className="w-full h-full" />
+                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Badge" title="GCPD Badge" description="The metal badge worn by Gotham City police officers, on a black leather shield." className="w-full h-full" />
                     </div>
                     <div className="aspect-[976/1114] overflow-hidden">
-                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Pathc" title="GCPD Patch" description="The patch worn my Gotham City police officers, featured on the sleeves." className="w-full h-full" />
+                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Pathc" title="GCPD Patch" description="The patch worn by Gotham City police officers, featured on the sleeves." className="w-full h-full" />
                     </div>
                   </div>
                   <div className="aspect-[515/705] overflow-hidden">
