@@ -214,7 +214,7 @@ const RobloxPage: React.FC = () => {
                     <br /><br />
                     Alternate upper-chest variants include specialized unit text overlaying the high-visibility fabric, such as "ROADS POLICING", "TECHNICAL BUREAU", and "WATER UNIT".
                   </>
-                } className="w-full h-full" />
+                } className="w-full h-full" /> { /* guh */ }
               </div>
 
               <div className="grid grid-cols-3 gap-4">
