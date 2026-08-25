@@ -112,6 +112,98 @@ function MediaLightboxGrid({ items, thumbHeight = 220 }: { items: MediaItem[]; t
   );
 }
 
+interface PopoutMediaProps {
+  src: string;
+  type?: 'image' | 'gif' | 'video';
+  alt: string;
+  title: string;
+  description: string;
+  tags?: string[];
+  className?: string; // sizing/layout classes you control from outside
+}
+
+function PopoutMedia({ src, type = 'image', alt, title, description, tags, className }: PopoutMediaProps) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className={`overflow-hidden rounded-xl border border-border-default group relative block ${className || ''}`}
+      >
+        {type === 'video' ? (
+          <video src={src} className="w-full h-full object-cover" muted loop playsInline autoPlay />
+        ) : (
+          <img src={src} alt={alt} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+        )}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+      </button>
+
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/50 backdrop-blur-md"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden grid grid-cols-1 md:grid-cols-[1.3fr_1fr]"
+          >
+            <div className="bg-black/20 flex items-center justify-center max-h-[50vh] md:max-h-[85vh]">
+              {type === 'video' ? (
+                <video src={src} className="w-full h-full object-contain" controls autoPlay loop />
+              ) : (
+                <img src={src} alt={alt} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              )}
+            </div>
+
+            <div className="p-8 space-y-4 overflow-y-auto">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-xl font-bold">{title}</h3>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {tags && tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-brand-default/10 text-brand-default rounded-full text-xs font-bold">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <p className="text-text-secondary text-sm leading-relaxed">{description}</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </>
+  );
+}
+
 const RobloxPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get('tab') || 'All';
@@ -378,24 +470,80 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
               </div>
 
-              <MediaLightboxGrid
-                items={[
-                  { id: 'sas-short', src: "/assets/Clothing/ClothingCollage/SASShort.png", type: 'image', aspect: 350 / 348, title: "SAS Shirt (Short Sleeve)", description: "..." },
-                  { id: 'sas', src: "/assets/Clothing/ClothingCollage/SAS.png", type: 'image', aspect: 630 / 348, title: "SAS Shirt", description: "..." },
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[160px] md:auto-rows-[180px]">
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/SAS.png"
+                  alt="SAS Shirt"
+                  title="Scottish Ambulance Service Shirt"
+                  description="A long-sleeve duty shirt based on the Scottish Ambulance Service uniform, featuring the service's green colour scheme, epaulettes, and embroidered crest for front-line paramedic duty."
+                  className="col-span-2 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/SASShort.png"
+                  alt="SAS Shirt Short"
+                  title="Scottish Ambulance Service Shirt (Short Sleeve)"
+                  description="A warm-weather variant of the Scottish Ambulance Service shirt, trading long sleeves for a short-sleeve cut while keeping the same green uniform styling and insignia."
+                  className="col-span-1 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/SFRS.png"
+                  alt="SFRS Polo"
+                  title="Fire & Rescue Service Polo"
+                  description="A duty polo shirt styled after UK fire and rescue service uniforms, featuring embroidered service branding and reflective detailing suited for day-to-day station wear."
+                  className="col-span-1 row-span-1"
+                />
 
-                  { id: 'sfrs-polo', src: "/assets/Clothing/ClothingCollage/SFRS.png", type: 'image', aspect: 630 / 348, title: "SFRS Polo", description: "..." },
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/AZDPSA.png"
+                  alt="AZDPS Class A"
+                  title="State Police Class A Uniform"
+                  description="A formal dress uniform modelled on US state police 'Class A' attire — pressed shirt, tie, and badge — worn for ceremonies, courtroom appearances, and official duties."
+                  className="col-span-1 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/AZDPSB.png"
+                  alt="AZDPS Class B"
+                  title="State Police Class B Uniform"
+                  description="A step down from Class A, this everyday patrol uniform swaps the tie for an open-collar shirt while keeping the badge and shoulder patches intact."
+                  className="col-span-1 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/AZDPSC.png"
+                  alt="AZDPS Class C"
+                  title="State Police Class C Uniform"
+                  description="The most casual tier of the trooper uniform set, built for training and utility duty — short sleeves, softer fabric cues, and reduced formal detailing."
+                  className="col-span-2 row-span-1"
+                />
 
-                  { id: 'azdps-a', src: "/assets/Clothing/ClothingCollage/AZDPSA.png", type: 'image', aspect: 350 / 348, title: "AZDPS Class A", description: "..." },
-                  { id: 'azdps-b', src: "/assets/Clothing/ClothingCollage/AZDPSB.png", type: 'image', aspect: 350 / 348, title: "AZDPS Class B", description: "..." },
-                  { id: 'axdps-c', src: "/assets/Clothing/ClothingCollage/AZDPSC.png", type: 'image', aspect: 350 / 348, title: "AZDPS Class C", description: "..." },
-
-                  { id: 'nas-polo', src: "/assets/Clothing/ClothingCollage/NASPolo.png", type: 'image', aspect: 350 / 348, title: "NAS Polo", description: "..." },
-                  { id: 'nas-shirt', src: "/assets/Clothing/ClothingCollage/NASShirt.png", type: 'image', aspect: 350 / 348, title: "NAS Shirt", description: "..." },
-
-                  { id: 'kfb-polo', src: "/assets/Clothing/ClothingCollage/KFBPolo.png", type: 'image', aspect: 350 / 348, title: "KFB Polo", description: "..." },
-                  { id: 'kfb-shirt', src: "/assets/Clothing/ClothingCollage/KFBShirt.png", type: 'image', aspect: 350 / 348, title: "KFP Shirt", description: "..." },
-                ]}
-              />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/KFBPolo.png"
+                  alt="KFB Polo"
+                  title="Kildare Fire Brigade Polo"
+                  description="A casual duty polo for Kildare Fire Brigade staff, worn during non-emergency shifts and community outreach, featuring embroidered crest and rank markings."
+                  className="col-span-1 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/KFBShirt.png"
+                  alt="KFB Shirt"
+                  title="Kildare Fire Brigade Duty Shirt"
+                  description="A structured button-up worn under turnout gear or on station duty, styled with the Kildare Fire Brigade crest and standard rank insignia placement."
+                  className="col-span-1 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/NASPolo.png"
+                  alt="NAS Polo"
+                  title="National Ambulance Service Polo"
+                  description="A green duty polo based on Ireland's National Ambulance Service uniform, worn by paramedics for non-clinical shifts and training days."
+                  className="col-span-1 row-span-1"
+                />
+                <PopoutMedia
+                  src="/assets/Clothing/ClothingCollage/NASShirt.png"
+                  alt="NAS Shirt"
+                  title="National Ambulance Service Shirt"
+                  description="The formal green shirt component of the ambulance service uniform, worn with epaulettes and service branding for front-line duty."
+                  className="col-span-1 row-span-1"
+                />
+              </div>
             </div>
           </motion.div>
         );
