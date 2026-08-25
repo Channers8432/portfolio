@@ -263,7 +263,7 @@ const RobloxPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="aspect-[515/705] overflow-hidden">
-                    <PopoutMedia src="/assets/Clothing/GCPDRef.png" alt="GCPD Reference" title="GCPD Reference Image" description="Random image I pulled of Google. Obviously I didn't draw this." className="w-full h-full" />
+                    <PopoutMedia src="/assets/Clothing/GCPDRef.png" alt="GCPD Reference" title="GCPD Reference Image" description="Random image I pulled ofF Google. Obviously I didn't draw this." className="w-full h-full" />
                   </div>
                 </div>
               </div>
