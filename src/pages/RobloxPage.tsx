@@ -259,7 +259,7 @@ const RobloxPage: React.FC = () => {
                       <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Badge" title="GCPD Badge" description="The metal badge worn by Gotham City police officers, on a black leather shield." className="w-full h-full" />
                     </div>
                     <div className="aspect-[976/1114] overflow-hidden">
-                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Pathc" title="GCPD Patch" description="The patch worn by Gotham City police officers, featured on the sleeves." className="w-full h-full" />
+                      <PopoutMedia src="/assets/Clothing/GCPDPatch.png" alt="GCPD Patch" title="GCPD Patch" description="The patch worn by Gotham City police officers, featured on the sleeves." className="w-full h-full" />
                     </div>
                   </div>
                   <div className="aspect-[515/705] overflow-hidden">
