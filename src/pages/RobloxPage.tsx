@@ -208,7 +208,13 @@ const RobloxPage: React.FC = () => {
               </div>
 
               <div className="w-full aspect-[1000/348] overflow-hidden">
-                <PopoutMedia src="/assets/Clothing/GdaJacket.png" alt="Garda Jackets" title="Garda High-Visibility Softshell Jacket" description='A high-visibility two-tone softshell jacket paired with dark navy trousers and a black belt with an embroidered Garda buckle. The jacket design combines a fluorescent yellow upper chest with a black lower torso and sleeves, separated by horizontal reflective silver striping across the chest, back, and arms. The front includes a central vertical zipper, dual zip side pockets, and a yellow Garda crest logo on the left chest. Silver reflective "GARDA" text is printed across the upper back, while the sleeves display Garda shoulder crests and rank chevrons.<br /><br />Alternate upper-chest variants include specialized unit text overlaying the high-visibility fabric, such as "ROADS POLICING", "TECHNICAL BUREAU", and "WATER UNIT".' className="w-full h-full" />
+                <PopoutMedia src="/assets/Clothing/GdaJacket.png" alt="Garda Jackets" title="Garda High-Visibility Softshell Jacket" description={
+                  <>
+                    A high-visibility two-tone softshell jacket paired with dark navy trousers...
+                    <br /><br />
+                    Alternate upper-chest variants include specialized unit text...
+                  </>
+                } className="w-full h-full" />
               </div>
 
               <div className="grid grid-cols-3 gap-4">
