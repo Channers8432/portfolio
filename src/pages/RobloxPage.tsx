@@ -8,108 +8,12 @@ import { AnimatedCounter } from '../components/AnimatedCounter';
 import { Project } from '../types';
 import { useMemo } from "react";
 
+import { PopoutMedia } from '../components/PopoutMedia';
+
 interface CollageImage {
   src: string;
   alt: string;
   aspect: number;
-}
-
-interface MediaItem {
-  id: string;
-  src: string;
-  type: 'image' | 'gif' | 'video';
-  aspect: number;
-  title: string;
-  description: string;
-}
-
-function MediaLightboxGrid({ items, thumbHeight = 220 }: { items: MediaItem[]; thumbHeight?: number }) {
-  const [selected, setSelected] = useState<MediaItem | null>(null);
-
-  // lock scroll + close on escape while open
-  useEffect(() => {
-    if (!selected) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null); };
-    document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [selected]);
-
-  return (
-    <>
-      <div className="flex flex-wrap justify-center gap-4">
-        {items.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => setSelected(item)}
-            style={{ height: thumbHeight, aspectRatio: item.aspect }}
-            className="overflow-hidden rounded-xl border border-border-default group relative"
-          >
-            {item.type === 'video' ? (
-              <video src={item.src} className="w-full h-full object-cover" muted loop playsInline autoPlay />
-            ) : (
-              <img src={item.src} alt={item.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-            )}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-          </button>
-        ))}
-      </div>
-
-      {selected && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setSelected(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/50 backdrop-blur-md"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden grid grid-cols-1 md:grid-cols-[1.3fr_1fr]"
-          >
-            <div className="bg-black/20 flex items-center justify-center max-h-[50vh] md:max-h-[85vh]">
-              {selected.type === 'video' ? (
-                <video src={selected.src} className="w-full h-full object-contain" controls autoPlay loop />
-              ) : (
-                <img src={selected.src} alt={selected.title} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
-              )}
-            </div>
-
-            <div className="p-8 space-y-4 overflow-y-auto">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-bold">{selected.title}</h3>
-                <button
-                  onClick={() => setSelected(null)}
-                  className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
-              {selected.tags && selected.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {selected.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-brand-default/10 text-brand-default rounded-full text-xs font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <p className="text-text-secondary text-sm leading-relaxed">{selected.description}</p>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </>
-  );
 }
 
 interface PopoutMediaProps {
@@ -119,91 +23,7 @@ interface PopoutMediaProps {
   title: string;
   description: string;
   tags?: string[];
-  className?: string; // sizing/layout classes you control from outside
-}
-
-function PopoutMedia({ src, type = 'image', alt, title, description, tags, className }: PopoutMediaProps) {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
-    document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [open]);
-
-  return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className={`overflow-hidden group relative block ${className || ''}`}
-      >
-        {type === 'video' ? (
-          <video src={src} className="w-full h-full object-contain" muted loop playsInline autoPlay />
-        ) : (
-          <img src={src} alt={alt} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
-        )}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-      </button>
-
-      {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/50 backdrop-blur-md"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-            onClick={(e) => e.stopPropagation()}
-            className="flex flex-col md:flex-row items-center gap-6 max-w-[95vw] w-full max-h-[90vh]"
-          >
-            {/* Image, full and uncropped, no box/rounding */}
-            <div className="flex-1 min-w-0 max-h-[60vh] md:max-h-[90vh] flex items-center justify-center">
-              {type === 'video' ? (
-                <video src={src} className="max-w-full max-h-full object-contain" controls autoPlay loop />
-              ) : (
-                <img src={src} alt={alt} className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
-              )}
-            </div>
-
-            {/* Fixed-size info box, independent of image dimensions */}
-            <div className="w-full md:w-80 h-80 shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 overflow-y-auto space-y-4">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-bold">{title}</h3>
-                <button
-                  onClick={() => setOpen(false)}
-                  className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
-              {tags && tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-brand-default/10 text-brand-default rounded-full text-xs font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <p className="text-text-secondary text-sm leading-relaxed">{description}</p>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </>
-  );
+  className?: string;
 }
 
 const RobloxPage: React.FC = () => {
@@ -474,8 +294,8 @@ const RobloxPage: React.FC = () => {
 
               <div className="flex flex-wrap justify-center items-end gap-4 px-4">
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/SAS.png" alt="SAS Shirt" title="Scottish Ambulance Service Shirt" description="A long-sleeve duty shirt based on the Scottish Ambulance Service uniform, featuring the service's green colour scheme, epaulettes, and embroidered crest for front-line paramedic duty." className="h-72" />
-                <PopoutMedia src="/assets/Clothing/ClothingCollage/SASShort.png" alt="SAS Shirt Short" title="Scottish Ambulance Service Shirt (Short Sleeve)" description="A warm-weather variant of the Scottish Ambulance Service shirt, trading long sleeves for a short-sleeve cut while keeping the same green uniform styling and insignia." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/SFRS.png" alt="SFRS Polo" title="Fire & Rescue Service Polo" description="A duty polo shirt styled after UK fire and rescue service uniforms, featuring embroidered service branding and reflective detailing suited for day-to-day station wear." className="h-72" />
+                <PopoutMedia src="/assets/Clothing/ClothingCollage/SASShort.png" alt="SAS Shirt Short" title="Scottish Ambulance Service Shirt (Short Sleeve)" description="A warm-weather variant of the Scottish Ambulance Service shirt, trading long sleeves for a short-sleeve cut while keeping the same green uniform styling and insignia." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSA.png" alt="AZDPS Class A" title="State Police Class A Uniform" description="A formal dress uniform modelled on US state police 'Class A' attire — pressed shirt, tie, and badge — worn for ceremonies, courtroom appearances, and official duties." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="AZDPS Class B" title="State Police Class B Uniform" description="A step down from Class A, this everyday patrol uniform swaps the tie for an open-collar shirt while keeping the badge and shoulder patches intact." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSC.png" alt="AZDPS Class C" title="State Police Class C Uniform" description="The most casual tier of the trooper uniform set, built for training and utility duty — short sleeves, softer fabric cues, and reduced formal detailing." className="h-72" />
