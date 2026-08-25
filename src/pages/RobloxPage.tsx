@@ -42,14 +42,13 @@ const RobloxPage: React.FC = () => {
   const topThree = sortedProjects.slice(0, 3);
 
   const filteredProjects = sortedProjects.filter(p => {
-    if (activeTab === 'All') return true;
     if (activeTab === 'Localisation') return p.tags.includes('Localisation');
     if (activeTab === 'Development') return p.tags.includes('Development') || p.tags.includes('Scripting') || p.tags.includes('Luau') || p.tags.includes('UI/UX');
     if (activeTab === 'Clothing') return p.tags.includes('Clothing');
     return true;
   });
 
-  const tabs = ['All', 'Localisation', 'Development', 'Clothing'];
+  const tabs = ['Localisation', 'Development', 'Clothing'];
 
   const [totalVisits, setTotalVisits] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
