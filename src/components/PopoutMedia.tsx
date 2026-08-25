@@ -103,12 +103,6 @@ export function PopoutMedia({ src, type = 'image', alt, title, description, tags
                         <div onClick={(e) => e.stopPropagation()} className="w-full md:w-80 shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 space-y-4">
                             <div className="flex items-start justify-between gap-4">
                                 <h3 className="text-xl font-bold">{title}</h3>
-                                <button
-                                    onClick={() => setOpen(false)}
-                                    className="p-1.5 rounded-lg hover:bg-white/10 text-text-secondary hover:text-text-default transition-colors shrink-0"
-                                >
-                                    <X size={18} />
-                                </button>
                             </div>
 
                             {tags && tags.length > 0 && (
