@@ -140,14 +140,14 @@ function PopoutMedia({ src, type = 'image', alt, title, description, tags, class
     <>
       <button
         onClick={() => setOpen(true)}
-        className={`overflow-hidden rounded-xl border border-border-default group relative block ${className || ''}`}
+        className={`overflow-hidden rounded-xl border border-border-default group relative flex items-center justify-center bg-cta-bg ${className || ''}`}
       >
         {type === 'video' ? (
-          <video src={src} className="w-full h-full object-cover" muted loop playsInline autoPlay />
+          <video src={src} className="max-w-full max-h-full object-contain" muted loop playsInline autoPlay />
         ) : (
-          <img src={src} alt={alt} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          <img src={src} alt={alt} className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
         )}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
       </button>
 
       {open && (
@@ -164,17 +164,19 @@ function PopoutMedia({ src, type = 'image', alt, title, description, tags, class
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden grid grid-cols-1 md:grid-cols-[1.3fr_1fr]"
+            className="flex flex-col md:flex-row-reverse items-center gap-6 max-w-5xl w-full max-h-[85vh]"
           >
-            <div className="bg-black/20 flex items-center justify-center max-h-[50vh] md:max-h-[85vh]">
+            {/* Image, full and uncropped */}
+            <div className="flex-1 min-w-0 max-h-[50vh] md:max-h-[85vh] flex items-center justify-center">
               {type === 'video' ? (
-                <video src={src} className="w-full h-full object-contain" controls autoPlay loop />
+                <video src={src} className="max-w-full max-h-full object-contain rounded-2xl" controls autoPlay loop />
               ) : (
-                <img src={src} alt={alt} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={src} alt={alt} className="max-w-full max-h-full object-contain rounded-2xl" referrerPolicy="no-referrer" />
               )}
             </div>
 
-            <div className="p-8 space-y-4 overflow-y-auto">
+            {/* Fixed-size info box, independent of image dimensions */}
+            <div className="w-full md:w-80 h-80 shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 overflow-y-auto space-y-4">
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-xl font-bold">{title}</h3>
                 <button
