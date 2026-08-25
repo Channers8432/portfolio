@@ -100,7 +100,7 @@ export function PopoutMedia({ src, type = 'image', alt, title, description, tags
                             )}
                         </div>
 
-                        <div onClick={(e) => e.stopPropagation()} className="w-full md:w-80 h-100 shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 overflow-y-auto space-y-4">
+                        <div onClick={(e) => e.stopPropagation()} className="w-full md:w-80 min-h-[20rem] shrink-0 bg-cta-bg rounded-[2rem] border border-border-default shadow-2xl p-8 space-y-4">
                             <div className="flex items-start justify-between gap-4">
                                 <h3 className="text-xl font-bold">{title}</h3>
                                 <button
