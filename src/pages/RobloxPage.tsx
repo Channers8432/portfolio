@@ -230,9 +230,9 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Gotham City Police Department</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8">
-                <div className="aspect-[630/348] w-full overflow-hidden">
-                  <PopoutMedia src="/assets/Clothing/GCPDShirt.png" alt="GCPD Shirt" title="GCPD Uniform" description="A formal dress uniform featuring a light blue collared shirt with dual chest flap pockets, paired with a dark blue necktie. It includes an illustrated GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="h-72" />
+              <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-start">
+                <div className="aspect-[630/348] overflow-hidden">
+                  <PopoutMedia src="/assets/Clothing/GCPDShirt.png" alt="GCPD Shirt" title="GCPD Uniform" description="A formal dress uniform featuring a light blue collared shirt with dual chest flap pockets, paired with a dark blue necktie. It includes an illustrated GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="w-full h-full" />
                 </div>
                 <div className="space-y-4">
                   <div className="text-sm text-text-secondary space-y-4 leading-relaxed">
@@ -251,19 +251,19 @@ const RobloxPage: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-center">
                 <div className="aspect-[630/348] overflow-hidden">
-                  <PopoutMedia src="/assets/Clothing/GCPDJacket.png" alt="GCPD Jacket" title="GCPD Leather Jacket" description="A black leather jacket with silver buttons and 2 chest pockets, worn on top of a light blue shirt with a dark blue necktie. It includes a GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="h-72" />
+                  <PopoutMedia src="/assets/Clothing/GCPDJacket.png" alt="GCPD Jacket" title="GCPD Leather Jacket" description="A black leather jacket with silver buttons and 2 chest pockets, worn on top of a light blue shirt with a dark blue necktie. It includes a GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="w-full h-full" />
                 </div>
                 <div className="grid grid-cols-2 gap-4 items-center">
                   <div className="flex flex-col gap-4">
                     <div className="aspect-[1141/1012] overflow-hidden">
-                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Badge" title="GCPD Badge" description="The metal badge worn my Gotham City police officers, on a black leather shield." className="h-72" />
+                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Badge" title="GCPD Badge" description="The metal badge worn my Gotham City police officers, on a black leather shield." className="w-full h-full" />
                     </div>
                     <div className="aspect-[976/1114] overflow-hidden">
-                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Pathc" title="GCPD Patch" description="The patch worn my Gotham City police officers, featured on the sleeves." className="h-72" />
+                      <PopoutMedia src="/assets/Clothing/GCPDBadge.png" alt="GCPD Pathc" title="GCPD Patch" description="The patch worn my Gotham City police officers, featured on the sleeves." className="w-full h-full" />
                     </div>
                   </div>
                   <div className="aspect-[515/705] overflow-hidden">
-                    <PopoutMedia src="/assets/Clothing/GCPDRef.png" alt="GCPD Reference" title="GCPD  Image" description="Random image I pulled of Google. Obviously I didn't draw this." className="h-72" />
+                    <PopoutMedia src="/assets/Clothing/GCPDRef.png" alt="GCPD Reference" title="GCPD  Image" description="Random image I pulled of Google. Obviously I didn't draw this." className="w-full h-full" />
                   </div>
                 </div>
               </div>
