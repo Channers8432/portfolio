@@ -232,7 +232,7 @@ const RobloxPage: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-[630fr_350fr] gap-8 items-start">
                 <div className="aspect-[630/348] overflow-hidden">
-                  <PopoutMedia src="/assets/Clothing/GCPDShirt.png" alt="GCPD Shirt" title="GCPD Uniform" description="A formal dress uniform featuring a light blue collared shirt with dual chest flap pockets, paired with a dark blue necktie. It includes an illustrated GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="w-full h-full" />
+                  <PopoutMedia src="/assets/Clothing/GCPDShirt.png" alt="GCPD Shirt" title="GCPD Uniform" description="A formal dress uniform featuring a light blue collared shirt with dual chest flap pockets, paired with a dark blue necktie accompanied by a tie clip adorning the GCPD badge. It includes an illustrated GCPD patch on the shoulder and a metal chest badge, along with GCPD pins on the collar. Completing the look are dark black trousers anchored at the waist by a belt with a classic metallic buckle." className="w-full h-full" />
                 </div>
                 <div className="space-y-4">
                   <div className="text-sm text-text-secondary space-y-4 leading-relaxed">
