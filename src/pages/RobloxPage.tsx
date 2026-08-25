@@ -177,8 +177,7 @@ const RobloxPage: React.FC = () => {
                   Custom <span className="text-brand-default">avatar clothing</span>, drawn to detail
                 </h2>
                 <p className="text-xl text-text-secondary leading-relaxed">
-                  I design uniforms and outfits for Roblox avatars, from real-world police and emergency service dress to
-                  fictional universes, matching reference material as closely as the medium allows.
+                  Designing outfits for Roblox avatars, from real-world emergency to fictional universes, matching reference material as closely as the medium allows.
                 </p>
               </div>
 
@@ -189,12 +188,11 @@ const RobloxPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-bold">Reference-Accurate Detailing</h4>
-                    <p className="text-sm text-text-secondary">Real and fictional uniforms, drawn from scratch</p>
+                    <p className="text-sm text-text-secondary">Real and fictional clothing, drawn from scratch</p>
                   </div>
                 </div>
                 <p className="text-text-secondary leading-relaxed">
-                  Every piece is illustrated by hand to reflect the source uniform's cut, insignia, and materials —
-                  from duty belts and shoulder patches to embroidered crests.
+                  Every piece is illustrated by hand to reflect the source uniform's cut, insignia, and material, from duty belts and shoulder patches to embroidered crests.
                 </p>
               </div>
             </div>
