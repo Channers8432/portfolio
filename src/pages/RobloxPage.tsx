@@ -18,10 +18,9 @@ interface MediaItem {
   id: string;
   src: string;
   type: 'image' | 'gif' | 'video';
-  aspect: number; // width / height, for thumbnail sizing
+  aspect: number;
   title: string;
   description: string;
-  tags?: string[]; // optional, e.g. category labels
 }
 
 function MediaLightboxGrid({ items, thumbHeight = 220 }: { items: MediaItem[]; thumbHeight?: number }) {
@@ -379,24 +378,24 @@ const RobloxPage: React.FC = () => {
                 <h2 className="text-2xl font-bold border-b border-border-default pb-4 inline-block px-8">Other Clothing</h2>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4">
-                {[
-                  { src: "/assets/Clothing/ClothingCollage/SAS.png", alt: "SAS Shirt", aspect: 630 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/SASShort.png", alt: "SAS Shirt Short", aspect: 350 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/SFRS.png", alt: "SFRS Polo", aspect: 630 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/AZDPSA.png", alt: "AZDPS Class A", aspect: 630 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/AZDPSB.png", alt: "AZDPS Class B", aspect: 630 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/AZDPSC.png", alt: "AZDPS Class C", aspect: 725 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/KFBShirt.png", alt: "KFB Shirt", aspect: 350 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/KFBPolo.png", alt: "KFB Polo", aspect: 350 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/NASPolo.png", alt: "NAS Polo", aspect: 630 / 348 },
-                  { src: "/assets/Clothing/ClothingCollage/NASShirt.png", alt: "NAS Shirt", aspect: 350 / 348 },
-                ].map((img) => (
-                  <div key={img.src} style={{ height: 348, aspectRatio: img.aspect }} className="overflow-hidden">
-                    <img src={img.src} alt={img.alt} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                  </div>
-                ))}
-              </div>
+              <MediaLightboxGrid
+                items={[
+                  { id: 'sas-short', src: "/assets/Clothing/ClothingCollage/SASShort.png", type: 'image', aspect: 350 / 348, title: "SAS Shirt (Short Sleeve)", description: "..." },
+                  { id: 'sas', src: "/assets/Clothing/ClothingCollage/SAS.png", type: 'image', aspect: 630 / 348, title: "SAS Shirt", description: "..." },
+
+                  { id: 'sfrs-polo', src: "/assets/Clothing/ClothingCollage/SFRS.png", type: 'image', aspect: 630 / 348, title: "SFRS Polo", description: "..." },
+
+                  { id: 'azdps-a', src: "/assets/Clothing/ClothingCollage/AZDPSA.png", type: 'image', aspect: 350 / 348, title: "AZDPS Class A", description: "..." },
+                  { id: 'azdps-b', src: "/assets/Clothing/ClothingCollage/AZDPSB.png", type: 'image', aspect: 350 / 348, title: "AZDPS Class B", description: "..." },
+                  { id: 'axdps-c', src: "/assets/Clothing/ClothingCollage/AZDPSC.png", type: 'image', aspect: 350 / 348, title: "AZDPS Class C", description: "..." },
+
+                  { id: 'nas-polo', src: "/assets/Clothing/ClothingCollage/NASPolo.png", type: 'image', aspect: 350 / 348, title: "NAS Polo", description: "..." },
+                  { id: 'nas-shirt', src: "/assets/Clothing/ClothingCollage/NASShirt.png", type: 'image', aspect: 350 / 348, title: "NAS Shirt", description: "..." },
+
+                  { id: 'kfb-polo', src: "/assets/Clothing/ClothingCollage/KFBPolo.png", type: 'image', aspect: 350 / 348, title: "KFB Polo", description: "..." },
+                  { id: 'kfb-shirt', src: "/assets/Clothing/ClothingCollage/KFBShirt.png", type: 'image', aspect: 350 / 348, title: "KFP Shirt", description: "..." },
+                ]}
+              />
             </div>
           </motion.div>
         );
