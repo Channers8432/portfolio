@@ -484,7 +484,7 @@ const RobloxPage: React.FC = () => {
 
         <div className="space-y-20 overflow-x-hidden">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-border-default pb-8">
-            <div className="flex p-1 bg-cta-bg rounded-2xl border border-border-default overflow-x-auto no-scrollbar w-full max-w-full">
+            <div className="flex items-center justify-center gap-1 p-1 mx-auto md:mx-0 w-fit max-w-full bg-cta-bg rounded-2xl border border-border-default overflow-x-auto no-scrollbar">
               {tabs.map((tab) => (
                 <button
                   key={tab}
