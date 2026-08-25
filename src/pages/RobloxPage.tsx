@@ -171,6 +171,34 @@ const RobloxPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-5xl mx-auto space-y-24 py-12"
           >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                  Custom <span className="text-brand-default">avatar clothing</span>, drawn to detail
+                </h2>
+                <p className="text-xl text-text-secondary leading-relaxed">
+                  I design uniforms and outfits for Roblox avatars, from real-world police and emergency service dress to
+                  fictional universes, matching reference material as closely as the medium allows.
+                </p>
+              </div>
+
+              <div className="p-6 bg-cta-bg rounded-3xl border border-border-default shadow-sm space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-brand-default/10 rounded-2xl text-brand-default">
+                    <Shirt size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold">Reference-Accurate Detailing</h4>
+                    <p className="text-sm text-text-secondary">Real and fictional uniforms, drawn from scratch</p>
+                  </div>
+                </div>
+                <p className="text-text-secondary leading-relaxed">
+                  Every piece is illustrated by hand to reflect the source uniform's cut, insignia, and materials —
+                  from duty belts and shoulder patches to embroidered crests.
+                </p>
+              </div>
+            </div>
+
             {/* AGS */}
             <div className="space-y-8">
               <div className="text-center">
@@ -286,7 +314,7 @@ const RobloxPage: React.FC = () => {
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/SFRS.png" alt="SFRS Polo" title="Scottish Fire & Rescue Service Polo" description="A dark duty shirt styled used by the Scottish Fire & Rescue Service, with a grey undershirt, featuring the crest of the SFRS, two buttoned pockets, and a custom belt buckle with the service's insignia." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/SASShort.png" alt="SAS Shirt Short" title="Scottish Ambulance Service Polo" description="A Scottish Ambulance Service polo, featuring a custom drawn Scottish Ambulance Service patch on the right chest, and a custom embroidered 'NHS' badge on the left, along with a classic metal belt buckle." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSA.png" alt="AZDPS Class A" title="Arizona State Trooper Class A" description="A formal uniform worn by the Arizona State Troopers, featuring a tan shirt paired with a dark necktie, a gold-finish name tag and chest badge, and an AZDPS shoulder patch. The matching tan uniform trousers feature a sharp black stripe running down each outer leg seam. The waist is anchored by a fully fitted, custom-drawn duty belt loaded with detailed gear attachments, including a radio pouch, cross-draw stun-gun, flashlight holster, extendable baton, handcuffs, and dual magazine pouches complete with a holster." className="h-72" />
-                <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="AZDPS Class B" title="Arizona State Trooper Class B"  description="An everyday patrol uniform used by the Arizona State Troopers, featuring a tan open-collar shirt, detailed with a gold-finish name tag and chest badge, and an AZDPS shoulder patch. The matching tan trousers include a black stripe down each outer leg seam. The waist is wrapped in a hand-drawn duty belt equipped with a radio pouch, cross-draw stun-gun, flashlight holder, extendable baton, handcuffs, and dual magazine pouches that go with a holster." className="h-72" />
+                <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSB.png" alt="AZDPS Class B" title="Arizona State Trooper Class B" description="An everyday patrol uniform used by the Arizona State Troopers, featuring a tan open-collar shirt, detailed with a gold-finish name tag and chest badge, and an AZDPS shoulder patch. The matching tan trousers include a black stripe down each outer leg seam. The waist is wrapped in a hand-drawn duty belt equipped with a radio pouch, cross-draw stun-gun, flashlight holder, extendable baton, handcuffs, and dual magazine pouches that go with a holster." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/AZDPSC.png" alt="AZDPS Class C" title="Arizona State Trooper Class C" description="A relaxed utility uniform used by the Arizona State Troopers, featuring a short-sleeve tan shirt cut with an open collar, complete with a gold name tag and chest badge, and an AZDPS shoulder patch. The lower half consists of matching tan trousers with outer black side stripes, paired with a custom-drawn duty belt housing a radio, cross-draw stun-gun, flashlight, baton, handcuffs, and dual magazine pouches that pair with the holster." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/KFBPolo.png" alt="KFB Polo" title="Kildare Fire Brigade Polo" description="A navy duty polo top with a grey undershirt with an embroidered-style chest crest, with text directly below it.Comes with a custom metal belt buckle stamped with the Kildare Fire Brigade insignia." className="h-72" />
                 <PopoutMedia src="/assets/Clothing/ClothingCollage/KFBShirt.png" alt="KFB Shirt" title="Kildare Fire Brigade Shirt" description="A white collared shirt with silver buttons, with a Kildare Fire Brigade chest crest, and 2 buttoned pockets. Comes with a custom metal belt buckle stamped with the Kildare Fire Brigade insignia." className="h-72" />
@@ -490,7 +518,7 @@ const RobloxPage: React.FC = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-8 py-3 rounded-xl text-sm font-semibold transition-all relative whitespace-nowrap ${activeTab === tab ? 'text-text-default' : 'text-text-secondary hover:text-text-default'
-                    }`}o
+                    }`} o
                 >
                   {activeTab === tab && (
                     <motion.div
