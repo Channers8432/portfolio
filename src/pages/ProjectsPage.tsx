@@ -244,8 +244,7 @@ const ProjectsPage: React.FC = () => {
             Projects
           </h1>
           <p className="text-lg md:text-xl text-text-secondary font-light max-w-2xl">
-            A collection of things I've built, hackathon entries, personal
-            projects, and client work.
+            A collection of things I've built, hackathon entries, personal projects, and client work.
           </p>
         </motion.div>
       </section>
