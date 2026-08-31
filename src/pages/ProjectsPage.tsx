@@ -2,13 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Github } from 'lucide-react';
 
-// ─────────────────────────────────────────────────────────────
-// PROJECT DATA
-// To add a new project, copy one of the objects below and edit
-// the fields. That's it — the layout below handles the rest,
-// alternating image side and accent automatically by index.
-// ─────────────────────────────────────────────────────────────
-
 interface ProjectEntry {
   title: string;
   tagline: string;      
@@ -59,10 +52,6 @@ const PROJECTS_DATA: ProjectEntry[] = [
     year: '2024',
   },
 ];
-
-// ─────────────────────────────────────────────────────────────
-// CARD COMPONENT
-// ─────────────────────────────────────────────────────────────
 
 const ProjectCard: React.FC<{ project: ProjectEntry; index: number }> = ({
   project,
