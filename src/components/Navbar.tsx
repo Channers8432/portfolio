@@ -19,11 +19,11 @@ export const Navbar: React.FC = () => {
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'Roblox', path: '/roblox' },
+    { label: 'Projects', path: '/projects' },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-nav-bg-dark/80 backdrop-blur-md border-b border-border-default">
-      {/* Updated max-width to match Home page hero and decreased padding */}
       <div className="max-w-[98%] mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -33,7 +33,6 @@ export const Navbar: React.FC = () => {
           </div>
           
           <div className="hidden md:block">
-            {/* Changed items-baseline to items-center for perfect vertical alignment */}
             <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
@@ -49,7 +48,6 @@ export const Navbar: React.FC = () => {
                 </Link>
               ))}
               
-              {/* Vertically centered toggle button */}
               <button
                 onClick={() => setIsDark(!isDark)}
                 className="flex items-center justify-center p-2 rounded-xl bg-button-bg-transparent hover:bg-button-bg-transparent-hover border border-border-default/50 transition-colors text-text-default"

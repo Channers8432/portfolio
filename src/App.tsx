@@ -7,11 +7,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Navbar } from './components/Navbar';
 import Home from './pages/Home';
 import RobloxPage from './pages/RobloxPage';
-import EngineeringPage from './pages/EngineeringPage';
-import TranslationPage from './pages/TranslationPage';
-import LeavingCertPage from './pages/LeavingCertPage';
-import PastWorkPage from './pages/PastWorkPage';
-import ClothingPage from './pages/ClothingPage';
+import ProjectsPage from './pages/ProjectsPage.tsx'
+
 
 export default function App() {
   return (
@@ -22,7 +19,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/roblox" element={<RobloxPage />} />
-            <Route path="/past-work" element={<PastWorkPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
           </Routes>
         </main>
 
