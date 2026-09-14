@@ -142,16 +142,6 @@ export const LCCompSci26: React.FC = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Tech Stack Pills */}
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <span className="text-xs uppercase font-mono text-text-secondary mr-2">Technologies:</span>
-              {['Python', 'Tkinter / GUI', 'Raspberry Pi', 'micro:bit', 'Pandas & NumPy', 'Matplotlib', 'CSV Telemetry'].map((tech) => (
-                <span key={tech} className="px-3 py-1 text-xs rounded-md bg-surface text-text-secondary border border-border/30">
-                  {tech}
-                </span>
-              ))}
-            </div>
           </motion.div>
         ) : (
           /* Report Embed Container */
