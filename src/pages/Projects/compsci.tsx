@@ -16,7 +16,6 @@ import {
   Check
 } from 'lucide-react';
 
-// Sub-component to fetch & render the Python script safely without iframe restrictions
 const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
   const [code, setCode] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -43,8 +42,8 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
 
   if (loading) {
     return (
-      <div className="h-[600px] flex items-center justify-center text-text-secondary gap-3">
-        <Loader2 className="w-5 h-5 animate-spin" />
+      <div className="h-[600px] flex items-center justify-center text-text-secondary gap-3 font-mono text-sm">
+        <Loader2 className="w-5 h-5 animate-spin text-emerald-400" />
         <span>Fetching main.py from GitHub...</span>
       </div>
     );
@@ -54,11 +53,12 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
     <div className="relative font-mono text-xs leading-relaxed">
       <button
         onClick={handleCopy}
-        className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default border border-border/40 flex items-center gap-1.5 transition-all"
+        className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default border border-border/40 flex items-center gap-1.5 transition-all shadow-sm"
       >
         {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
         {copied ? 'Copied' : 'Copy Code'}
       </button>
+
       <pre className="p-6 overflow-x-auto h-[750px] bg-black/40 text-emerald-400/90 font-mono">
         <code>{code}</code>
       </pre>
@@ -174,7 +174,7 @@ export const LCCompSci26: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            {/* High-Level Feature Cards */}
+            {/* Feature Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
@@ -213,7 +213,7 @@ export const LCCompSci26: React.FC = () => {
               </div>
             </div>
 
-            {/* Architecture Summary */}
+            {/* Core Deliverables */}
             <div className="p-8 rounded-2xl bg-surface/30 border border-border/40">
               <h2 className="text-xl font-bold uppercase tracking-tight mb-4">Core Deliverables</h2>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-text-secondary">
@@ -238,7 +238,7 @@ export const LCCompSci26: React.FC = () => {
           </motion.div>
         )}
 
-        {/* Dynamic Code Viewer / Iframe Container */}
+        {/* Dynamic Content Views */}
         {activeTab !== 'overview' && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
