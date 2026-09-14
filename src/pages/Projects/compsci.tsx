@@ -248,9 +248,9 @@ export const LCCompSci26: React.FC = () => {
           >
             <div className="p-4 bg-surface/80 border-b border-border/40 flex items-center justify-between">
               <span className="text-xs font-mono text-text-secondary uppercase">
-                {activeTab === 'simulation' && 'Tkinter Python Script (main.py)'}
-                {activeTab === 'report' && 'HTML Report (index_vid.html)'}
-                {activeTab === 'brief' && 'SEC Coursework Brief (PDF)'}
+                {activeTab === 'simulation' && 'Tkinter Python Script'}
+                {activeTab === 'report' && 'HTML Report'}
+                {activeTab === 'brief' && 'SEC Coursework Brief'}
               </span>
               <a 
                 href={SOURCE_URLS[activeTab]} 
