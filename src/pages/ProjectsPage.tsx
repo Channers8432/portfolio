@@ -23,7 +23,7 @@ const PROJECTS_DATA: ProjectEntry[] = [
     tags: ['Python', 'HTML'],
     image: '/assets/placeholder.png',
     year: '2026',
-    liveUrl: '',
+    liveUrl: '/pages/projects/lccompsci26',
     githubUrl: 'https://github.com/Channers8432/LeavingCertCompSciProject2026',
   },
 ];

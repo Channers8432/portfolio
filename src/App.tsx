@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar';
 import Home from './pages/Home';
 import RobloxPage from './pages/RobloxPage';
 import ProjectsPage from './pages/ProjectsPage.tsx'
+import LCCompSci26 from './pages/Projects/compsci.tsx'
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/roblox" element={<RobloxPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/lccompsci26" element={<LCCompSci26 />} />
           </Routes>
         </main>
 
