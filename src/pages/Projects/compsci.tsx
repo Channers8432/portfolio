@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { 
   ArrowUpRight, 
@@ -10,8 +10,61 @@ import {
   ExternalLink,
   Layers,
   Code2,
-  FileCheck
+  FileCheck,
+  Loader2,
+  Copy,
+  Check
 } from 'lucide-react';
+
+// Sub-component to fetch & render the Python script safely without iframe restrictions
+const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
+  const [code, setCode] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [copied, setCopied] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.text())
+      .then((data) => {
+        setCode(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setCode(`# Failed to load script from GitHub:\n# ${err}`);
+        setLoading(false);
+      });
+  }, [url]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  if (loading) {
+    return (
+      <div className="h-[600px] flex items-center justify-center text-text-secondary gap-3">
+        <Loader2 className="w-5 h-5 animate-spin" />
+        <span>Fetching main.py from GitHub...</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative font-mono text-xs leading-relaxed">
+      <button
+        onClick={handleCopy}
+        className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default border border-border/40 flex items-center gap-1.5 transition-all"
+      >
+        {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+        {copied ? 'Copied' : 'Copy Code'}
+      </button>
+      <pre className="p-6 overflow-x-auto h-[750px] bg-black/40 text-emerald-400/90 font-mono">
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+};
 
 export const LCCompSci26: React.FC = () => {
   type TabType = 'overview' | 'simulation' | 'report' | 'brief';
@@ -19,20 +72,16 @@ export const LCCompSci26: React.FC = () => {
 
   const REPO_URL = 'https://github.com/Channers8432/LeavingCertCompSciProject2026';
 
-  // Embed-compatible URLs bypassing GitHub frame restrictions
-  const EMBED_URLS = {
-    // CDN for HTML rendering
+  const URLS = {
+    simulation: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/main/Artefact/main.py',
     report: 'https://raw.githack.com/Channers8432/LeavingCertCompSciProject2026/main/Report/index_vid.html',
-    // Google Docs Viewer wrapper for rendering GitHub PDF raw files
-    brief: 'https://docs.google.com/viewer?url=https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf&embedded=true',
-    // Raw code view for Python script
-    simulation: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/main/Artefact/main.py'
+    brief: 'https://docs.google.com/viewer?url=https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf&embedded=true'
   };
 
   const SOURCE_URLS = {
+    simulation: `${REPO_URL}/blob/main/Artefact/main.py`,
     report: `${REPO_URL}/blob/main/Report/index_vid.html`,
-    brief: `${REPO_URL}/blob/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf`,
-    simulation: `${REPO_URL}/blob/main/Artefact/main.py`
+    brief: `${REPO_URL}/blob/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf`
   };
 
   return (
@@ -125,7 +174,7 @@ export const LCCompSci26: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            {/* Quick Metrics / High-Level Cards */}
+            {/* High-Level Feature Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
@@ -189,7 +238,7 @@ export const LCCompSci26: React.FC = () => {
           </motion.div>
         )}
 
-        {/* Tab Embeds */}
+        {/* Dynamic Code Viewer / Iframe Container */}
         {activeTab !== 'overview' && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -209,15 +258,19 @@ export const LCCompSci26: React.FC = () => {
                 rel="noreferrer" 
                 className="text-xs text-text-secondary hover:text-text-default flex items-center gap-1"
               >
-                View File on GitHub <ExternalLink className="w-3 h-3" />
+                View on GitHub <ExternalLink className="w-3 h-3" />
               </a>
             </div>
 
-            <iframe
-              src={EMBED_URLS[activeTab]}
-              title={`LC Computer Science - ${activeTab}`}
-              className="w-full h-[850px] border-0 bg-white/5"
-            />
+            {activeTab === 'simulation' ? (
+              <PythonCodeViewer url={URLS.simulation} />
+            ) : (
+              <iframe
+                src={URLS[activeTab]}
+                title={`LC Computer Science - ${activeTab}`}
+                className="w-full h-[850px] border-0 bg-white/5"
+              />
+            )}
           </motion.div>
         )}
       </section>
