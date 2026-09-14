@@ -8,11 +8,21 @@ import {
   BarChart3, 
   FileText, 
   ExternalLink,
-  Layers
+  Layers,
+  Code2,
+  FileCheck
 } from 'lucide-react';
 
 export const LCCompSci26: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'report'>('overview');
+  type TabType = 'overview' | 'simulation' | 'report' | 'brief';
+  const [activeTab, setActiveTab] = useState<TabType>('overview');
+
+  // Replace these URLs with your actual raw/embed links
+  const URLS = {
+    simulation: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/refs/heads/main/Artefact/main.py',
+    report: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/refs/heads/main/Report/index_vid.html',
+    brief: 'https://github.com/Channers8432/LeavingCertCompSciProject2026/blob/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf'
+  };
 
   return (
     <div className="pt-24 pb-16 min-h-screen text-text-default">
@@ -23,13 +33,6 @@ export const LCCompSci26: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <span className="px-3 py-1 text-xs font-mono font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              LC Computer Science 2026
-            </span>
-            <span className="text-xs text-text-secondary font-mono">Exam Coursework</span>
-          </div>
-          
           <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-tight mb-4">
             Wildfire Risk & Simulation Engine
           </h1>
@@ -39,39 +42,63 @@ export const LCCompSci26: React.FC = () => {
           </p>
 
           {/* Action Links & Navigation Toggle */}
-          <div className="flex flex-wrap items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-3 mt-8">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === 'overview'
                   ? 'bg-text-default text-background shadow-lg'
                   : 'bg-surface hover:bg-surface-hover text-text-secondary'
               }`}
             >
               <Layers className="w-4 h-4" />
-              Project Overview
+              Overview
+            </button>
+
+            <button
+              onClick={() => setActiveTab('simulation')}
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === 'simulation'
+                  ? 'bg-text-default text-background shadow-lg'
+                  : 'bg-surface hover:bg-surface-hover text-text-secondary'
+              }`}
+            >
+              <Code2 className="w-4 h-4" />
+              Project Code
             </button>
 
             <button
               onClick={() => setActiveTab('report')}
-              className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === 'report'
                   ? 'bg-text-default text-background shadow-lg'
                   : 'bg-surface hover:bg-surface-hover text-text-secondary'
               }`}
             >
               <FileText className="w-4 h-4" />
-              Full SEC Report
+              Project Report
+            </button>
+
+            <button
+              onClick={() => setActiveTab('brief')}
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === 'brief'
+                  ? 'bg-text-default text-background shadow-lg'
+                  : 'bg-surface hover:bg-surface-hover text-text-secondary'
+              }`}
+            >
+              <FileCheck className="w-4 h-4" />
+              SEC Brief
             </button>
 
             <a
               href="https://github.com/your-username/your-repo"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-lg font-medium text-sm bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default transition-all flex items-center gap-2 ml-auto"
+              className="px-4 py-2 rounded-lg font-medium text-sm bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default transition-all flex items-center gap-2 ml-auto"
             >
               <Github className="w-4 h-4" />
-              View Source
+              GitHub
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -80,43 +107,49 @@ export const LCCompSci26: React.FC = () => {
 
       {/* Content Area */}
       <section className="max-w-[94%] mx-auto px-4">
-        {activeTab === 'overview' ? (
+        {activeTab === 'overview' && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            {/* Quick Metrics / High-Level Cards */}
+            {/* Quick Metrics / High-Level Cards (Text beside icons) */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
                   <Cpu className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Embedded IoT Setup</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  Dual-device architecture capturing real-time telemetry (soil moisture & ambient temperature) across extended observation periods.
-                </p>
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">Embedded IoT Setup</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    Dual-device architecture capturing real-time telemetry across extended observation periods.
+                  </p>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
+              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
                   <Flame className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Agent-Based Simulator</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  Interactive grid-based cellular automaton modeling fire spread dynamics under varying meteorological conditions.
-                </p>
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">Agent-Based Simulator</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    Interactive grid-based cellular automaton modeling fire spread dynamics under varying conditions.
+                  </p>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
+              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
                   <BarChart3 className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Dual Spread Models</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  Comparative analysis using regression models fitted on empirical sensor telemetry alongside the Algerian Forest Fires dataset.
-                </p>
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">Dual Spread Models</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    Comparative analysis using regression models fitted on telemetry and Algerian fire datasets.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -143,8 +176,10 @@ export const LCCompSci26: React.FC = () => {
               </ul>
             </div>
           </motion.div>
-        ) : (
-          /* Report Embed Container */
+        )}
+
+        {/* Tab Embeds */}
+        {activeTab !== 'overview' && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -152,21 +187,24 @@ export const LCCompSci26: React.FC = () => {
             className="w-full rounded-2xl border border-border/60 overflow-hidden bg-surface/20"
           >
             <div className="p-4 bg-surface/80 border-b border-border/40 flex items-center justify-between">
-              <span className="text-xs font-mono text-text-secondary">Embedded Document: Report/index.html</span>
+              <span className="text-xs font-mono text-text-secondary uppercase">
+                {activeTab === 'simulation' && 'Tkinter Python Script (main.py)'}
+                {activeTab === 'report' && 'HTML Report (index.html)'}
+                {activeTab === 'brief' && 'SEC Coursework Brief (PDF)'}
+              </span>
               <a 
-                href="/report/index.html" 
+                href={URLS[activeTab]} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="text-xs text-text-secondary hover:text-text-default flex items-center gap-1"
               >
-                Open full page <ExternalLink className="w-3 h-3" />
+                Open Source <ExternalLink className="w-3 h-3" />
               </a>
             </div>
 
-            {/* Replace this iframe src with your actual path */}
             <iframe
-              src="/report/index.html"
-              title="LC Computer Science Report"
+              src={URLS[activeTab]}
+              title={`LC Computer Science - ${activeTab}`}
               className="w-full h-[850px] border-0"
             />
           </motion.div>
