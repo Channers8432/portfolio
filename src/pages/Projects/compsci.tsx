@@ -20,7 +20,6 @@ import {
   FastForward,
   Rewind,
 } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 // ---------------------------------------------------------------------------
 // Raw source viewer — fetches main.py straight from GitHub and displays it
@@ -263,6 +262,60 @@ const SliderRow: React.FC<{ label: string; value: number; min: number; max: numb
 const RISK_COLOR: Record<string, string> = { STABLE: '#27ae60', WARNING: '#e67e22', CRITICAL: '#c0392b' };
 const DIRS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
+// Dependency-free SVG line chart (no recharts, nothing to npm install)
+type HistoryPoint = { t: number; Healthy: number; Burning: number; Burned: number };
+const HistoryChart: React.FC<{ data: HistoryPoint[] }> = ({ data }) => {
+  if (!data.length) {
+    return (
+      <div className="w-full h-full flex items-center justify-center text-neutral-600 text-xs">
+        Cell-count history will appear once the simulation starts
+      </div>
+    );
+  }
+  const W = 100, H = 100;
+  const maxY = Math.max(1, ...data.map((d) => Math.max(d.Healthy, d.Burning, d.Burned)));
+  const maxX = Math.max(1, data.length - 1);
+  const toPoints = (key: 'Healthy' | 'Burning' | 'Burned') =>
+    data.map((d, i) => `${(i / maxX) * W},${H - (d[key] / maxY) * H}`).join(' ');
+
+  const series: [keyof Omit<HistoryPoint, 't'>, string][] = [
+    ['Healthy', '#27ae60'],
+    ['Burning', '#eaa400'],
+    ['Burned', '#9a9a9a'],
+  ];
+
+  return (
+    <div className="w-full h-full flex flex-col">
+      <div className="flex-1 min-h-0">
+        <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" className="w-full h-full">
+          <line x1={0} y1={H - 0.5} x2={W} y2={H - 0.5} stroke="#2a2a2a" strokeWidth={0.5} vectorEffect="non-scaling-stroke" />
+          {series.map(([key, color]) => (
+            <polyline
+              key={key}
+              points={toPoints(key)}
+              fill="none"
+              stroke={color}
+              strokeWidth={1.4}
+              vectorEffect="non-scaling-stroke"
+              strokeLinejoin="round"
+              strokeLinecap="round"
+            />
+          ))}
+        </svg>
+      </div>
+      <div className="flex items-center gap-4 pt-2 shrink-0">
+        {series.map(([key, color]) => (
+          <div key={key} className="flex items-center gap-1.5 text-[10px] text-neutral-400">
+            <span className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: color }} />
+            {key}
+          </div>
+        ))}
+        <span className="ml-auto text-[10px] text-neutral-600">Time (30 min steps) &rarr;</span>
+      </div>
+    </div>
+  );
+};
+
 const WildfireSimulator: React.FC = () => {
   const [tab, setTab] = useState<'CUSTOM' | 'DROUGHT' | 'HIGH_WINDS'>('CUSTOM');
   const [custom, setCustom] = useState({ density: 0.65, temp: 35, moisture: 0.2, windSpeed: 2.0, windDir: 0, spreadType: 'closed_source' });
@@ -405,9 +458,9 @@ const WildfireSimulator: React.FC = () => {
 
   const statsLines = useMemo(() => {
     if (!model) return null;
-    const burned = model.history.burned.at(-1) ?? 0;
-    const burning = model.history.burning.at(-1) ?? 0;
-    const healthy = model.history.trees.at(-1) ?? model.initialTreeCount;
+    const burned = model.history.burned.length ? model.history.burned[model.history.burned.length - 1] : 0;
+    const burning = model.history.burning.length ? model.history.burning[model.history.burning.length - 1] : 0;
+    const healthy = model.history.trees.length ? model.history.trees[model.history.trees.length - 1] : model.initialTreeCount;
     const currentTemp = model.diurnalTemp();
     const prob = model.getPBase();
     const dirIdx = Math.floor(((((90 - model.windDir) % 360) + 360) % 360 + 22.5) / 45) % 8;
@@ -558,25 +611,8 @@ const WildfireSimulator: React.FC = () => {
             />
           </div>
 
-          <div className="h-48 shrink-0">
-            {chartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-                  <XAxis dataKey="t" tick={{ fontSize: 10, fill: '#888' }} label={{ value: 'Time (30 min steps)', position: 'insideBottom', offset: -2, fontSize: 10, fill: '#888' }} />
-                  <YAxis tick={{ fontSize: 10, fill: '#888' }} />
-                  <Tooltip contentStyle={{ background: '#1a1a1a', border: '1px solid #333', fontSize: 11 }} />
-                  <Legend wrapperStyle={{ fontSize: 11 }} />
-                  <Line type="monotone" dataKey="Healthy" stroke="#27ae60" dot={false} strokeWidth={2} isAnimationActive={false} />
-                  <Line type="monotone" dataKey="Burning" stroke="#eaa400" dot={false} strokeWidth={2} isAnimationActive={false} />
-                  <Line type="monotone" dataKey="Burned" stroke="#888888" dot={false} strokeWidth={2} isAnimationActive={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-neutral-600 text-xs">
-                Cell-count history will appear once the simulation starts
-              </div>
-            )}
+          <div className="h-48 shrink-0 rounded-lg border border-neutral-800 bg-[#151515] p-3">
+            <HistoryChart data={chartData} />
           </div>
         </div>
       </div>
