@@ -1,214 +1,186 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { 
+  ArrowUpRight, 
+  Github, 
+  Cpu, 
+  Flame, 
+  BarChart3, 
+  FileText, 
+  ExternalLink,
+  Layers
+} from 'lucide-react';
 
-interface ProjectEntry {
-  title: string;
-  tagline: string;      
-  description: string;   
-  tags: string[];         
-  image: string;           
-  year?: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  featured?: boolean;      
-}
-
-const PROJECTS_DATA: ProjectEntry[] = [
-  {
-    title: 'Wildfire Spread Simulator',
-    tagline: 'Leaving Certificate Computer Science 2026',
-    description:
-      'An interactive 2D simulation driven by a custom mathematical model that forecasts wildfire propagation. Computes real-time probability vectors using environmental parameters such as wind velocity, ambient humidity, and terrain variables.',
-    tags: ['Python', 'HTML'],
-    image: '/assets/placeholder.png',
-    year: '2026',
-    liveUrl: '/pages/projects/lccompsci26',
-    githubUrl: 'https://github.com/Channers8432/LeavingCertCompSciProject2026',
-  },
-];
-
-const ProjectCard: React.FC<{ project: ProjectEntry; index: number }> = ({
-  project,
-  index,
-}) => {
-  const imageOnRight = index % 2 === 1;
-
-  if (project.featured) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.5 }}
-        className="relative rounded-3xl overflow-hidden border border-border-default group"
-      >
-        <div className="aspect-[16/8] w-full overflow-hidden bg-neutral-900">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/40 to-transparent" />
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[9px] font-black uppercase tracking-[0.2em] text-brand-default bg-bg-primary/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-brand-default/30"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <h3 className="text-3xl md:text-5xl font-bold text-text-default uppercase tracking-tighter leading-none">
-                {project.title}
-              </h3>
-              <p className="text-sm md:text-base text-text-secondary font-light mt-2 max-w-xl">
-                {project.tagline}
-              </p>
-            </div>
-
-            <div className="flex gap-3 shrink-0">
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 bg-brand-default hover:bg-brand-hover text-white px-5 py-3 rounded-xl font-bold text-sm transition-all"
-                >
-                  View Project <ArrowUpRight size={16} />
-                </a>
-              )}
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 bg-cta-bg border border-border-default hover:border-brand-default/40 text-text-default px-5 py-3 rounded-xl font-bold text-sm transition-all"
-                >
-                  <Github size={16} />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
+export const LCCompSci26: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'overview' | 'report'>('overview');
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.5 }}
-      className="bg-cta-bg/30 border border-border-default rounded-3xl p-5 lg:p-7 hover:bg-cta-bg/50 transition-all group"
-    >
-      <div
-        className={`flex flex-col ${
-          imageOnRight ? 'lg:flex-row-reverse' : 'lg:flex-row'
-        } gap-6 lg:gap-8`}
-      >
-        {/* Image */}
-        <div className="w-full lg:w-64 shrink-0 rounded-xl overflow-hidden bg-neutral-900 border border-border-default aspect-video lg:aspect-square shadow-lg">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 flex flex-col">
-          <div className="flex flex-row justify-between items-start gap-4 mb-5 border-b border-border-default/60 pb-5">
-            <div>
-              <h3 className="text-lg md:text-xl font-bold text-text-default uppercase tracking-tight">
-                {project.title}
-              </h3>
-              <p className="text-[9px] text-text-secondary font-black uppercase tracking-[0.2em] opacity-50 mt-1">
-                {project.tagline}
-              </p>
-            </div>
-            <div className="flex gap-2 shrink-0">
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2.5 rounded-lg bg-bg-primary border border-border-default hover:border-brand-default/40 text-text-default transition-all"
-                  aria-label={`View ${project.title}`}
-                >
-                  <ArrowUpRight size={16} />
-                </a>
-              )}
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2.5 rounded-lg bg-bg-primary border border-border-default hover:border-brand-default/40 text-text-default transition-all"
-                  aria-label={`${project.title} on GitHub`}
-                >
-                  <Github size={16} />
-                </a>
-              )}
-            </div>
-          </div>
-
-          <div className="mb-6">
-            <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em] block mb-2">
-              The Project
-            </span>
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-              {project.description}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-2 mt-auto pt-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[9px] font-black uppercase tracking-[0.15em] text-text-secondary bg-bg-primary px-3 py-1.5 rounded-full border border-border-default/60"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-const LCCompSci26: React.FC = () => {
-  return (
-    <div className="pt-24 pb-16">
-      <section className="max-w-[94%] mx-auto px-4 mb-16">
+    <div className="pt-24 pb-16 min-h-screen text-text-default">
+      {/* Header Section */}
+      <section className="max-w-[94%] mx-auto px-4 mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <h1 className="text-5xl md:text-[4.5rem] font-bold text-text-default uppercase tracking-tighter leading-[0.85] mb-4">
-            Projects
+          <div className="flex items-center gap-3 mb-3">
+            <span className="px-3 py-1 text-xs font-mono font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              LC Computer Science 2026
+            </span>
+            <span className="text-xs text-text-secondary font-mono">Exam Coursework</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-tight mb-4">
+            Wildfire Risk & Simulation Engine
           </h1>
-          <p className="text-lg md:text-xl text-text-secondary font-light max-w-2xl">
-            A collection of things I've built, hackathon entries, personal projects, and coursework.
+          
+          <p className="text-lg md:text-xl text-text-secondary font-light max-w-3xl leading-relaxed">
+            An end-to-end coursework submission combining an IoT embedded environmental monitor with an agent-based wildfire simulation and dynamic risk alerting engine.
           </p>
+
+          {/* Action Links & Navigation Toggle */}
+          <div className="flex flex-wrap items-center gap-4 mt-8">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === 'overview'
+                  ? 'bg-text-default text-background shadow-lg'
+                  : 'bg-surface hover:bg-surface-hover text-text-secondary'
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              Project Overview
+            </button>
+
+            <button
+              onClick={() => setActiveTab('report')}
+              className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === 'report'
+                  ? 'bg-text-default text-background shadow-lg'
+                  : 'bg-surface hover:bg-surface-hover text-text-secondary'
+              }`}
+            >
+              <FileText className="w-4 h-4" />
+              Full SEC Report
+            </button>
+
+            <a
+              href="https://github.com/your-username/your-repo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-lg font-medium text-sm bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default transition-all flex items-center gap-2 ml-auto"
+            >
+              <Github className="w-4 h-4" />
+              View Source
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </motion.div>
       </section>
 
-      <section className="max-w-[96%] mx-auto px-4">
-        <div className="space-y-6 max-w-[90%] mx-auto">
-          {PROJECTS_DATA.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
-          ))}
-        </div>
+      {/* Content Area */}
+      <section className="max-w-[94%] mx-auto px-4">
+        {activeTab === 'overview' ? (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-8"
+          >
+            {/* Quick Metrics / High-Level Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+                  <Cpu className="w-5 h-5" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Embedded IoT Setup</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Dual-device architecture capturing real-time telemetry (soil moisture & ambient temperature) across extended observation periods.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
+                  <Flame className="w-5 h-5" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Agent-Based Simulator</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Interactive grid-based cellular automaton modeling fire spread dynamics under varying meteorological conditions.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
+                  <BarChart3 className="w-5 h-5" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Dual Spread Models</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Comparative analysis using regression models fitted on empirical sensor telemetry alongside the Algerian Forest Fires dataset.
+                </p>
+              </div>
+            </div>
+
+            {/* Architecture Summary */}
+            <div className="p-8 rounded-2xl bg-surface/30 border border-border/40">
+              <h2 className="text-xl font-bold uppercase tracking-tight mb-4">Core Deliverables</h2>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-text-secondary">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 font-bold">•</span>
+                  <span><strong>Physical Data Collection:</strong> Automated serial telemetry collection with multi-day CSV logging.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 font-bold">•</span>
+                  <span><strong>Process Simulation:</strong> Physical verification of system responsiveness under environment changes.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 font-bold">•</span>
+                  <span><strong>What-If Scenarios:</strong> Dynamic UI presets for drought, high winds, ember spotting, and custom vectors.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 font-bold">•</span>
+                  <span><strong>Adaptive Monitoring:</strong> Automated threshold alerts triggering warning and evacuation badges.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Tech Stack Pills */}
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <span className="text-xs uppercase font-mono text-text-secondary mr-2">Technologies:</span>
+              {['Python', 'Tkinter / GUI', 'Raspberry Pi', 'micro:bit', 'Pandas & NumPy', 'Matplotlib', 'CSV Telemetry'].map((tech) => (
+                <span key={tech} className="px-3 py-1 text-xs rounded-md bg-surface text-text-secondary border border-border/30">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ) : (
+          /* Report Embed Container */
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full rounded-2xl border border-border/60 overflow-hidden bg-surface/20"
+          >
+            <div className="p-4 bg-surface/80 border-b border-border/40 flex items-center justify-between">
+              <span className="text-xs font-mono text-text-secondary">Embedded Document: Report/index.html</span>
+              <a 
+                href="/report/index.html" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-xs text-text-secondary hover:text-text-default flex items-center gap-1"
+              >
+                Open full page <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+
+            {/* Replace this iframe src with your actual path */}
+            <iframe
+              src="/report/index.html"
+              title="LC Computer Science Report"
+              className="w-full h-[850px] border-0"
+            />
+          </motion.div>
+        )}
       </section>
     </div>
   );
