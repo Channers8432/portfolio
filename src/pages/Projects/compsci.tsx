@@ -17,11 +17,22 @@ export const LCCompSci26: React.FC = () => {
   type TabType = 'overview' | 'simulation' | 'report' | 'brief';
   const [activeTab, setActiveTab] = useState<TabType>('overview');
 
-  // Replace these URLs with your actual raw/embed links
-  const URLS = {
-    simulation: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/refs/heads/main/Artefact/main.py',
-    report: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/refs/heads/main/Report/index_vid.html',
-    brief: 'https://github.com/Channers8432/LeavingCertCompSciProject2026/blob/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf'
+  const REPO_URL = 'https://github.com/Channers8432/LeavingCertCompSciProject2026';
+
+  // Embed-compatible URLs bypassing GitHub frame restrictions
+  const EMBED_URLS = {
+    // CDN for HTML rendering
+    report: 'https://raw.githack.com/Channers8432/LeavingCertCompSciProject2026/main/Report/index_vid.html',
+    // Google Docs Viewer wrapper for rendering GitHub PDF raw files
+    brief: 'https://docs.google.com/viewer?url=https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf&embedded=true',
+    // Raw code view for Python script
+    simulation: 'https://raw.githubusercontent.com/Channers8432/LeavingCertCompSciProject2026/main/Artefact/main.py'
+  };
+
+  const SOURCE_URLS = {
+    report: `${REPO_URL}/blob/main/Report/index_vid.html`,
+    brief: `${REPO_URL}/blob/main/Computer%20Science%20Coursework%20Project%20Brief%202026.pdf`,
+    simulation: `${REPO_URL}/blob/main/Artefact/main.py`
   };
 
   return (
@@ -92,7 +103,7 @@ export const LCCompSci26: React.FC = () => {
             </button>
 
             <a
-              href="https://github.com/your-username/your-repo"
+              href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg font-medium text-sm bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default transition-all flex items-center gap-2 ml-auto"
@@ -114,7 +125,7 @@ export const LCCompSci26: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            {/* Quick Metrics / High-Level Cards (Text beside icons) */}
+            {/* Quick Metrics / High-Level Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl bg-surface/50 border border-border/50 backdrop-blur-sm flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
@@ -189,23 +200,23 @@ export const LCCompSci26: React.FC = () => {
             <div className="p-4 bg-surface/80 border-b border-border/40 flex items-center justify-between">
               <span className="text-xs font-mono text-text-secondary uppercase">
                 {activeTab === 'simulation' && 'Tkinter Python Script (main.py)'}
-                {activeTab === 'report' && 'HTML Report (index.html)'}
+                {activeTab === 'report' && 'HTML Report (index_vid.html)'}
                 {activeTab === 'brief' && 'SEC Coursework Brief (PDF)'}
               </span>
               <a 
-                href={URLS[activeTab]} 
+                href={SOURCE_URLS[activeTab]} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="text-xs text-text-secondary hover:text-text-default flex items-center gap-1"
               >
-                Open Source <ExternalLink className="w-3 h-3" />
+                View File on GitHub <ExternalLink className="w-3 h-3" />
               </a>
             </div>
 
             <iframe
-              src={URLS[activeTab]}
+              src={EMBED_URLS[activeTab]}
               title={`LC Computer Science - ${activeTab}`}
-              className="w-full h-[850px] border-0"
+              className="w-full h-[850px] border-0 bg-white/5"
             />
           </motion.div>
         )}
