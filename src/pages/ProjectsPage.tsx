@@ -6,7 +6,6 @@ interface ProjectEntry {
   title: string;
   tagline: string;      
   description: string;   
-  role: string;           
   tags: string[];         
   image: string;           
   year?: string;
@@ -17,39 +16,15 @@ interface ProjectEntry {
 
 const PROJECTS_DATA: ProjectEntry[] = [
   {
-    title: 'WeatherWisdom',
-    tagline: 'NASA SpaceApps 2025 · ExamReady',
+    title: 'Wildfire Spread Simulator',
+    tagline: 'Leaving Certificate Computer Science 2026',
     description:
-      'A website that predicts weather patterns based on historical events for a given location, and surfaces recommendations based on conditions. Built in 2 days for the 2025 NASA SpaceApps Hackathon.',
-    role: 'Built the frontend functionality and part of the UI design.',
-    tags: ['React', 'TypeScript', 'Tailwind', 'API Integration'],
-    image: '/assets/weatherwisdom.png',
-    year: '2025',
-    liveUrl: '',
-    githubUrl: '',
-    featured: true,
-  },
-  {
-    title: 'Example Project Two',
-    tagline: 'Personal project · 2024',
-    description:
-      'Replace this with a short summary of what the project actually does, written like you would explain it to a stranger in one breath.',
-    role: 'Replace this with what you specifically built or contributed.',
-    tags: ['Python', 'Automation'],
+      'An interactive 2D simulation driven by a custom mathematical model that forecasts wildfire propagation. Computes real-time probability vectors using environmental parameters such as wind velocity, ambient humidity, and terrain variables.',
+    tags: ['Python', 'HTML', 'JavaScript'],
     image: '/assets/placeholder.png',
     year: '2024',
     liveUrl: '',
-    githubUrl: '',
-  },
-  {
-    title: 'Example Project Three',
-    tagline: 'Client work · 2024',
-    description:
-      'Another short, punchy description of the project — what problem it solved, who it was for, what makes it interesting.',
-    role: 'What you did on this one.',
-    tags: ['Luau', 'Game Design'],
-    image: '/assets/placeholder2.png',
-    year: '2024',
+    githubUrl: 'https://github.com/Channers8432/LeavingCertCompSciProject2026',
   },
 ];
 
@@ -186,23 +161,13 @@ const ProjectCard: React.FC<{ project: ProjectEntry; index: number }> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6">
-            <div className="space-y-2">
-              <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">
-                The Project
-              </span>
-              <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                {project.description}
-              </p>
-            </div>
-            <div className="space-y-2 md:pl-8 md:border-l border-border-default/50">
-              <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em]">
-                My Role
-              </span>
-              <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                {project.role}
-              </p>
-            </div>
+          <div className="mb-6">
+            <span className="text-[9px] font-black text-brand-default uppercase tracking-[0.2em] block mb-2">
+              The Project
+            </span>
+            <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+              {project.description}
+            </p>
           </div>
 
           <div className="flex flex-wrap gap-2 mt-auto pt-2">
@@ -233,7 +198,7 @@ const ProjectsPage: React.FC = () => {
             Projects
           </h1>
           <p className="text-lg md:text-xl text-text-secondary font-light max-w-2xl">
-            A collection of things I've built, hackathon entries, personal projects, and client work.
+            A collection of things I've built, hackathon entries, personal projects, and coursework.
           </p>
         </motion.div>
       </section>
