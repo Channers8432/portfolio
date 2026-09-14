@@ -186,7 +186,7 @@ const ProjectCard: React.FC<{ project: ProjectEntry; index: number }> = ({
   );
 };
 
-const ProjectsPage: React.FC = () => {
+const LCCompSci26: React.FC = () => {
   return (
     <div className="pt-24 pb-16">
       <section className="max-w-[94%] mx-auto px-4 mb-16">
@@ -214,4 +214,4 @@ const ProjectsPage: React.FC = () => {
   );
 };
 
-export default ProjectsPage;
+export default LCCompSci26;
