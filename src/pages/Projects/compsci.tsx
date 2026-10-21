@@ -19,6 +19,7 @@ import {
   RotateCcw,
   FastForward,
   Rewind,
+  Info,
 } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
@@ -821,7 +822,19 @@ export const LCCompSci26: React.FC = () => {
             </div>
 
             {simView === 'live' ? (
-              <WildfireSimulator />
+              <>
+                <div className="flex items-start gap-2.5 px-4 py-3 bg-amber-500/10 border-b border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
+                  <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
+                  <p>
+                    <strong className="font-semibold text-amber-300">Note:</strong> this live demo is not
+                    running the original Python display. The submitted project is a Python Tkinter app, and
+                    websites can't run Tkinter natively, so this is a JavaScript/Canvas
+                    replica of the same dashboard, but running the original Python script behind it. To see the
+                    full source, switch to the <em>Source Code</em> tab.
+                  </p>
+                </div>
+                <WildfireSimulator />
+              </>
             ) : (
               <div className={PANEL_H}>
                 <PythonCodeViewer url={URLS.simulation} />
