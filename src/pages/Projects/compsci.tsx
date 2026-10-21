@@ -24,6 +24,7 @@ import {
 // ---------------------------------------------------------------------------
 // Raw source viewer — fetches main.py straight from GitHub and displays it
 // ---------------------------------------------------------------------------
+const PANEL_H = 'h-[calc(100dvh-10.5rem)] min-h-[420px] max-h-[850px]';
 const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
   const [code, setCode] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -50,7 +51,7 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
 
   if (loading) {
     return (
-      <div className="h-[600px] flex items-center justify-center text-text-secondary gap-3 font-mono text-sm">
+      <div className="h-full flex items-center justify-center text-text-secondary gap-3 font-mono text-sm">
         <Loader2 className="w-5 h-5 animate-spin text-emerald-400" />
         <span>Fetching main.py from GitHub...</span>
       </div>
@@ -58,7 +59,7 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
   }
 
   return (
-    <div className="relative font-mono text-xs leading-relaxed">
+    <div className="relative h-full font-mono text-xs leading-relaxed">
       <button
         onClick={handleCopy}
         className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default border border-border/40 flex items-center gap-1.5 transition-all shadow-sm"
@@ -67,7 +68,7 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
         {copied ? 'Copied' : 'Copy Code'}
       </button>
 
-      <pre className="p-6 overflow-x-auto h-[750px] bg-black/40 text-emerald-400/90 font-mono">
+      <pre className="p-4 md:p-6 pt-14 overflow-auto h-full overscroll-contain bg-black/40 text-emerald-400/90 font-mono">
         <code>{code}</code>
       </pre>
     </div>
@@ -595,19 +596,19 @@ const WildfireSimulator: React.FC = () => {
 
       {/* Main panel */}
       <div className="flex-1 bg-[#111] flex flex-col min-w-0">
-        <div className="flex items-center justify-between px-4 py-2.5 bg-[#1a1a1a] border-b border-neutral-800">
+        <div className="flex items-center justify-between px-3 md:px-4 py-2.5 bg-[#1a1a1a] border-b border-neutral-800">
           <span className="text-xs font-semibold text-neutral-200">{statusBannerText[status]}</span>
           <span className="font-mono text-xs text-neutral-400">{timeLabel}</span>
         </div>
 
-        <div className="flex-1 p-4 flex flex-col gap-4 min-h-0">
+        <div className="flex-1 p-2 md:p-4 flex flex-col gap-4 min-h-0">
           <div className="rounded-lg overflow-hidden border border-neutral-800 bg-white">
             <canvas
               ref={canvasRef}
               width={720}
               height={480}
               onClick={handleCanvasClick}
-              className={`w-full h-auto block ${status === 'ready' ? 'cursor-crosshair' : ''}`}
+              className={`w-full h-auto block touch-manipulation ${status === 'ready' ? 'cursor-crosshair' : ''}`}
             />
           </div>
 
@@ -662,7 +663,7 @@ export const LCCompSci26: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-tight mb-4 break-words">
             Wildfire Risk & Simulation Engine
           </h1>
 
@@ -670,10 +671,10 @@ export const LCCompSci26: React.FC = () => {
             An end-to-end coursework submission combining an IoT embedded environmental monitor with an agent-based wildfire simulation and dynamic risk alerting engine.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 mt-8">
+          <div className="flex items-center gap-2 md:gap-3 mt-8 overflow-x-auto md:flex-wrap md:overflow-visible pb-2 -mx-4 px-4 md:mx-0 md:px-0 [&>*]:shrink-0">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'overview' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
+              className={`px-3 py-2 md:px-4 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'overview' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
             >
               <Layers className="w-4 h-4" />
               Overview
@@ -681,7 +682,7 @@ export const LCCompSci26: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('simulation')}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'simulation' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
+              className={`px-3 py-2 md:px-4 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'simulation' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
             >
               <Code2 className="w-4 h-4" />
               Project Code
@@ -689,7 +690,7 @@ export const LCCompSci26: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('report')}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'report' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
+              className={`px-3 py-2 md:px-4 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'report' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
             >
               <FileText className="w-4 h-4" />
               Project Report
@@ -697,7 +698,7 @@ export const LCCompSci26: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('brief')}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'brief' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
+              className={`px-3 py-2 md:px-4 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${activeTab === 'brief' ? 'bg-text-default text-background shadow-lg' : 'bg-surface hover:bg-surface-hover text-text-secondary'}`}
             >
               <FileCheck className="w-4 h-4" />
               SEC Brief
@@ -707,7 +708,7 @@ export const LCCompSci26: React.FC = () => {
               href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg font-medium text-sm bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default transition-all flex items-center gap-2 ml-auto"
+              className="px-3 py-2 md:px-4 rounded-lg font-medium text-sm bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default transition-all flex items-center gap-2 md:ml-auto"
             >
               <Github className="w-4 h-4" />
               GitHub
@@ -819,7 +820,13 @@ export const LCCompSci26: React.FC = () => {
               </a>
             </div>
 
-            {simView === 'live' ? <WildfireSimulator /> : <PythonCodeViewer url={URLS.simulation} />}
+            {simView === 'live' ? (
+              <WildfireSimulator />
+            ) : (
+              <div className={PANEL_H}>
+                <PythonCodeViewer url={URLS.simulation} />
+              </div>
+            )}
           </motion.div>
         )}
 
@@ -847,7 +854,7 @@ export const LCCompSci26: React.FC = () => {
             <iframe
               src={URLS[activeTab]}
               title={`LC Computer Science - ${activeTab}`}
-              className="w-full h-[850px] border-0 bg-white/5"
+              className={`w-full ${PANEL_H} border-0 bg-white/5`}
             />
           </motion.div>
         )}
