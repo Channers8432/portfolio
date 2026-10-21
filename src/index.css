@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* lets us write light:text-emerald-600 for colours that need a light-mode variant */
+@custom-variant light (&:where(.light, .light *));
+
 @theme {
   /* Brand Colors */
   --color-brand-default:  var(--brand-default);
@@ -26,6 +29,11 @@
   --color-error:            #f87171;
   --color-link-default:     #7a98f0;
   --color-link-hover:       #a4b3f3;
+
+  --color-surface:        var(--bg-input);
+  --color-surface-hover:  var(--button-bg-transparent-hover);
+  --color-border:         var(--border-default);
+  --color-background:     var(--bg-primary);
 
   /* Spacing & Radius */
   --radius-lg:    0.5rem;

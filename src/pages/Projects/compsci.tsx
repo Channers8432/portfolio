@@ -52,10 +52,10 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
 
   if (loading) {
     return (
-      <div className="h-full flex items-center justify-center text-text-secondary gap-3 font-mono text-sm">
+      <pre className="p-4 md:p-6 pt-14 overflow-auto h-full overscroll-contain bg-zinc-950 text-emerald-400 font-mono">
         <Loader2 className="w-5 h-5 animate-spin text-emerald-400" />
         <span>Fetching main.py from GitHub...</span>
-      </div>
+      </pre>
     );
   }
 
@@ -823,15 +823,17 @@ export const LCCompSci26: React.FC = () => {
 
             {simView === 'live' ? (
               <>
-                <div className="flex items-start gap-2.5 px-4 py-3 bg-amber-500/10 border-b border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
-                  <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
-                  <p>
-                    <strong className="font-semibold text-amber-300">Note:</strong> this live demo is not
-                    running the original Python display. The submitted project is a Python Tkinter app, and
-                    websites can't run Tkinter natively, so this is a JavaScript/Canvas
-                    replica of the same dashboard, but running the original Python script behind it. To see the
-                    full source, switch to the <em>Source Code</em> tab.
-                  </p>
+                <div className="p-3 md:p-4">
+                  <div className="flex items-start gap-3 rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 text-xs leading-relaxed text-text-default">
+                    <Info className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+                    <p>
+                      <strong className="font-semibold">Note:</strong> this live demo is not
+                      running the original Python display. The submitted project is a Python
+                      Tkinter app, and websites can't run Tkinter natively, so this is a
+                      JavaScript/Canvas replica of the same dashboard. To see the full
+                      source, switch to the <em>Source Code</em> tab.
+                    </p>
+                  </div>
                 </div>
                 <WildfireSimulator />
               </>
