@@ -532,7 +532,7 @@ const WildfireSimulator: React.FC = () => {
 
         <SliderRow label="Tree density" value={activeParams.density} min={0.1} max={1.0} step={0.01}
           disabled={tab !== 'CUSTOM'} onChange={(v) => setCustomField('density', v)} format={(v) => v.toFixed(2)} />
-        <SliderRow label="Temperature (\u00b0C)" value={activeParams.temp} min={10} max={50} step={1}
+        <SliderRow label="Temperature (°C)" value={activeParams.temp} min={10} max={50} step={1}
           disabled={tab !== 'CUSTOM'} onChange={(v) => setCustomField('temp', v)} />
         <SliderRow label="Soil moisture" value={activeParams.moisture} min={0} max={1.0} step={0.01}
           disabled={tab !== 'CUSTOM'} onChange={(v) => setCustomField('moisture', v)} format={(v) => v.toFixed(2)} />
