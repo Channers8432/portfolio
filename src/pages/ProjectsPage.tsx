@@ -21,7 +21,7 @@ const PROJECTS_DATA: ProjectEntry[] = [
     description:
       'An interactive 2D simulation driven by a custom mathematical model that forecasts wildfire propagation. Computes real-time probability vectors using environmental parameters such as wind velocity, ambient humidity, and terrain variables.',
     tags: ['Python', 'HTML'],
-    image: '/assets/Fire.png',
+    image: '../public/assets/Fire.png',
     year: '2026',
     liveUrl: '/projects/lccompsci26',
     githubUrl: 'https://github.com/Channers8432/LeavingCertCompSciProject2026',
