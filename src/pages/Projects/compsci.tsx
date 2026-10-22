@@ -52,15 +52,15 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
 
   if (loading) {
     return (
-      <pre className="p-4 md:p-6 pt-14 overflow-auto h-full overscroll-contain bg-zinc-950 text-emerald-400 font-mono">
+      <div className="h-full flex items-center justify-center gap-3 font-mono text-sm bg-zinc-950 text-zinc-400">
         <Loader2 className="w-5 h-5 animate-spin text-emerald-400" />
         <span>Fetching main.py from GitHub...</span>
-      </pre>
+      </div>
     );
   }
 
   return (
-    <div className="relative h-full font-mono text-xs leading-relaxed">
+    <div className="relative h-full font-mono text-xs leading-relaxed bg-zinc-950">
       <button
         onClick={handleCopy}
         className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md bg-surface hover:bg-surface-hover text-text-secondary hover:text-text-default border border-border/40 flex items-center gap-1.5 transition-all shadow-sm"
@@ -69,7 +69,7 @@ const PythonCodeViewer: React.FC<{ url: string }> = ({ url }) => {
         {copied ? 'Copied' : 'Copy Code'}
       </button>
 
-      <pre className="p-4 md:p-6 pt-14 overflow-auto h-full overscroll-contain bg-black/40 text-emerald-400/90 font-mono">
+      <pre className="p-4 md:p-6 pt-14 overflow-auto h-full overscroll-contain bg-zinc-950 text-emerald-400 font-mono">
         <code>{code}</code>
       </pre>
     </div>
